@@ -1,0 +1,126 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+rtp = ''
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+build = 'make'
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_i = 1
+on_ft = [ 'c', 'cpp']
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+on_i = 1
+on_ft = 'go'
+build = 'make'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_i = 1
+hook_add = '''
+source ~/.config/nvim/rc/rc_deoplete.vim
+'''
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+
+[[plugins]]
+repo = 'othree/html5.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+source ~/.config/nvim/rc/rc_quickrun.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+source ~/.config/nvim/rc/rc_denite.vim
+'''
+
+hook_source = '''
+'''
+
+hook_post_source = '''
+call denite#custom#source(
+\ 'file_rec', 'vars', {
+\   'command': [
+\      'pt', '--follow', '--nocolor', '--nogroup', '-g', ''
+\   ] })
+
+call denite#custom#source(
+\ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+
+call denite#custom#var('grep', 'command',
+\ ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
+call denite#custom#var('grep', 'default_opts', [])
+call denite#custom#var('grep', 'recursive_opts', [])
+
+'''
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+# complete
+#[[plugins]]
+#repo = 'Shougo/neocomplete.vim'
+#depends    = ['Shougo/neoinclude.vim', 'Shougo/context_filetype.vim']
+#on_i = 1
+#hook_add = '''
+#let g:neocomplete#enable_at_startup = 1
+#
+#if !exists('g:neocomplete#force_omni_input_patterns')
+#  let g:neocomplete#force_omni_input_patterns = {} 
+#endif
+#let g:neocomplete#force_overwrite_completefunc = 1
+#let g:neocomplete#force_omni_input_patterns.c =
+#      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+#let g:neocomplete#force_omni_input_patterns.cpp =
+#      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+#'''
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+hook_add = '''
+let g:syntastic_go_checkers = ['golint', 'gotype', 'govet', 'go']
+'''
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+source ~/.config/nvim/rc/rc_indentLine.vim
+'''
+# golang
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+'''
+

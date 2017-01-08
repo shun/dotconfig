@@ -1,0 +1,22 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+hook_add = '''
+let g:neomru#file_mru_limit = 10000
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_i = 1
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_cmd = ['EasyAlign']
+on_map = ['<Plug>(EasyAlign)']
+hook_add = '''
+vmap <Enter> <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+" }}}
+'''
+
+
