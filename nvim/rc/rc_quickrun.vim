@@ -9,14 +9,6 @@ let g:quickrun_config={'_': {
 \       'outputter/buffer/running_mark' : '### running quickrun... ###',
 \}
 \}
-"let g:quickrun_config={'_': {
-"\       'runner' : 'vimproc',
-"\       'runner/vimproc/updatetime' : 50,
-"\       'outputter' : 'quickfix',
-"\       'outputter/quickfix/open_cmd' : 'copen 35',
-"\       'outputter/buffer/running_mark' : '',
-"\}
-"\}
 
 let g:quickrun_config.cpp={
 \       'command' : 'clang++-3.8',
@@ -35,4 +27,13 @@ let g:quickrun_config.go = {
 \       'outputter' : 'buffer',
 \       'outputter/buffer/split' : 'vertical botright 80',
 \       'outputter/buffer/close_on_empty' : 1,
+\ }
+
+let g:quickrun_config.python = {
+\       'command': 'python3',
+\       'cmdopt' : '',
+\       'exec': ['%c %s %o -'],
+\       'outputter' : 'buffer',
+\       'outputter/buffer/split' : 'botright 20',
+\       'outputter/buffer/close_on_empty' : 0,
 \ }

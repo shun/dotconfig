@@ -6,6 +6,9 @@ rtp = ''
 repo = 'Shougo/vimproc'
 build = 'make'
 
+#[[plugins]]
+#repo = 'Shougo/deol.nvim'
+
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 on_i = 1
@@ -123,4 +126,11 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_add = '''
 '''
+
+[[plugins]]
+repo = 'zchee/nvim-go'
+build = 'make'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
 
