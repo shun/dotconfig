@@ -3,6 +3,7 @@ set fish_color_autosuggestion a0d8ef
 # Path
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
+export EDITOR=nvim
 export GOPATH=$HOME/.go
 set PATH $PATH $GOPATH/bin
 
