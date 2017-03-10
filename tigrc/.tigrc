@@ -1,0 +1,18 @@
+###################
+# main view
+#
+
+###################
+# diff view
+#
+
+###################
+# branch view
+#
+
+# push current branch to origin
+bind branch P !git push -u origin %(branch)
+
+# delete current branch
+bind branch d !?git branch -d %(branch)
+
