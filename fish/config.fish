@@ -8,7 +8,7 @@ export GOPATH=$HOME/.go
 set PATH $PATH $GOPATH/bin
 
 # Aliases
-alias ni="nvim"
+alias vi="nvim"
 alias ll="ls -la"
 alias l="ls -a"
 alias lpc="ll | peco"
