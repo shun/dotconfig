@@ -9,10 +9,12 @@ set expandtab
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
 set hlsearch
+set hidden
 set ignorecase
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nobackup
+set noswapfile
 "set noincsearch
 set nowrapscan
 set nu

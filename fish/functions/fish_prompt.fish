@@ -8,6 +8,9 @@ function fish_prompt
     set_color normal
     set_color 708090
     echo -n ':'(prompt_pwd)' {'"$git_branch"'}'
+    if test -n "$RANGER_LEVEL"
+        echo -n ' (in ranger)'
+    end
     set_color normal
     echo -e '\n$ '
 end
