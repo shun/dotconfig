@@ -21,3 +21,8 @@ alias sudo="sudo -E"
 bind \cd 'exit'
 source ~/.config/fish/functions/fish_prompt.fish
 
+#peco
+function fish_user_key_bindings
+    bind \cr peco_select_history
+end
+
