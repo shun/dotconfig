@@ -17,6 +17,7 @@ noremap <DOWN> <S-Down>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
+nmap <ESC><ESC> :noh<CR>
 
 "map <silent> <Leader>m :<C-u>Denite file_mru<CR>
 "map <silent> <Leader>r :<C-u>Denite file_rec<CR>
@@ -36,4 +37,13 @@ inoremap <C-b> <LEFT>
 inoremap <C-j> <RETURN>
 
 " visual mode
+
+" console mode
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-D> <Delete>
+cnoremap <C-E> <End>
+cnoremap <C-F> <Right>
+cnoremap <C-N> <Down>
+cnoremap <C-P> <Up>
 

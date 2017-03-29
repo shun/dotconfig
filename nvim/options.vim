@@ -11,6 +11,7 @@ set fileformats=unix,dos,mac
 set hlsearch
 set hidden
 set ignorecase
+set inccommand=split
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nobackup
