@@ -6,8 +6,9 @@ export XDG_CACHE_HOME=~/.cache
 export EDITOR=nvim
 export GOPATH=$HOME/.go
 export RANGERDIR=/usr/local/opt/ranger/libexec/ranger
-export GOROOT=/usr/local/opt/go
+export GOROOT=/usr/local/opt/go/libexec
 set PATH $PATH $GOROOT/bin
+set PATH $PATH $GOPATH/bin
 
 # Aliases
 alias vi="nvim"
