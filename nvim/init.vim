@@ -2,7 +2,9 @@ if &compatible
   set nocompatible
 endif
 
-let s:config_dir = expand('<sfile>:p:h')
+let mapleader = "\<Space>"
+
+let s:config_dir = expand($XDG_CONFIG_HOME . '/nvim')
 let s:cache_dir = expand($XDG_CACHE_HOME . '/nvim')
 
 " load plugins

@@ -1,7 +1,7 @@
 " ---------------------------------------------------------
 " | Keybindings
 
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 
 " nomal/visual mode
 noremap <C-a> <HOME>
