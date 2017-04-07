@@ -6,14 +6,6 @@
 " nomal/visual mode
 noremap <C-a> <HOME>
 noremap <C-e> <END>
-noremap <C-p> <UP>
-noremap <C-n> <DOWN>
-noremap <C-f> <RIGHT>
-noremap <C-b> <LEFT>
-noremap <M-n> <S-Down>
-noremap <M-p> <S-Up>
-noremap <UP> <S-Up>
-noremap <DOWN> <S-Down>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
