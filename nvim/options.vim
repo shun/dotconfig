@@ -6,7 +6,7 @@ set clipboard+=unnamedplus
 set cursorline
 set encoding=utf-8
 set expandtab
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 set fileformats=unix,dos,mac
 set hlsearch
 set hidden
