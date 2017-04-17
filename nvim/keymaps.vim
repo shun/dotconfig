@@ -39,3 +39,6 @@ cnoremap <C-F> <Right>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
+" terminal
+tnoremap <Esc> <C-\><C-n>
+
