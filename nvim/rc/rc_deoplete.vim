@@ -34,3 +34,7 @@ let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#package_dot = 1
 
+" deoplete-rust
+let g:deoplete#sources#rust#racer_binary = '/Users/skudo/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path = '$HOME/workspace/gitrepo/rust/src'
+let g:deoplete#sources#rust#disable_keym=1

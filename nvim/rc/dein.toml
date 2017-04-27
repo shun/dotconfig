@@ -134,3 +134,16 @@ build = 'make'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+on_ft = 'rust'
+hook_source = '''
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+hook_add = '''
+let g:rustfmt_autosave = 1
+'''
+

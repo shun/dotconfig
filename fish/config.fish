@@ -9,7 +9,7 @@ export RANGERDIR=/usr/local/opt/ranger/libexec/ranger
 export GOROOT=/usr/local/opt/go/libexec
 set PATH $PATH $GOROOT/bin
 set PATH $PATH $GOPATH/bin
-
+set PATH $PATH $HOME/.cargo/bin
 # Aliases
 alias vi="nvim"
 alias ll="ls -la"
