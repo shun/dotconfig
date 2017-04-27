@@ -1,3 +1,6 @@
 #ignore case
 set completion-ignore-case On
+TAB: menu-complete
+set visible-stats on
+set bell-style none
 
