@@ -11,6 +11,7 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
+let g:dein#install_log_filename = '/tmp/dein.log'
 if dein#load_state(s:dein_dir)
 	call dein#begin(s:dein_dir)
 
