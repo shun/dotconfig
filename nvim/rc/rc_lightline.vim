@@ -1,7 +1,7 @@
 " lightline
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'mymolokai',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },

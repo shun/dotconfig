@@ -52,6 +52,9 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/mymolokai.vim
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
