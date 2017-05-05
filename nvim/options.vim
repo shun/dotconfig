@@ -32,13 +32,13 @@ set t_Co=256
 set tabstop=4
 
 " highlight color
-hi CursorLine   term=reverse cterm=none ctermbg=238 guifg=#E19972
+highlight CursorLine   term=reverse cterm=none ctermbg=235 guifg=#E19972
 highlight Comment ctermfg=242
 highlight Statement ctermfg=Cyan
 highlight Search ctermfg=Black
 highlight Visual ctermbg=4
-highlight LineNr ctermfg=248 ctermbg=238
-highlight CursorLineNr ctermfg=248 ctermbg=238
+highlight LineNr ctermfg=248 ctermbg=234
+highlight CursorLineNr ctermfg=0 ctermbg=216
 highlight PreProc ctermfg=141
 highlight Special ctermfg=141
 highlight cSpecial ctermfg=141
@@ -46,4 +46,4 @@ highlight Pmenu ctermfg=255 ctermbg=4
 highlight Type ctermfg=Cyan
 highlight Constant ctermfg=1
 highlight Conceal ctermfg=242
-
+highlight MatchParen ctermfg=Black
