@@ -150,3 +150,8 @@ hook_add = '''
 let g:rustfmt_autosave = 1
 '''
 
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+hook_add = '''
+let g:plantuml_executable_script="~/.config/plantuml/plantuml"
+'''

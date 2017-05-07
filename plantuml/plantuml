@@ -1,0 +1,4 @@
+#!/bin/bash
+java -jar $HOME/.local/lib/java/plantuml.jar -tsvg $@
+open ${@%%.*}.svg
+
