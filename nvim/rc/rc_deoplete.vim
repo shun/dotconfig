@@ -1,9 +1,7 @@
 
 if has('mac')
     source ~/.config/nvim/rc/rc_deoplete_mac.vim
-endif
-
-if has('unix')
+elseif has('unix')
     source ~/.config/nvim/rc/rc_deoplete_linux.vim
 endif
 
