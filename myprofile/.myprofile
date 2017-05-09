@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if [ "$(uname)" == 'Darwin' ]; then
+  export OS='Mac'
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+  export OS='Linux'
+elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then
+  export OS='Cygwin'
+else
+  echo "Your platform ($(uname -a)) is not supported."
+  exit 1
+fi
+
 # prompt color
 CLRGREEN="\[\e[0;32m\]"
 CLRYELLOW="\[\e[0;36m\]"
@@ -25,12 +36,18 @@ export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}\h${CLRGREEN}: \w]\$
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
+
 export GOPATH=$HOME/.go
-export GOROOT=/usr/local/opt/go/libexec
+if [ $OS = "Mac" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+elif [ $OS = "Linux" ];then
+	export GOROOT=/usr/local/go
+fi
 export PATH=$PATH:/usr/local/bin:$GOPATH/bin:$GOPATH/bin
 export HISTIGNORE="ll*:history*:cd"
 export PROMPT_COMMAND='history -a; history -r'
 export HISTCONTROL=erasedups
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 cd() {
     builtin cd -P "$@" && ls -Gla
