@@ -1,10 +1,27 @@
 #!/bin/bash
 
 # prompt color
-BPC="\[\e[0;32m\]"
-YPC="\[\e[0;36m\]"
-HPC="\[\e[0;33m\]"
-export PS1="${BPC}[${YPC}\u${BPC}@${HPC}\h${BPC}: \w]\n\[\e[00m\]\$ "
+CLRGREEN="\[\e[0;32m\]"
+CLRYELLOW="\[\e[0;36m\]"
+CLRCYAN="\[\e[0;33m\]"
+CLRWHITE="\[\e[00m\]"
+
+alias env="env | sort"
+alias vi=nvim
+alias pt="pt --nogroup -iS"
+
+if [ -f $HOME/workspace/gitrepo/gitprompt/git-completion.bash ]; then
+    source $HOME/workspace/gitrepo/gitprompt/git-completion.bash
+fi
+if [ -f $HOME/workspace/gitrepo/gitprompt/git-prompt.sh ]; then
+    source $HOME/workspace/gitrepo/gitprompt/git-prompt.sh
+fi
+#export GIT_PS1_SHOWDIRTYSTATE=true
+#export GIT_PS1_SHOWUNTRACKEDFILES=true
+#export GIT_PS1_SHOWSTASHSTATE=true
+#export GIT_PS1_SHOWUPSTREAM=auto
+
+export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}\h${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
@@ -14,10 +31,6 @@ export PATH=$PATH:/usr/local/bin:$GOPATH/bin:$GOPATH/bin
 export HISTIGNORE="ll*:history*:cd"
 export PROMPT_COMMAND='history -a; history -r'
 export HISTCONTROL=erasedups
-
-alias env="env | sort"
-alias vi=nvim
-alias pt="pt --nogroup -iS"
 
 cd() {
     builtin cd -P "$@" && ls -Gla
