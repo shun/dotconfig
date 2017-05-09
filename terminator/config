@@ -1,0 +1,30 @@
+[global_config]
+  enabled_plugins = APTURLHandler, LaunchpadBugURLHandler
+  homogeneous_tabbar = False
+  scroll_tabbar = True
+  title_inactive_fg_color = "#e5c200"
+  title_transmit_bg_color = "#ff6466"
+  window_state = maximise
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#121212"
+    background_darkness = 0.87
+    background_image = None
+    background_type = transparent
+    cursor_color = "#c20257"
+    font = Roboto Mono for Powerline 12
+    foreground_color = "#ffffff"
+    palette = "#181915:#c85d8d:#97d451:#dbd388:#669add:#a77cad:#7db7cb:#d3d7cf:#45473c:#e00265:#6dca04:#e6db74:#1d71ca:#af5fff:#5cd1f8:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    use_system_font = False

@@ -1,7 +1,7 @@
 # setup the configuration files
 
 
-paths=("fish" "nvim" "pt" "ranger")
+paths=("fish" "nvim" "pt" "ranger" "terminator")
 
 for mypath in ${paths[@]}; do
     if [ ! -d ~/.config/$mypath  ]; then
