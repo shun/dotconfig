@@ -12,7 +12,7 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("tigrc" "inputrc" "tmux.conf")
+paths=("tigrc" "inputrc" "tmux.conf" "myprofile")
 
 for mypath in ${paths[@]}; do
     if [ ! -e ~/.$mypath  ]; then

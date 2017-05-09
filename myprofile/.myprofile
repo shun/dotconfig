@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# prompt color
+BPC="\[\e[0;32m\]"
+YPC="\[\e[0;36m\]"
+HPC="\[\e[0;33m\]"
+export PS1="${BPC}[${YPC}\u${BPC}@${HPC}\h${BPC}: \w]\n\[\e[00m\]\$ "
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export EDITOR=nvim
+export GOPATH=$HOME/.go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:/usr/local/bin:$GOPATH/bin:$GOPATH/bin
+export HISTIGNORE="ll*:history*:cd"
+export PROMPT_COMMAND='history -a; history -r'
+export HISTCONTROL=erasedups
+
+alias env="env | sort"
+alias vi=nvim
+alias pt="pt --nogroup -iS"
+
+cd() {
+    builtin cd -P "$@" && ls -Gla
+}
+
+pushd() {
+    builtin pushd "$@" && ls -Gla
+}
+
+popd() {
+    builtin popd "$@" && ls -Gla
+}
+
+findfile() {
+    if [ $# -eq 1 ]; then
+        find . -type f -name "$1"
+    elif [ $# -eq 2 ]; then
+        find "$1" -type f -name "$2"
+    fi
+}
+
+finddir() {
+    if [ $# -eq 1 ]; then
+        find . -type d -name "$1"
+    elif [ $# -eq 2 ]; then
+        find "$1" -type d -name "$2"
+    fi
+}
+
+# search history
+peco-select-history() {
+    local l=$(history | sort -r | peco --query "$READLINE_LINE")
+    local l=`echo ${l} | /usr/local/bin/sed -e "s/^ *[0-9]\+ \+//g"`
+    READLINE_LINE=`echo ${l}`
+    READLINE_POINT=${#l}
+}
+bind -x '"\C-r": peco-select-history'
+
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+PROMPT_COMMAND='share_history'
+
