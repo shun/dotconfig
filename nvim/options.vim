@@ -47,3 +47,5 @@ highlight Type ctermfg=Cyan
 highlight Constant ctermfg=1
 highlight Conceal ctermfg=242
 highlight MatchParen ctermfg=Black
+
+au BufRead,BufNewFile *.ts set filetype=typescript
