@@ -32,22 +32,24 @@ fi
 #export GIT_PS1_SHOWSTASHSTATE=true
 #export GIT_PS1_SHOWUPSTREAM=auto
 
+if [ $OS = "Mac" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+    sedpath="/usr/local/bin"
+elif [ $OS = "Linux" ];then
+	export GOROOT=/usr/local/go
+    sedpath="/bin"
+fi
 export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}\h${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
 
 export GOPATH=$HOME/.go
-if [ $OS = "Mac" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-elif [ $OS = "Linux" ];then
-	export GOROOT=/usr/local/go
-fi
 export PATH=$PATH:/usr/local/bin:$GOPATH/bin:$GOPATH/bin
 export HISTIGNORE="ll*:history*:cd"
 export PROMPT_COMMAND='history -a; history -r'
 export HISTCONTROL=erasedups
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/workspace/bin
 
 cd() {
     builtin cd -P "$@" && ls -Gla
@@ -80,7 +82,7 @@ finddir() {
 # search history
 peco-select-history() {
     local l=$(history | sort -r | peco --query "$READLINE_LINE")
-    local l=`echo ${l} | /usr/local/bin/sed -e "s/^ *[0-9]\+ \+//g"`
+    local l=`echo ${l} | $sedpath/sed -e "s/^ *[0-9]\+ \+//g"`
     READLINE_LINE=`echo ${l}`
     READLINE_POINT=${#l}
 }
