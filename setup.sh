@@ -1,5 +1,15 @@
 # setup the configuration files
 
+paths=(".docker")
+
+for mypath in ${paths[@]}; do
+    if [ ! -d ~/$mypath  ]; then
+        ln -s $PWD/$mypath ~/$mypath
+        echo "[OK] linked '~/$mypath'"
+    else
+        echo "[NG] '~/$mypath' exist"
+    fi
+done
 
 paths=("fish" "nvim" "pt" "ranger" "terminator")
 

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "allowJs": true,
+    "target": "ESNext",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmitHelpers": true,
+    "importHelpers":true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": true
+  }
+}
+
