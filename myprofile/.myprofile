@@ -46,7 +46,7 @@ export EDITOR=nvim
 
 export GOPATH=$HOME/.go
 export PATH=$PATH:/usr/local/bin:$GOPATH/bin:$GOPATH/bin
-export HISTIGNORE="ll*:history*:cd"
+export HISTIGNORE="ll:history*:cd"
 export PROMPT_COMMAND='history -a; history -r'
 export HISTCONTROL=erasedups
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/workspace/bin
@@ -61,6 +61,10 @@ pushd() {
 
 popd() {
     builtin popd "$@" && ls -Gla
+}
+
+mkcd() {
+    mkdir "$@" && cd "$@"
 }
 
 findfile() {
