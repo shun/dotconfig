@@ -3,6 +3,11 @@ if &compatible
 endif
 
 let mapleader = "\<Space>"
+augroup GlobalAutoCmd
+  autocmd!
+augroup END
+command! -nargs=* Gautocmd   autocmd GlobalAutoCmd <args>
+command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
 let s:config_dir = expand($XDG_CONFIG_HOME . '/nvim')
 let s:cache_dir = expand($XDG_CACHE_HOME . '/nvim')

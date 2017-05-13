@@ -153,7 +153,7 @@ let g:rustfmt_autosave = 1
 [[plugins]]
 repo = 'aklt/plantuml-syntax'
 hook_add = '''
-let g:plantuml_executable_script="~/.config/plantuml/plantuml"
+source ~/.config/nvim/rc/rc_plantuml.vim
 '''
 
 [[plugins]]
@@ -167,4 +167,11 @@ on_ft = 'typescript'
 [[plugins]]
 repo = 'artur-shaik/vim-javacomplete2'
 on_ft = 'java'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+hook_add = '''
+source ~/.config/nvim/rc/rc_previm.vim
+'''
+on_ft = 'markdown'
 
