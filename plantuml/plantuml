@@ -1,4 +1,6 @@
 #!/bin/bash
-java -jar $HOME/.local/lib/java/plantuml.jar -tsvg $@
-open ${@%%.*}.svg
+
+ft=svg
+java -jar $HOME/.local/lib/java/plantuml.jar -o /tmp -t$ft $@
+open /tmp/${@%%.*}.$ft
 
