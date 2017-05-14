@@ -64,7 +64,7 @@ popd() {
 }
 
 mkcd() {
-    mkdir "$@" && cd "$@"
+    mkdir -p "$@" && cd "$@"
 }
 
 findfile() {
