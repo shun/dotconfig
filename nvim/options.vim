@@ -32,8 +32,8 @@ set t_Co=256
 set tabstop=4
 
 " highlight color
-highlight CursorLine    term=reverse cterm=none ctermfg=White   ctermbg=235
-highlight Comment                               ctermfg=242
+highlight CursorLine    term=reverse cterm=none                 ctermbg=235
+highlight Comment                               ctermfg=35
 highlight Statement                             ctermfg=Cyan
 highlight Search                                ctermfg=Black
 highlight Visual                                ctermbg=4
