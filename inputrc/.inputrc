@@ -1,6 +1,14 @@
 #ignore case
 set completion-ignore-case On
-TAB: menu-complete
+#TAB: menu-complete
 set visible-stats on
 set bell-style none
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set menu-complete-display-prefix off
+set skip-completed-text on
+set colored-stats on
+
+"\C-n":history-search-forward
+"\C-p":history-search-backward
 
