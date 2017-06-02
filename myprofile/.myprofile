@@ -39,7 +39,14 @@ elif [ $OS = "Linux" ];then
 	export GOROOT=/usr/local/go
     sedpath="/bin"
 fi
-export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}\h${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
+
+if [ "x"$CONTAINERNAME == "x" ]; then
+    export MACHINENAME=`hostname`
+else
+    export MACHINENAME=$CONTAINERNAME
+fi
+
+export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
