@@ -34,10 +34,10 @@ fi
 
 if [ $OS = "Mac" ]; then
 	export GOROOT=/usr/local/opt/go/libexec
-    sedpath="/usr/local/bin"
+    alias sed="/usr/local/bin/sed"
 elif [ $OS = "Linux" ];then
 	export GOROOT=/usr/local/go
-    sedpath="/bin"
+    alias sed="/bin/sed"
 fi
 
 if [ "x"$CONTAINERNAME == "x" ]; then
@@ -93,7 +93,7 @@ finddir() {
 # search history
 peco-select-history() {
     local l=$(history | sort -r | peco --query "$READLINE_LINE")
-    local l=`echo ${l} | $sedpath/sed -e "s/^ *[0-9]\+ \+//g"`
+    local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
     READLINE_LINE=`echo ${l}`
     READLINE_POINT=${#l}
 }
