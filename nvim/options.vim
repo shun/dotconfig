@@ -30,6 +30,7 @@ set smartcase
 set softtabstop=0
 set t_Co=256
 set tabstop=4
+autocmd InsertLeave * set nopaste
 
 " highlight color
 highlight CursorLine    term=reverse cterm=none                 ctermbg=235
@@ -46,12 +47,13 @@ highlight Pmenu                                 ctermfg=255     ctermbg=4
 highlight Type                                  ctermfg=Cyan
 highlight Constant                              ctermfg=1
 highlight Conceal                               ctermfg=242
-highlight MatchParen                            ctermfg=Black
+highlight MatchParen                 cterm=bold ctermfg=White   ctermbg=26
 highlight SpecialKey                            ctermfg=242
 highlight DiffChange                            ctermfg=Black   ctermbg=84
 highlight DiffAdd                               ctermfg=Black   ctermbg=84
 highlight DiffDelete                            ctermfg=Black   ctermbg=218
 highlight DiffText                              ctermfg=Black   ctermbg=192
+highlight SpellBad                              ctermfg=Black   ctermbg=Red
 
 au BufRead,BufNewFile *.ts set filetype=typescript
 au Filetype java setlocal omnifunc=javacomplete#Complete

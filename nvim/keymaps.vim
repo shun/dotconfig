@@ -10,6 +10,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
+nnoremap /  /\v
 
 "map <silent> <Leader>m :<C-u>Denite file_mru<CR>
 "map <silent> <Leader>r :<C-u>Denite file_rec<CR>
