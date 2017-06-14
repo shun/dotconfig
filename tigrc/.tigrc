@@ -1,18 +1,19 @@
-###################
-# main view
-#
-
-###################
-# diff view
-#
-
-###################
-# branch view
-#
-
-# push current branch to origin
-bind branch P !git push -u origin %(branch)
-
-# delete current branch
+bind generic P      ?git push -u %(remote) %(repo:head)
+bind generic F      ?git fetch %(remote)
+bind main    F      ?git fetch %(remote)
 bind branch d !?git branch -d %(branch)
+bind generic ^      ?git reset --soft HEAD^
+bind status  H      ?git reset --hard HEAD
+bind main    !      ?git revert %(commit)
+
+set blob-view-line-number = yes
+set blame-view-line-number = yes
+set line-graphics = utf-8
+set tab-size = 4
+set ignore-space = all
+set ignore-space = at-eol
+set ignore-case = true
+set mouse = true
+set editor-line-number = yes
+set refresh-mode = auto
 

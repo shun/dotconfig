@@ -1,3 +1,4 @@
+autocmd CompleteDone * silent! pclose!
 
 if has('mac')
     source ~/.config/nvim/rc/rc_deoplete_mac.vim
