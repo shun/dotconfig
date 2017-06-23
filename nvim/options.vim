@@ -37,7 +37,7 @@ autocmd InsertLeave * set nopaste
 highlight CursorLine    term=reverse cterm=none                 ctermbg=235
 highlight Comment                               ctermfg=35
 highlight Statement                             ctermfg=Cyan
-highlight Search                                ctermfg=Black
+highlight Search                                ctermfg=White   ctermbg=141
 highlight Visual                                ctermbg=4
 highlight LineNr                                ctermfg=248     ctermbg=234
 highlight CursorLineNr                          ctermfg=0       ctermbg=216
