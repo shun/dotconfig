@@ -38,6 +38,7 @@ if [ $OS = "Mac" ]; then
 elif [ $OS = "Linux" ];then
 	export GOROOT=/usr/local/go
     alias sed="/bin/sed"
+    alias pbcopy="xsel -ib"
 fi
 
 if [ "x"$CONTAINERNAME == "x" ]; then
