@@ -58,3 +58,5 @@ highlight SpellBad                              ctermfg=Black   ctermbg=Red
 
 au BufRead,BufNewFile *.ts set filetype=typescript
 au Filetype java setlocal omnifunc=javacomplete#Complete
+au WinEnter,FocusGained * checktime
+
