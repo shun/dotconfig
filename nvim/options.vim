@@ -31,6 +31,7 @@ set softtabstop=0
 set t_Co=256
 set tabstop=4
 set wildmode=longest,full
+set wildignorecase
 autocmd InsertLeave * set nopaste
 
 " highlight color
