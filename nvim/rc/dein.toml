@@ -8,6 +8,10 @@ build = 'make'
 
 #[[plugins]]
 #repo = 'Shougo/deol.nvim'
+[[plugins]]
+repo = 'mhinz/neovim-remote'
+hook_add = '''
+'''
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'
@@ -132,7 +136,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kassio/neoterm'
-hook_source = '''
+hook_add = '''
+source ~/.config/nvim/rc/rc_neoterm.vim
 '''
 
 [[plugins]]
