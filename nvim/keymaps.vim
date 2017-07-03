@@ -12,6 +12,7 @@ nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
 nnoremap /  /\v
 nnoremap ,tm :terminal<CR>
+nnoremap ,tn :tabnew<CR>
 
 "map <silent> <Leader>m :<C-u>Denite file_mru<CR>
 "map <silent> <Leader>r :<C-u>Denite file_rec<CR>
