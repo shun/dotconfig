@@ -131,6 +131,11 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'kassio/neoterm'
+hook_source = '''
+'''
+
+[[plugins]]
 repo = 'zchee/nvim-go'
 build = 'make'
 
