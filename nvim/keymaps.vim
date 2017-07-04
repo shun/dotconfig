@@ -45,6 +45,8 @@ cnoremap <C-E> <End>
 cnoremap <C-F> <Right>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
