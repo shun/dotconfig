@@ -20,6 +20,7 @@ CLRWHITE="\[\e[00m\]"
 alias env="env | sort"
 alias vi=nvim
 alias pt="pt --nogroup -iS"
+alias ni="nvr --remote"
 
 if [ -f $HOME/workspace/gitrepo/gitprompt/git-completion.bash ]; then
     source $HOME/workspace/gitrepo/gitprompt/git-completion.bash
@@ -93,6 +94,8 @@ finddir() {
 
 # search history
 peco-select-history() {
+    ruby $HOME/workspace/gitrepo/myscript/removedups.rb
+
     local l=$(history | sort -r | peco --query "$READLINE_LINE")
     local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
     READLINE_LINE=`echo ${l}`

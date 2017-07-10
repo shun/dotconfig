@@ -30,6 +30,8 @@ set smartcase
 set softtabstop=0
 set t_Co=256
 set tabstop=4
+set ttimeout
+set ttimeoutlen=50
 set wildmode=longest,full
 set wildignorecase
 autocmd InsertLeave * set nopaste
@@ -56,6 +58,7 @@ highlight DiffAdd                               ctermfg=Black   ctermbg=84
 highlight DiffDelete                            ctermfg=Black   ctermbg=218
 highlight DiffText                              ctermfg=Black   ctermbg=192
 highlight SpellBad                              ctermfg=Black   ctermbg=Red
+highlight NonText                               ctermfg=239
 
 au BufRead,BufNewFile *.ts set filetype=typescript
 au Filetype java setlocal omnifunc=javacomplete#Complete
