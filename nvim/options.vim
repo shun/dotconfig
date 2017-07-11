@@ -14,6 +14,7 @@ set ignorecase
 set inccommand=split
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set mouse=a
 set nobackup
 set noswapfile
 "set noincsearch
