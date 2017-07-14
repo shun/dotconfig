@@ -59,6 +59,7 @@ highlight DiffAdd                               ctermfg=Black   ctermbg=84
 highlight DiffDelete                            ctermfg=Black   ctermbg=218
 highlight DiffText                              ctermfg=Black   ctermbg=192
 highlight SpellBad                              ctermfg=Black   ctermbg=Red
+highlight SpellCap                              ctermfg=Black   ctermbg=Red
 highlight NonText                               ctermfg=239
 
 au BufRead,BufNewFile *.ts set filetype=typescript
