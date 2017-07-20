@@ -7,7 +7,8 @@
 noremap <C-a> <HOME>
 noremap <C-e> <END>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :bd<CR>
+nnoremap <Leader>Q :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
 nnoremap /  /\v
