@@ -59,6 +59,8 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/mymolokai.vim
 '''
+[[plugins]]
+repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
