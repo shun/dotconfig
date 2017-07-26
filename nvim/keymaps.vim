@@ -7,8 +7,8 @@
 noremap <C-a> <HOME>
 noremap <C-e> <END>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :bd<CR>
-nnoremap <Leader>Q :q<CR>
+nnoremap <Leader>q :bd!<CR>
+nnoremap QQ :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
 nnoremap /  /\v
@@ -55,3 +55,10 @@ tnoremap <UP> <C-\><C-n><C-w>ki
 tnoremap <DOWN> <C-\><C-n><C-w>ji
 tnoremap <LEFT> <C-\><C-n><C-w>hi
 tnoremap <RIGHT> <C-\><C-n><C-w>li
+
+Gautocmdft go nmap  <silent><buffer><Leader>db     :<C-u>DlvBreakpoint<CR>
+Gautocmdft go nmap  <silent><buffer><Leader>dc     :<C-u>DlvContinue<CR>
+Gautocmdft go nmap  <silent><buffer><Leader>dd     :<C-u>DlvDebug<CR>
+Gautocmdft go nmap  <silent><buffer><Leader>dn     :<C-u>DlvNext<CR>
+Gautocmdft go nmap  <silent><buffer><Leader>dr     :<C-u>DlvBreakpoint<CR>
+
