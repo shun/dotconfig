@@ -18,6 +18,8 @@ nnoremap <UP> <C-w>k
 nnoremap <DOWN> <C-w>j
 nnoremap <LEFT> <C-w>h
 nnoremap <RIGHT> <C-w>l
+nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-h> :tabprevious<CR>
 
 "map <silent> <Leader>m :<C-u>Denite file_mru<CR>
 "map <silent> <Leader>r :<C-u>Denite file_rec<CR>
