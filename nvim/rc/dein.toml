@@ -9,6 +9,11 @@ build = 'make'
 #[[plugins]]
 #repo = 'Shougo/deol.nvim'
 [[plugins]]
+repo = 'vim-scripts/gtags.vim'
+hook_add = '''
+'''
+
+[[plugins]]
 repo = 'mhinz/neovim-remote'
 hook_add = '''
 '''

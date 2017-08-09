@@ -14,12 +14,12 @@ nmap <ESC><ESC> :noh<CR>
 nnoremap /  /\v
 nnoremap ,tm :terminal<CR>
 nnoremap ,tn :tabnew<CR>
-nnoremap <UP> <C-w>k
-nnoremap <DOWN> <C-w>j
-nnoremap <LEFT> <C-w>h
-nnoremap <RIGHT> <C-w>l
 nnoremap <silent> <C-l> :tabnext<CR>
 nnoremap <silent> <C-h> :tabprevious<CR>
+"nnoremap <Leader><C-]> :GtagsCursor<CR>
+"nnoremap <Leader><C-f> :Gtags -f %<CR>
+"nnoremap <Leader>n :cn<CR>
+"nnoremap <Leader>p :cp<CR>
 
 "map <silent> <Leader>m :<C-u>Denite file_mru<CR>
 "map <silent> <Leader>r :<C-u>Denite file_rec<CR>
