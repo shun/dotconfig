@@ -1,5 +1,6 @@
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#source('_', 'matchers', ['matcher_substring'])
 
 nmap <silent> <Space>m :<C-u>Denite file_mru<CR>
 nmap <silent> <Space>r :<C-u>Denite file_rec<CR>
