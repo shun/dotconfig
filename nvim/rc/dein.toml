@@ -13,6 +13,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
+hook_add = '''
+imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
+'''
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
