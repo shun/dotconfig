@@ -36,6 +36,7 @@ set ttimeoutlen=50
 set wildmode=longest,full
 set wildignorecase
 autocmd InsertLeave * set nopaste
+let g:terminal_scrollback_buffer_size = 3000
 
 " highlight color
 highlight CursorLine    term=reverse cterm=none                 ctermbg=235

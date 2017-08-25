@@ -7,15 +7,11 @@
 noremap <C-a> <HOME>
 noremap <C-e> <END>
 nnoremap <Leader>w :w<CR>
-"nnoremap <Leader>q :bd!<CR>
+nnoremap <Leader>q :bd!<CR>
 nnoremap QQ :q<CR>
 nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
 nnoremap <S-i> i <ESC><Right>
-nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight -smartcase line<CR>
-nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<CR>
-nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
-nnoremap <silent> ;; :<C-u>Denite command command_history<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -25,23 +21,8 @@ nnoremap Q <Nop>
 nnoremap ,tn :tabnew<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
 nnoremap <silent> <C-h> :tabprevious<CR>
-nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash'})<CR>
+nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<CR>
 nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<CR>
-"nnoremap <Leader><C-]> :GtagsCursor<CR>
-"nnoremap <Leader><C-f> :Gtags -f %<CR>
-"nnoremap <Leader>n :cn<CR>
-"nnoremap <Leader>p :cp<CR>
-nnoremap sd :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-nnoremap sr :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-nnoremap sg :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
-nnoremap sc :Denite -buffer-name=gtags_completion gtags_completion<cr>
-nnoremap sf :Denite -buffer-name=gtags_file gtags_file<cr>
-nnoremap sp :Denite -buffer-name=gtags_path gtags_path<cr>
-
-
-"map <silent> <Leader>m :<C-u>Denite file_mru<CR>
-"map <silent> <Leader>r :<C-u>Denite file_rec<CR>
-"map <silent> <Leader>l :<C-u>Denite line<CR>
 
 map <silent> <F3> :<C-u>setlocal relativenumber!<CR>
 
