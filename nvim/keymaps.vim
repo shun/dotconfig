@@ -27,7 +27,10 @@ nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<CR>
 nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<CR>
 nnoremap <silent><Leader>f  :VimFiler<CR>
-
+nnoremap g/ /
+nnoremap <silent>gr/ :set hlsearch<cr>
+nnoremap <silent>J n
+nnoremap <silent>K N
 map <silent> <F3> :<C-u>setlocal relativenumber!<CR>
 
 " insert mode
