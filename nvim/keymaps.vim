@@ -25,6 +25,7 @@ nnoremap ,tn :tabnew<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<CR>
+nnoremap <silent> ,tl :call neoterm#clear()<cr>
 nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<CR>
 nnoremap <silent><Leader>f  :VimFiler<CR>
 nnoremap g/ /
