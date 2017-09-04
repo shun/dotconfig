@@ -4,12 +4,15 @@
 " let mapleader = "\<Space>"
 
 " nomal/visual mode
-noremap <C-a> <HOME>
+"noremap <C-a> <HOME>
+noremap <silent><C-a> :call <SID>home()<CR>
+nnoremap <silent><C-k> d$
 noremap <C-e> <END>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :bd!<CR>
+nnoremap <Leader>q :bd<CR>
+nnoremap <Leader>Q :bd!<CR>
 nnoremap QQ :q<CR>
-nnoremap <Leader>e :QuickRun<CR>
+"nnoremap <Leader>e :QuickRun<CR>
 nmap <ESC><ESC> :noh<CR>
 nnoremap <S-i> i <ESC><Right>
 nnoremap j gj
@@ -23,6 +26,7 @@ nnoremap <silent> <C-l> :tabnext<CR>
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<CR>
 nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<CR>
+nnoremap <silent><Leader>f  :VimFiler<CR>
 
 map <silent> <F3> :<C-u>setlocal relativenumber!<CR>
 
@@ -47,8 +51,6 @@ cnoremap <C-E> <End>
 cnoremap <C-F> <Right>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
-cnoremap <M-b> <S-Left>
-cnoremap <M-f> <S-Right>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -56,6 +58,15 @@ tnoremap <UP> <C-\><C-n><C-w>ki
 tnoremap <DOWN> <C-\><C-n><C-w>ji
 tnoremap <LEFT> <C-\><C-n><C-w>hi
 tnoremap <RIGHT> <C-\><C-n><C-w>li
+
+function! s:home()
+    let start_column = col('.')
+    normal! ^
+    if col('.') == start_column
+        normal! 0
+    endif
+    return ''
+endfunction
 
 Gautocmdft go nmap  <silent><buffer><Leader>db     :<C-u>DlvBreakpoint<CR>
 Gautocmdft go nmap  <silent><buffer><Leader>dc     :<C-u>DlvContinue<CR>
