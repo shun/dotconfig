@@ -1,0 +1,5 @@
+window class_not: 'urxvt' do
+  # emacs-like bindings
+  remap 'C-p', to: 'Up'
+  remap 'C-n', to: 'Down'
+end
