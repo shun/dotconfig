@@ -43,8 +43,7 @@ function! s:GetBufByte()
   endif
 endfunction
 function! Term()
-"  call termopen(&shell)
-  call deol#start({'command': 'bash', 'cwd' : getcwd()})
+  call deol#start('-command=bash -cwd=' . getcwd())
 endfunction
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType go setlocal completeopt-=preview
