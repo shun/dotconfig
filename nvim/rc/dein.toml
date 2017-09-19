@@ -130,12 +130,12 @@ nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight -smartcase 
 nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<CR>
 nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
 
-nnoremap sd :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-nnoremap sr :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-nnoremap sg :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
-nnoremap sc :Denite -buffer-name=gtags_completion gtags_completion<cr>
-nnoremap sf :Denite -buffer-name=gtags_file gtags_file<cr>
-nnoremap sp :Denite -buffer-name=gtags_path gtags_path<cr>
+nnoremap sd :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_def gtags_def<cr>
+nnoremap sr :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap sg :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap sc :Denite -matchers=matcher_substring -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap sf :Denite -matchers=matcher_substring -buffer-name=gtags_file gtags_file<cr>
+nnoremap sp :Denite -matchers=matcher_substring -buffer-name=gtags_path gtags_path<cr>
 
 vnoremap sd :Denite -cursor-pos=0 -buffer-name=gtags_def gtags_def<cr>
 vnoremap sr :Denite -cursor-pos=0 -buffer-name=gtags_ref gtags_ref<cr>
