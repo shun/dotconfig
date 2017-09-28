@@ -18,6 +18,7 @@ nnoremap <silent><Leader>ga       :<C-u>Gina add %<CR>
 nnoremap <silent><Leader>gc       :<C-u>Gina commit<CR>
 nnoremap <silent><Leader>gp       :<C-u>Gina push<CR>
 nnoremap <silent><Leader>gs       :<C-u>Gina status<CR>
+nnoremap <silent><Leader>gl       :<C-u>Gina log<CR>
 '''
 
 [[plugins]]
