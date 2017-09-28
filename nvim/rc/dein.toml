@@ -12,6 +12,24 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'lambdalisue/gina.vim'
+hook_add = '''
+nnoremap <silent><Leader>ga       :<C-u>Gina add %<CR>
+nnoremap <silent><Leader>gc       :<C-u>Gina commit<CR>
+nnoremap <silent><Leader>gp       :<C-u>Gina push<CR>
+nnoremap <silent><Leader>gs       :<C-u>Gina status<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+'''
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
 imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
