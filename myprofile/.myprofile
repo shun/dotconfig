@@ -100,7 +100,8 @@ finddir() {
 peco-select-history() {
     ruby $HOME/workspace/gitrepo/myscript/removedups.rb
 
-    local l=$(history | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
+#    local l=$(history | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
+    local l=$(history | sort -r | peco  --query "$READLINE_LINE")
     local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
     READLINE_LINE=`echo ${l}`
     READLINE_POINT=${#l}
@@ -109,7 +110,8 @@ bind -x '"\C-r": peco-select-history'
 
 # search git branch
 peco-select-branch() {
-    local l=$(git branch | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
+#    local l=$(git branch | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
+    local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
     local l=`echo ${l:2} | sed -e "s/^.. //g"`
     READLINE_LINE=`echo "git checkout ${l}"`
     READLINE_POINT=${#l}
