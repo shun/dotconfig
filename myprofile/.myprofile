@@ -43,7 +43,7 @@ fi
 
 if [ $OS = "Mac" ]; then
 	export GOROOT=/usr/local/opt/go/libexec
-    alias sed="/usr/local/bin/sed"
+    alias sed="/usr/local/bin/gsed"
 elif [ $OS = "Linux" ];then
 	export GOROOT=$HOME/.linuxbrew/opt/go/libexec
     alias sed="/bin/sed"
