@@ -117,7 +117,7 @@ peco-select-branch() {
     local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
     local l=`echo ${l:2} | sed -e "s/^.. //g"`
     READLINE_LINE=`echo "git checkout ${l}"`
-    READLINE_POINT=${#l}
+    READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-t": peco-select-branch'
 
