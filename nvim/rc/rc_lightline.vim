@@ -1,6 +1,6 @@
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'mymolokai',
+      \ 'colorscheme': 'Dracula',
       \ 'active' : {
       \   'left': [
       \      [ 'mode', 'paste' ],

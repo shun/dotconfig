@@ -25,9 +25,6 @@ filetype plugin indent on
 " set options
 execute 'source' s:config_dir . '/options.vim'
 
-" lightline config
-execute 'source' s:config_dir . '/rc/rc_lightline.vim'
-
 " keymappings
 execute 'source' s:config_dir . '/keymaps.vim'
 
