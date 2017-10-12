@@ -3,6 +3,7 @@
 
 set cindent
 set clipboard+=unnamedplus
+set completeopt-=preview
 set cursorline
 set encoding=utf-8
 set expandtab

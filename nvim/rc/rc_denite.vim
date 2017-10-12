@@ -1,6 +1,10 @@
-"call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-"call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#source('_', 'matchers', ['matcher_substring'])
+call denite#custom#source('_',          'matchers', ['matcher_substring'])
+call denite#custom#source('grep',       'matchers', ['matcher_substring'])
+call denite#custom#source('gtags_def',  'matchers', ['matcher_substring'])
+call denite#custom#source('gtags_file', 'matchers', ['matcher_substring'])
+call denite#custom#source('gtags_grep', 'matchers', ['matcher_substring'])
+call denite#custom#source('gtags_path', 'matchers', ['matcher_substring'])
+call denite#custom#source('gtags_ref',  'matchers', ['matcher_substring'])
 
 call denite#custom#source(
 \ 'file_rec', 'vars', {
@@ -36,25 +40,3 @@ let s:menus.vim.file_candidates = [
     \ ['    > Edit configuation file (init.vim)', '~/.config/nvim/init.vim']
     \ ]
 
-"nnoremap <silent> <Space>m :<C-u>Denite -mode=normal file_mru<CR>
-"nnoremap <silent> <Space>r :<C-u>Denite -mode=normal file_rec<CR>
-"nnoremap <silent> <Space>l :<C-u>Denite -mode=normal line<CR>
-"nnoremap <silent> <Space>b :<C-u>Denite -mode=normal buffer<CR>
-"nnoremap <silent> <Space>g :<C-u>Denite -mode=normal grep<CR>
-"nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight -smartcase line<CR>
-"nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<CR>
-"nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
-"
-"nnoremap sd :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-"nnoremap sr :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-"nnoremap sg :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
-"nnoremap sc :Denite -buffer-name=gtags_completion gtags_completion<cr>
-"nnoremap sf :Denite -buffer-name=gtags_file gtags_file<cr>
-"nnoremap sp :Denite -buffer-name=gtags_path gtags_path<cr>
-"
-"nnoremap sD :Denite -resume -mode=normal -refresh -buffer-name=gtags_def gtags_def<cr>
-"nnoremap sR :Denite -resume -mode=normal -refresh -buffer-name=gtags_ref gtags_ref<cr>
-"nnoremap sG :Denite -resume -mode=normal -refresh -buffer-name=gtags_grep gtags_grep<cr>
-"nnoremap sC :Denite -resume -mode=normal -refresh -buffer-name=gtags_completion gtags_completion<cr>
-"nnoremap sF :Denite -resume -mode=normal -refresh -buffer-name=gtags_file gtags_file<cr>
-"nnoremap sP :Denite -resume -mode=normal -refresh -buffer-name=gtags_path gtags_path<cr>
