@@ -4,35 +4,28 @@
 " let mapleader = "\<Space>"
 
 " nomal/visual mode
-"noremap <C-a> <HOME>
-noremap <silent><C-a> :call <SID>home()<CR>
-nnoremap <silent><C-k> d$
-noremap <C-e> <END>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :bd<CR>
-nnoremap <Leader>Q :bd!<CR>
-nnoremap QQ :q<CR>
-"nnoremap <Leader>e :QuickRun<CR>
-nmap <ESC><ESC> :noh<CR>
+map <silent> <F3> :<C-u>setlocal relativenumber!<cr>
+nmap <ESC><ESC> :noh<cr>
+nnoremap ,tn :tabnew<cr>
+nnoremap <Leader>Q :bd!<cr>
+nnoremap <Leader>q :bd<cr>
+nnoremap <Leader>w :w<cr>
 nnoremap <S-i> i <ESC><Right>
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-nnoremap Q <Nop>
-"nnoremap ,tm :terminal<CR>
-nnoremap ,tn :tabnew<CR>
-nnoremap <silent> <C-l> :tabnext<CR>
-nnoremap <silent> <C-h> :tabprevious<CR>
-nnoremap <silent> ,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<CR>
-nnoremap <silent> ,tl :call neoterm#clear()<cr>
-nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<CR>
-nnoremap <silent><Leader>f  :VimFiler<CR>
-nnoremap g/ /
-nnoremap <silent>gr/ :set hlsearch<cr>
+nnoremap <silent><C-h> :tabprevious<cr>
+nnoremap <silent><C-l> :tabnext<cr>
+nnoremap <silent><C-k> d$
 nnoremap <silent>J n
 nnoremap <silent>K N
-map <silent> <F3> :<C-u>setlocal relativenumber!<CR>
+nnoremap <silent>gr/ :set hlsearch<cr>
+nnoremap <silent>j gj
+nnoremap <silent>k gk
+nnoremap Q <Nop>
+nnoremap QQ :q<cr>
+nnoremap g/ /
+nnoremap gj j
+nnoremap gk k
+noremap <C-e> <END>
+noremap <silent><C-a> :call <SID>home()<cr>
 
 " insert mode
 inoremap jj <ESC>
@@ -72,9 +65,113 @@ function! s:home()
     return ''
 endfunction
 
-Gautocmdft go nmap  <silent><buffer><Leader>db     :<C-u>DlvBreakpoint<CR>
-Gautocmdft go nmap  <silent><buffer><Leader>dc     :<C-u>DlvContinue<CR>
-Gautocmdft go nmap  <silent><buffer><Leader>dd     :<C-u>DlvDebug<CR>
-Gautocmdft go nmap  <silent><buffer><Leader>dn     :<C-u>DlvNext<CR>
-Gautocmdft go nmap  <silent><buffer><Leader>dr     :<C-u>DlvBreakpoint<CR>
+" ---------------------------------------------------------
+" | plugin keymaps
+" ---------------------------------------------------------
+
+" #########################################################
+" deol
+"
+nnoremap <silent><Leader>q  :<C-u>call deol#kill_editor()<cr>
+nnoremap <silent>,tm :<C-u>call deol#new({'command': 'bash', 'cwd' : $PWD})<cr>
+
+" #########################################################
+" delve
+"
+Gautocmdft go nmap  <silent><buffer><Leader>db     :<C-u>DlvBreakpoint<cr>
+Gautocmdft go nmap  <silent><buffer><Leader>dc     :<C-u>DlvContinue<cr>
+Gautocmdft go nmap  <silent><buffer><Leader>dd     :<C-u>DlvDebug<cr>
+Gautocmdft go nmap  <silent><buffer><Leader>dn     :<C-u>DlvNext<cr>
+Gautocmdft go nmap  <silent><buffer><Leader>dr     :<C-u>DlvBreakpoint<cr>
+
+
+" #########################################################
+" gina
+"
+nnoremap <silent>,ga       :<C-u>Gina add %<cr>
+nnoremap <silent>,gc       :<C-u>Gina commit<cr>
+nnoremap <silent>,gp       :<C-u>Gina push<cr>
+nnoremap <silent>,gs       :<C-u>Gina status<cr>
+nnoremap <silent>,gl       :<C-u>Gina log<cr>
+
+
+" #########################################################
+" vimfiler
+"
+nnoremap <silent><Leader>f  :VimFiler<cr>
+nnoremap <silent><Leader>v  :<C-u>VimFiler -invisible<cr>
+
+
+" #########################################################
+" denite
+"
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+
+nnoremap <silent><Space>m :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal file_mru<cr>
+nnoremap <silent><Space>r :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal file_rec<cr>
+nnoremap <silent><Space>l :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal line<cr>
+nnoremap <silent><Space>b :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal buffer<cr>
+nnoremap <silent><Space>g :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal grep<cr>
+
+nnoremap <silent><Space>rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>rl :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume -refresh<cr>
+
+nnoremap <silent>/ :<C-u>Denite -buffer-name=search -auto-highlight -smartcase line<cr>
+nnoremap <silent>* :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<cr>
+nnoremap <silent>n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<cr>
+
+nnoremap sd :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_def gtags_def<cr>
+nnoremap sr :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap sg :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap sc :Denite -matchers=matcher_substring -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap sf :Denite -matchers=matcher_substring -buffer-name=gtags_file gtags_file<cr>
+nnoremap sp :Denite -matchers=matcher_substring -buffer-name=gtags_path gtags_path<cr>
+
+vnoremap sd :Denite -cursor-pos=0 -buffer-name=gtags_def gtags_def<cr>
+vnoremap sr :Denite -cursor-pos=0 -buffer-name=gtags_ref gtags_ref<cr>
+vnoremap sg :Denite -cursor-pos=0 -buffer-name=gtags_grep gtags_grep<cr>
+vnoremap sc :Denite -buffer-name=gtags_completion gtags_completion<cr>
+vnoremap sf :Denite -buffer-name=gtags_file gtags_file<cr>
+vnoremap sp :Denite -buffer-name=gtags_path gtags_path<cr>
+
+nnoremap rsd :Denite -resume -mode=normal -refresh -buffer-name=gtags_def gtags_def<cr>
+nnoremap rsr :Denite -resume -mode=normal -refresh -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap rsg :Denite -resume -mode=normal -refresh -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap rsc :Denite -resume -mode=normal -refresh -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap rsf :Denite -resume -mode=normal -refresh -buffer-name=gtags_file gtags_file<cr>
+nnoremap rsp :Denite -resume -mode=normal -refresh -buffer-name=gtags_path gtags_path<cr>
+
+
+" #########################################################
+" vim-easy-align
+"
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+" #########################################################
+" neoterm
+"
+nnoremap ,tn :Tnew<cr>
+nnoremap ,vn :VTn<cr>
+
+command! -complete=shellcmd VTn
+      \ silent call user#neoterm#vertical({-> execute('Tnew') })
+
+" clear terminal
+nnoremap <silent><leader>tl :call neoterm#clear()<cr>
+nnoremap <silent><leader>tL :call neoterm#hardclear()<cr>
+
+
+" #########################################################
+" plantuml
+"
+Gautocmdft plantuml nmap <silent><buffer><Leader>w :w<cr>:make<cr><cr>
+
 
