@@ -219,3 +219,20 @@ source ~/.config/nvim/rc/rc_previm.vim
 '''
 on_ft = 'markdown'
 
+[[plugins]]
+repo = 'mattn/emmet-vim'
+hook_add = '''
+let g:user_emmet_settings = {
+\    'variables' : {
+\        'lang' : 'ja',
+\    }
+\ }
+'''
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+hook_add = '''
+let g:user_emmet_leader_key='<C-t>'
+source ~/.config/nvim/rc/rc_deoplete-ternjs.vim
+'''
+

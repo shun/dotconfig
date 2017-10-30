@@ -114,11 +114,17 @@ nnoremap <silent><Space>l :<C-u>Denite -matchers=matcher_substring -buffer-name=
 nnoremap <silent><Space>b :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal buffer<cr>
 nnoremap <silent><Space>g :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal grep<cr>
 
-nnoremap <silent><Space>rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume -refresh<cr>
-nnoremap <silent><Space>rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume -refresh<cr>
-nnoremap <silent><Space>rl :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal -resume -refresh<cr>
-nnoremap <silent><Space>rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume -refresh<cr>
-nnoremap <silent><Space>rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume <cr>
+nnoremap <silent><Space>rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume <cr>
+nnoremap <silent><Space>rl :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal -resume cr>
+nnoremap <silent><Space>rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume <cr>
+nnoremap <silent><Space>rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume <cr>
+
+nnoremap <silent><Space>Rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>Rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>Rl :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>Rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume -refresh<cr>
+nnoremap <silent><Space>Rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume -refresh<cr>
 
 nnoremap <silent>/ :<C-u>Denite -buffer-name=search -auto-highlight -smartcase line<cr>
 nnoremap <silent>* :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<cr>
@@ -144,6 +150,13 @@ nnoremap rsg :Denite -resume -mode=normal -refresh -buffer-name=gtags_grep gtags
 nnoremap rsc :Denite -resume -mode=normal -refresh -buffer-name=gtags_completion gtags_completion<cr>
 nnoremap rsf :Denite -resume -mode=normal -refresh -buffer-name=gtags_file gtags_file<cr>
 nnoremap rsp :Denite -resume -mode=normal -refresh -buffer-name=gtags_path gtags_path<cr>
+
+nnoremap Rsd :Denite -resume -mode=normal -buffer-name=gtags_def gtags_def<cr>
+nnoremap Rsr :Denite -resume -mode=normal -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap Rsg :Denite -resume -mode=normal -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap Rsc :Denite -resume -mode=normal -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap Rsf :Denite -resume -mode=normal -buffer-name=gtags_file gtags_file<cr>
+nnoremap Rsp :Denite -resume -mode=normal -buffer-name=gtags_path gtags_path<cr>
 
 
 " #########################################################
