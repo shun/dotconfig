@@ -108,17 +108,17 @@ nnoremap <silent><Leader>v  :<C-u>VimFiler -invisible<cr>
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 
-nnoremap <silent><Space>m :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal file_mru<cr>
-nnoremap <silent><Space>r :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal file_rec<cr>
-nnoremap <silent><Space>l :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal line<cr>
-nnoremap <silent><Space>b :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal buffer<cr>
-nnoremap <silent><Space>g :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal grep<cr>
+nnoremap <silent><Space>m :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=file_mru -mode=normal file_mru<cr>
+nnoremap <silent><Space>r :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=file_rec -mode=normal file_rec<cr>
+nnoremap <silent><Space>l :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=line -mode=normal line<cr>
+nnoremap <silent><Space>b :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=buffer -mode=normal buffer<cr>
+nnoremap <silent><Space>g :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=grep -mode=normal grep<cr>
 
-nnoremap <silent><Space>rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume <cr>
-nnoremap <silent><Space>rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume <cr>
-nnoremap <silent><Space>rl :<C-u>Denite -matchers=matcher_substring -buffer-name=line -mode=normal -resume cr>
-nnoremap <silent><Space>rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume <cr>
-nnoremap <silent><Space>rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume <cr>
+nnoremap <silent><Space>rm :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume <cr>
+nnoremap <silent><Space>rr :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume <cr>
+nnoremap <silent><Space>rl :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=line -mode=normal -resume cr>
+nnoremap <silent><Space>rb :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume <cr>
+nnoremap <silent><Space>rg :<C-u>Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=grep -mode=normal -resume <cr>
 
 nnoremap <silent><Space>Rm :<C-u>Denite -matchers=matcher_substring -buffer-name=file_mru -mode=normal -resume -refresh<cr>
 nnoremap <silent><Space>Rr :<C-u>Denite -matchers=matcher_substring -buffer-name=file_rec -mode=normal -resume -refresh<cr>
@@ -126,23 +126,23 @@ nnoremap <silent><Space>Rl :<C-u>Denite -matchers=matcher_substring -buffer-name
 nnoremap <silent><Space>Rb :<C-u>Denite -matchers=matcher_substring -buffer-name=buffer -mode=normal -resume -refresh<cr>
 nnoremap <silent><Space>Rg :<C-u>Denite -matchers=matcher_substring -buffer-name=grep -mode=normal -resume -refresh<cr>
 
-nnoremap <silent>/ :<C-u>Denite -buffer-name=search -auto-highlight -smartcase line<cr>
+nnoremap <silent>/ :<C-u>Denite -highlight-mode-insert=MatchParen -buffer-name=search -auto-highlight -smartcase line<cr>
 nnoremap <silent>* :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<cr>
 nnoremap <silent>n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<cr>
 
-nnoremap sd :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_def gtags_def<cr>
-nnoremap sr :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_ref gtags_ref<cr>
-nnoremap sg :DeniteCursorWord -matchers=matcher_substring -buffer-name=gtags_grep gtags_grep<cr>
-nnoremap sc :Denite -matchers=matcher_substring -buffer-name=gtags_completion gtags_completion<cr>
-nnoremap sf :Denite -matchers=matcher_substring -buffer-name=gtags_file gtags_file<cr>
-nnoremap sp :Denite -matchers=matcher_substring -buffer-name=gtags_path gtags_path<cr>
+nnoremap sd :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_def gtags_def<cr>
+nnoremap sr :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap sg :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap sc :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap sf :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_file gtags_file<cr>
+nnoremap sp :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_path gtags_path<cr>
 
-vnoremap sd :Denite -cursor-pos=0 -buffer-name=gtags_def gtags_def<cr>
-vnoremap sr :Denite -cursor-pos=0 -buffer-name=gtags_ref gtags_ref<cr>
-vnoremap sg :Denite -cursor-pos=0 -buffer-name=gtags_grep gtags_grep<cr>
-vnoremap sc :Denite -buffer-name=gtags_completion gtags_completion<cr>
-vnoremap sf :Denite -buffer-name=gtags_file gtags_file<cr>
-vnoremap sp :Denite -buffer-name=gtags_path gtags_path<cr>
+vnoremap sd :Denite -highlight-mode-insert=MatchParen -cursor-pos=0 -buffer-name=gtags_def gtags_def<cr>
+vnoremap sr :Denite -highlight-mode-insert=MatchParen -cursor-pos=0 -buffer-name=gtags_ref gtags_ref<cr>
+vnoremap sg :Denite -highlight-mode-insert=MatchParen -cursor-pos=0 -buffer-name=gtags_grep gtags_grep<cr>
+vnoremap sc :Denite -highlight-mode-insert=MatchParen -buffer-name=gtags_completion gtags_completion<cr>
+vnoremap sf :Denite -highlight-mode-insert=MatchParen -buffer-name=gtags_file gtags_file<cr>
+vnoremap sp :Denite -highlight-mode-insert=MatchParen -buffer-name=gtags_path gtags_path<cr>
 
 nnoremap rsd :Denite -resume -mode=normal -refresh -buffer-name=gtags_def gtags_def<cr>
 nnoremap rsr :Denite -resume -mode=normal -refresh -buffer-name=gtags_ref gtags_ref<cr>
