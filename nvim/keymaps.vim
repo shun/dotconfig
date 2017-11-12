@@ -51,10 +51,10 @@ cnoremap <C-P> <Up>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
-tnoremap <UP> <C-\><C-n><C-w>ki
-tnoremap <DOWN> <C-\><C-n><C-w>ji
-tnoremap <LEFT> <C-\><C-n><C-w>hi
-tnoremap <RIGHT> <C-\><C-n><C-w>li
+"tnoremap <UP> <C-\><C-n><C-w>ki
+"tnoremap <DOWN> <C-\><C-n><C-w>ji
+"tnoremap <LEFT> <C-\><C-n><C-w>hi
+"tnoremap <RIGHT> <C-\><C-n><C-w>li
 
 function! s:home()
     let start_column = col('.')

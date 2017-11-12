@@ -42,9 +42,12 @@ fi
 #export GIT_PS1_SHOWSTASHSTATE=true
 #export GIT_PS1_SHOWUPSTREAM=auto
 
+export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
+
 if [ $OS = "Mac" ]; then
 	export GOROOT=/usr/local/opt/go/libexec
     alias sed="/usr/local/bin/gsed"
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
 elif [ $OS = "Linux" ];then
 	export GOROOT=$HOME/.linuxbrew/opt/go/libexec
     alias sed="/bin/sed"
@@ -63,7 +66,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
 
 export GOPATH=$HOME/.go
-export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
 export HISTIGNORE="ll:history*:cd"
 export PROMPT_COMMAND='history -a; history -r'
 export HISTCONTROL=erasedups
