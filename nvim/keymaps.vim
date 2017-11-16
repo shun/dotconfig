@@ -98,8 +98,9 @@ nnoremap <silent>,gl       :<C-u>Gina log<cr>
 " #########################################################
 " vimfiler
 "
-nnoremap <silent><Leader>f  :VimFiler<cr>
-nnoremap <silent><Leader>v  :<C-u>VimFiler -invisible<cr>
+"nnoremap <silent><Leader>f  :VimFiler<cr>
+"nnoremap <silent><Leader>v  :<C-u>VimFiler -invisible<cr>
+nnoremap <silent><Leader>f  :Dirvish %
 
 
 " #########################################################
