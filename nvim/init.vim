@@ -42,6 +42,4 @@ endfunction
 function! Term()
   call deol#start('-command=bash -cwd=' . getcwd())
 endfunction
-autocmd FileType python setlocal completeopt-=preview
-autocmd FileType go setlocal completeopt-=preview
 

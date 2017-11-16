@@ -66,13 +66,13 @@ highlight NonText                               ctermfg=239
 
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
-au Filetype java setlocal omnifunc=javacomplete#Complete
 au WinEnter,FocusGained * checktime
 
 if has("autocmd")
   filetype plugin on
   filetype indent on
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
+  autocmd Filetype java        setlocal sw=4 sts=4 ts=4 et omnifunc=javacomplete#Complete
   autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
   autocmd FileType go          setlocal sw=4 sts=4 ts=4
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
@@ -85,4 +85,6 @@ if has("autocmd")
   autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
 
   autocmd Filetype deol        setlocal nonu
+  autocmd InsertEnter * call deoplete#enable()
 endif
+

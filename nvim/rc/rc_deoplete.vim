@@ -21,7 +21,7 @@ let g:deoplete#sources#jedi#enable_cache = 1
 let g:deoplete#sources#clang#debug = 'True'
 let g:deoplete#sources#cpp#dup = 1
 
-let g:deoplete#sources = {}
+"let g:deoplete#sources = {}
 "let g:deoplete#sources._ = ['buffer', 'tag']
 "
 "
