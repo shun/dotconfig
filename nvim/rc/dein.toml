@@ -16,8 +16,8 @@ repo = 'lambdalisue/gina.vim'
 hook_add = '''
 '''
 
-[[plugins]]
-repo = 'dbgx/lldb.nvim'
+#[[plugins]]
+#repo = 'dbgx/lldb.nvim'
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'

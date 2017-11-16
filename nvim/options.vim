@@ -83,4 +83,6 @@ if has("autocmd")
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
+
+  autocmd Filetype deol        setlocal nonu
 endif
