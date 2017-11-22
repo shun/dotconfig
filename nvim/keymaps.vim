@@ -86,6 +86,10 @@ Gautocmdft go nmap  <silent><buffer><Leader>dr     :<C-u>DlvBreakpoint<cr>
 
 
 " #########################################################
+" previm
+"
+Gautocmdft plantuml nmap  <silent><M-d>     :PrevimOpen<cr>
+" #########################################################
 " gina
 "
 nnoremap <silent>,ga       :<C-u>Gina add %<cr>
@@ -100,7 +104,7 @@ nnoremap <silent>,gl       :<C-u>Gina log<cr>
 "
 "nnoremap <silent><Leader>f  :VimFiler<cr>
 "nnoremap <silent><Leader>v  :<C-u>VimFiler -invisible<cr>
-nnoremap <silent><Leader>f  :Dirvish %
+nnoremap <Leader>f  :Dirvish %
 
 
 " #########################################################

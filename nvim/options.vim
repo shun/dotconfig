@@ -68,6 +68,7 @@ au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
 au WinEnter,FocusGained * checktime
 
+
 if has("autocmd")
   filetype plugin on
   filetype indent on
@@ -83,6 +84,7 @@ if has("autocmd")
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType plantuml    setlocal sw=4 sts=4 ts=4 et
 
   autocmd Filetype deol        setlocal nonu
   autocmd InsertEnter * call deoplete#enable()
