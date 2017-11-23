@@ -8,7 +8,7 @@ set cursorline
 set encoding=utf-8
 set expandtab
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
-set fileformats=unix,dos,mac
+set fileformats=unix,mac,dos
 set hlsearch
 set hidden
 set ignorecase

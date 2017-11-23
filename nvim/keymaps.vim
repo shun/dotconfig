@@ -187,9 +187,3 @@ nnoremap <silent><leader>tl :call neoterm#clear()<cr>
 nnoremap <silent><leader>tL :call neoterm#hardclear()<cr>
 
 
-" #########################################################
-" plantuml
-"
-Gautocmdft plantuml nmap <silent><buffer><Leader>w :w<cr>:make<cr><cr>
-
-
