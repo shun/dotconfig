@@ -88,7 +88,6 @@ Gautocmdft go nmap  <silent><buffer><Leader>dr     :<C-u>DlvBreakpoint<cr>
 " #########################################################
 " previm
 "
-Gautocmdft plantuml nmap  <silent><M-d>     :PrevimOpen<cr>
 " #########################################################
 " gina
 "
@@ -187,3 +186,7 @@ nnoremap <silent><leader>tl :call neoterm#clear()<cr>
 nnoremap <silent><leader>tL :call neoterm#hardclear()<cr>
 
 
+" #########################################################
+" plantuml
+"
+Gautocmdft plantuml nnoremap  <silent><M-d>     :OpenUml<cr><cr>

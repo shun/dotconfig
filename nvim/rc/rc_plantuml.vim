@@ -1,7 +1,6 @@
 if has('mac')
     au FileType plantuml command! OpenUml :!open -a "/Applications/Google Chrome.app" %
 elseif has('unix')
-    au FileType plantuml command! OpenUml :!open -a "/Applications/Google Chrome.app" %
+    au FileType plantuml command! OpenUml :!xdg-open %
 endif
-"let g:plantuml_executable_script="~/.config/plantuml/plantuml"
 
