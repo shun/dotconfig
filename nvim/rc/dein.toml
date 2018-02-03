@@ -3,10 +3,6 @@ repo = 'Shougo/dein.vim'
 rtp = ''
 
 [[plugins]]
-repo = 'Shougo/vimproc'
-build = 'make'
-
-[[plugins]]
 repo = 'vim-scripts/gtags.vim'
 hook_add = '''
 '''
@@ -16,32 +12,17 @@ repo = 'lambdalisue/gina.vim'
 hook_add = '''
 '''
 
-#[[plugins]]
-#repo = 'dbgx/lldb.nvim'
-
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 hook_add = '''
 '''
-
-#[[plugins]]
-#repo = 'Shougo/unite.vim'
-#hook_add = '''
-#imap <buffer> <C-w>      <Plug>(unite_delete_backward_path)
-#'''
-#
-#[[plugins]]
-#repo = 'Shougo/vimfiler.vim'
-#hook_add = ''
-#hook_source = '''
-#source ~/.config/nvim/rc/rc_vimfiler.vim
-#'''
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 on_source = 'denite.nvim'
 hook_add = '''
 '''
+
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
@@ -49,12 +30,11 @@ source ~/.config/nvim/rc/rc_ale.vim
 '''
 
 hook_source = '''
-
 '''
 
-[[plugins]]
-repo = 'ozelentok/denite-gtags'
-
+##[[plugins]]
+##repo = 'ozelentok/denite-gtags'
+#
 [[plugins]]
 repo = 'mhinz/neovim-remote'
 hook_add = '''
@@ -74,10 +54,6 @@ build = 'make'
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
-
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_i = 1
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -111,48 +87,15 @@ source ~/.config/nvim/rc/rc_lightline.vim
 repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-source ~/.config/nvim/rc/rc_quickrun.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
-hook_add = '''
 
+hook_add = '''
 '''
 
 hook_post_source = '''
 source ~/.config/nvim/rc/rc_denite.vim
 '''
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-# complete
-#[[plugins]]
-#repo = 'Shougo/neocomplete.vim'
-#depends    = ['Shougo/neoinclude.vim', 'Shougo/context_filetype.vim']
-#on_i = 1
-#hook_add = '''
-#let g:neocomplete#enable_at_startup = 1
-#
-#if !exists('g:neocomplete#force_omni_input_patterns')
-#  let g:neocomplete#force_omni_input_patterns = {} 
-#endif
-#let g:neocomplete#force_overwrite_completefunc = 1
-#let g:neocomplete#force_omni_input_patterns.c =
-#      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-#let g:neocomplete#force_omni_input_patterns.cpp =
-#      \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-#'''
-
-#[[plugins]]
-#repo = 'vim-syntastic/syntastic'
-#hook_add = '''
-#let g:syntastic_go_checkers = ['golint', 'gotype', 'govet', 'go']
-#'''
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
@@ -162,22 +105,22 @@ repo = 'Yggdroot/indentLine'
 hook_add = '''
 source ~/.config/nvim/rc/rc_indentLine.vim
 '''
-# golang
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = '''
-'''
-
+## golang
+#[[plugins]]
+#repo = 'fatih/vim-go'
+#on_ft = 'go'
+#hook_add = '''
+#'''
+#
 [[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
 source ~/.config/nvim/rc/rc_neoterm.vim
 '''
 
-[[plugins]]
-repo = 'zchee/nvim-go'
-build = 'make'
+#[[plugins]]
+#repo = 'zchee/nvim-go'
+#build = 'make'
 
 [[plugins]]
 repo = 'sebastianmarkow/deoplete-rust'
@@ -247,3 +190,4 @@ hook_add = '''
 
 [[plugins]]
 repo ='justinmk/vim-dirvish'
+
