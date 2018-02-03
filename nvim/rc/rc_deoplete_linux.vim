@@ -1,7 +1,6 @@
 
 
-let g:python3_host_prog = '/usr/bin/python3'
-"let g:python3_host_prog = '$HOME/.linuxbrew/bin/python3'
+let g:python3_host_prog = '/home/kudo/.linuxbrew/bin/python3'
 " libclang shared library path
 let g:deoplete#sources#clang#libclang_path='$HOME/.linuxbrew/lib/libclang.so'
 " clang builtin header path

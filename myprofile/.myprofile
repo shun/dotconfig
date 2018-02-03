@@ -1,14 +1,14 @@
 #!/bin/bash
 
 if [ "$(uname)" == 'Darwin' ]; then
-  export OS='Mac'
+    export OS='Mac'
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-  export OS='Linux'
+    export OS='Linux'
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then
-  export OS='Cygwin'
+    export OS='Cygwin'
 else
-  echo "Your platform ($(uname -a)) is not supported."
-  exit 1
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
 fi
 
 # prompt color
@@ -45,11 +45,13 @@ fi
 export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
 
 if [ $OS = "Mac" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
+    export GOROOT=/usr/local/opt/go/libexec
     alias sed="/usr/local/bin/gsed"
     export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 elif [ $OS = "Linux" ];then
-	export GOROOT=$HOME/.linuxbrew/opt/go/libexec
+    export PATH=$HOME/.linuxbrew/bin:$PATH
+    export GOROOT=$HOME/.linuxbrew/opt/go/libexec
     alias sed="/bin/sed"
     alias pbcopy="xsel -ib"
 fi
@@ -104,23 +106,23 @@ finddir() {
 
 # search history
 peco-select-history() {
-    ruby $HOME/workspace/gitrepo/myscript/removedups.rb
+ruby $HOME/workspace/gitrepo/myscript/removedups.rb
 
 #    local l=$(history | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
-    local l=$(history | sort -r | peco  --query "$READLINE_LINE")
-    local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
-    READLINE_LINE=`echo ${l}`
-    READLINE_POINT=${#l}
+local l=$(history | sort -r | peco  --query "$READLINE_LINE")
+local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
+READLINE_LINE=`echo ${l}`
+READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco-select-history'
 
 # search git branch
 peco-select-branch() {
 #    local l=$(git branch | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
-    local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
-    local l=`echo ${l:2} | sed -e "s/^.. //g"`
-    READLINE_LINE=`echo "git checkout ${l}"`
-    READLINE_POINT=${#READLINE_LINE}
+local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
+local l=`echo ${l:2} | sed -e "s/^.. //g"`
+READLINE_LINE=`echo "git checkout ${l}"`
+READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-t": peco-select-branch'
 
