@@ -104,6 +104,23 @@ finddir() {
     fi
 }
 
+# util command for docker
+dbash() {
+    docker exec -it $1 bash
+}
+
+dstart() {
+    docker start $1
+}
+
+dstop() {
+    docker stop $1
+}
+
+drestart() {
+    docker restart $1
+}
+
 # search history
 peco-select-history() {
 ruby $HOME/workspace/gitrepo/myscript/removedups.rb
