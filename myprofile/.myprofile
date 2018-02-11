@@ -106,7 +106,7 @@ finddir() {
 
 # util command for docker
 dbash() {
-    docker exec -it $1 bash
+    docker exec -it -e LINES=$(tput lines) -e COLUMNS=$(tput cols) $1 bash
 }
 
 dstart() {
