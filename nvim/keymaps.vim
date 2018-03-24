@@ -29,6 +29,12 @@ noremap <silent><C-a> :call <SID>home()<cr>
 
 noremap <silent>MB :call <SID>newTermBottom()<cr>
 noremap <silent>MR :call <SID>newTermRight()<cr>
+
+noremap H <C-w>h
+noremap J <C-w>j
+noremap K <C-w>k
+noremap L <C-w>l
+
 " insert mode
 inoremap jj <ESC>
 inoremap <C-c> <ESC>
