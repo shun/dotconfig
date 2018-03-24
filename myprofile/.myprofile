@@ -106,7 +106,10 @@ finddir() {
 
 # util command for docker
 dbash() {
-    docker exec -it -e LINES=$(tput lines) -e COLUMNS=$(tput cols) $1 bash
+    local lbl=$1
+    shift
+    local opt=$@
+    docker exec -it -e LINES=$(tput lines) -e COLUMNS=$(tput cols) $opt $lbl bash
 }
 
 dstart() {
@@ -119,6 +122,10 @@ dstop() {
 
 drestart() {
     docker restart $1
+}
+
+dclear() {
+    docker stop $1; docker rm $1
 }
 
 # search history

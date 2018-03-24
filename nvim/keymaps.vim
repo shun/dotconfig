@@ -27,6 +27,8 @@ nnoremap gk k
 noremap <C-e> <END>
 noremap <silent><C-a> :call <SID>home()<cr>
 
+noremap <silent>MB :call <SID>newTermBottom()<cr>
+noremap <silent>MR :call <SID>newTermRight()<cr>
 " insert mode
 inoremap jj <ESC>
 inoremap <C-c> <ESC>
@@ -37,6 +39,8 @@ inoremap <C-n> <DOWN>
 inoremap <C-f> <RIGHT>
 inoremap <C-b> <LEFT>
 inoremap <C-j> <RETURN>
+Gautocmdft eruby inoremap <C-t>%% <%  %><LEFT><LEFT><LEFT>
+Gautocmdft eruby inoremap <C-t>%= <%=  %><LEFT><LEFT><LEFT>
 
 " visual mode
 
@@ -63,6 +67,22 @@ function! s:home()
         normal! 0
     endif
     return ''
+endfunction
+
+function! s:newTermBottom()
+    :sp
+    :wincmd j
+    :terminal
+    :set nonu
+    :startinsert
+endfunction
+
+function! s:newTermRight()
+    :vs
+    :wincmd l
+    :terminal
+    :set nonu
+    :startinsert
 endfunction
 
 " ---------------------------------------------------------
