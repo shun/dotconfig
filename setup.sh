@@ -22,13 +22,16 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("tigrc" "inputrc" "tmux.conf" "myprofile" "gitconfig" "globalrc" "xremap")
+paths=("tigrc" "inputrc" "tmux" "myprofile" "gitconfig" "globalrc" "xremap" "dircolors" "powerline-shell")
 
 for mypath in ${paths[@]}; do
-    if [ ! -e ~/.$mypath  ]; then
-        ln -s $PWD/$mypath/.$mypath ~/.$mypath
-        echo "[OK] linked '~/.$mypath'"
-    else
-        echo "[NG] '~/.$mypath' exist"
-    fi
+    files=`ls -A $mypath/`
+    for f in $files; do
+        if [ ! -e ~/$f  ]; then
+            ln -s $PWD/$mypath/$f ~/$f
+            echo "[OK] linked '~/.$f'"
+        else
+            echo "[NG] '~/.$f' exist"
+        fi
+    done
 done
