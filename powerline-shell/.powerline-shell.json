@@ -11,8 +11,5 @@
     "newline",
     "root"
   ],
-  "theme": "~/.powerline-shell-theme.py",
-  "cwd": {
-      "full_cwd": false
-  }
+  "theme": "~/.powerline-shell-theme.py"
 }
