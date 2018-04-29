@@ -62,15 +62,21 @@ else
     export MACHINENAME=$CONTAINERNAME
 fi
 
-export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
+#export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export EDITOR=nvim
 
 export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
-export PROMPT_COMMAND='history -a; history -r'
+export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups
+
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 cd() {
     builtin cd -P "$@" && ls -Gla
@@ -150,10 +156,4 @@ READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-t": peco-select-branch'
 
-function share_history {
-    history -a
-    history -c
-    history -r
-}
-PROMPT_COMMAND='share_history'
 
