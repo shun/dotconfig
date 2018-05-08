@@ -1,0 +1,43 @@
+{
+    // 新規ファイル作成時のNeovimのメッセージを取り除く
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        // モード切替を「jj」で行う
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "key": "ctrl+f",
+            "command": "editor.action.moveCarretRightAction"
+        },
+        {
+            "key": "ctrl+b",
+            "command": "editor.action.moveCarretLeftAction"
+        }
+    ],
+    "vim.otherModesKeyBindings": [
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+    ],
+    // 検索ですべての一致を表示
+    "vim.hlsearch": true,
+    "editor.fontFamily": "'Roboto Mono for Powerline', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.colorTheme": "Dark (Molokai)",
+}
