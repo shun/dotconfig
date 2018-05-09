@@ -43,7 +43,7 @@ class DefaultColor(object):
     JOBS_FG = 39
     JOBS_BG = 238
 
-    CMD_PASSED_BG = 236
+    CMD_PASSED_BG = 240
     CMD_PASSED_FG = 15
     CMD_FAILED_BG = 161
     CMD_FAILED_FG = 15

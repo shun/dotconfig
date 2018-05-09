@@ -12,10 +12,10 @@ else
 fi
 
 # prompt color
-CLRGREEN="\[\e[0;32m\]"
-CLRYELLOW="\[\e[0;36m\]"
-CLRCYAN="\[\e[0;33m\]"
-CLRWHITE="\[\e[00m\]"
+# CLRGREEN="\[\e[0;32m\]"
+# CLRYELLOW="\[\e[0;36m\]"
+# CLRCYAN="\[\e[0;33m\]"
+# CLRWHITE="\[\e[00m\]"
 
 alias env="env | sort"
 alias vi=nvim
@@ -42,7 +42,6 @@ fi
 #export GIT_PS1_SHOWSTASHSTATE=true
 #export GIT_PS1_SHOWUPSTREAM=auto
 
-export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
 
 if [ $OS = "Mac" ]; then
     export GOROOT=/usr/local/opt/go/libexec
@@ -71,6 +70,7 @@ export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
 export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups
+export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
 
 function _update_ps1() {
     PS1=$(powerline-shell $?)
