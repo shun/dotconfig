@@ -12,10 +12,10 @@ else
 fi
 
 # prompt color
-CLRGREEN="\[\e[0;32m\]"
-CLRYELLOW="\[\e[0;36m\]"
-CLRCYAN="\[\e[0;33m\]"
-CLRWHITE="\[\e[00m\]"
+# CLRGREEN="\[\e[0;32m\]"
+# CLRYELLOW="\[\e[0;36m\]"
+# CLRCYAN="\[\e[0;33m\]"
+# CLRWHITE="\[\e[00m\]"
 
 alias env="env | sort"
 alias vi=nvim
