@@ -156,4 +156,12 @@ READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-t": peco-select-branch'
 
-
+#do dbash
+peco-exec-dbash() {
+  local l=$(docker ps | peco  --query "$READLINE_LINE")
+  arr=(`echo ${l}`)
+  echo ${arr[${#arr[@]}-1]}
+  READLINE_LINE="dbash ${arr[${#arr[@]}-1]}"
+  READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-e\C-d": peco-exec-dbash'
