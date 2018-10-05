@@ -164,4 +164,4 @@ peco-exec-dbash() {
   READLINE_LINE="dbash ${arr[${#arr[@]}-1]}"
   READLINE_POINT=${#READLINE_LINE}
 }
-bind -x '"\C-e\C-d": peco-exec-dbash'
+bind -x '"\C-x\C-d": peco-exec-dbash'
