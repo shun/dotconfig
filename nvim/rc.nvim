@@ -1,63 +1,35 @@
+set inccommand=split
+let g:terminal_scrollback_buffer_size = 3000
+
+if has("autocmd")
+  autocmd Filetype deol        setlocal nonu
+  autocmd InsertEnter * call deoplete#enable()
+endif
+
+" load plugins
+execute 'source' g:config_dir . '/rc.d/rc_dein.vim'
+
+" Open terminal on new buffer
+autocmd VimEnter * if @% == '' && s:GetBufByte() == 0 | call Term()
+"autocmd VimEnter * s:open_deol()
+function! s:GetBufByte()
+  let byte = line2byte(line('$') + 1)
+  if byte == -1
+    return 0
+  else
+    return byte - 1
+  endif
+endfunction
+function! Term()
+  call deol#start('-command=bash -cwd=' . getcwd())
+endfunction
+
 " ---------------------------------------------------------
 " | Keybindings
 
-" let mapleader = "\<Space>"
-
 " nomal/visual mode
-map <silent> <F3> :<C-u>setlocal relativenumber!<cr>
-nmap <ESC><ESC> :noh<cr>
-nnoremap ,tn :tabnew<cr>
-nnoremap <Leader>Q :bd!<cr>
-nnoremap <Leader>q :bd<cr>
-nnoremap <Leader>w :w<cr>
-nnoremap <S-i> i <ESC><Right>
-nnoremap <silent><C-h> :tabprevious<cr>
-nnoremap <silent><C-l> :tabnext<cr>
-nnoremap <silent><C-k> d$
-nnoremap <silent>J n
-nnoremap <silent>K N
-nnoremap <silent>gr/ :set hlsearch<cr>
-nnoremap <silent>j gj
-nnoremap <silent>k gk
-nnoremap Q <Nop>
-nnoremap QQ :q<cr>
-nnoremap g/ /
-nnoremap gj j
-nnoremap gk k
-noremap <C-e> <END>
-noremap <silent><C-a> :call <SID>home()<cr>
-
 noremap <silent>MB :call <SID>newTermBottom()<cr>
 noremap <silent>MR :call <SID>newTermRight()<cr>
-
-noremap H <C-w>h
-noremap J <C-w>j
-noremap K <C-w>k
-noremap L <C-w>l
-
-" insert mode
-inoremap jj <ESC>
-inoremap <C-c> <ESC>
-inoremap <C-a> <HOME>
-inoremap <C-e> <END>
-inoremap <C-p> <UP>
-inoremap <C-n> <DOWN>
-inoremap <C-f> <RIGHT>
-inoremap <C-b> <LEFT>
-inoremap <C-j> <RETURN>
-Gautocmdft eruby inoremap <C-t>%% <%  %><LEFT><LEFT><LEFT>
-Gautocmdft eruby inoremap <C-t>%= <%=  %><LEFT><LEFT><LEFT>
-
-" visual mode
-
-" console mode
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>
-cnoremap <C-D> <Delete>
-cnoremap <C-E> <End>
-cnoremap <C-F> <Right>
-cnoremap <C-N> <Down>
-cnoremap <C-P> <Up>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -65,15 +37,6 @@ tnoremap <Esc> <C-\><C-n>
 "tnoremap <DOWN> <C-\><C-n><C-w>ji
 "tnoremap <LEFT> <C-\><C-n><C-w>hi
 "tnoremap <RIGHT> <C-\><C-n><C-w>li
-
-function! s:home()
-    let start_column = col('.')
-    normal! ^
-    if col('.') == start_column
-        normal! 0
-    endif
-    return ''
-endfunction
 
 function! s:newTermBottom()
     :sp

@@ -2,9 +2,9 @@ autocmd CompleteDone * silent! pclose!
 
 
 if has('mac')
-    source ~/.config/nvim/rc/rc_deoplete_mac.vim
+    execute 'source' g:rc_dir . '/rc_deoplete_mac.vim'
 elseif has('unix')
-    source ~/.config/nvim/rc/rc_deoplete_linux.vim
+    execute 'source' g:rc_dir . '/rc_deoplete_linux.vim'
 endif
 call deoplete#custom#source('around', 'rank', 1)
 

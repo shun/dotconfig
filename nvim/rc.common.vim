@@ -9,16 +9,15 @@ set encoding=utf-8
 set expandtab
 set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp
 set fileformats=unix,mac,dos
-set hlsearch
 set hidden
+set hlsearch
 set ignorecase
-set inccommand=split
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set mouse=a
 set nobackup
-set noswapfile
 "set noincsearch
+set noswapfile
 set nowrapscan
 set nu
 "set relativenumber
@@ -28,16 +27,14 @@ set shiftwidth=4
 set showcmd
 set showmatch
 set smartcase
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set softtabstop=0
 set t_Co=256
 set tabstop=4
 set ttimeout
 set ttimeoutlen=50
-set wildmode=longest,full
 set wildignorecase
+set wildmode=longest,full
 autocmd InsertLeave * set nopaste
-let g:terminal_scrollback_buffer_size = 3000
 
 " highlight color
 highlight CursorLine    term=reverse cterm=none                 ctermbg=235
@@ -64,6 +61,7 @@ highlight SpellBad                              ctermfg=Black   ctermbg=Red
 highlight SpellCap                              ctermfg=Black   ctermbg=Red
 highlight NonText                               ctermfg=239
 
+au BufRead,BufNewFile *.nvim set filetype=vim
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
 au WinEnter,FocusGained * checktime
@@ -85,8 +83,95 @@ if has("autocmd")
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType plantuml    setlocal sw=4 sts=4 ts=4 et
-
-  autocmd Filetype deol        setlocal nonu
-  autocmd InsertEnter * call deoplete#enable()
 endif
+
+filetype plugin indent on
+
+" ---------------------------------------------------------
+" | Keybindings
+
+" nomal/visual mode
+map <silent> <F3> :<C-u>setlocal relativenumber!<cr>
+nmap <ESC><ESC> :noh<cr>
+nnoremap ,tn :tabnew<cr>
+nnoremap <Leader>Q :bd!<cr>
+nnoremap <Leader>q :bd<cr>
+nnoremap <Leader>w :w<cr>
+nnoremap <S-i> i <ESC><Right>
+nnoremap <silent><C-h> :tabprevious<cr>
+nnoremap <silent><C-l> :tabnext<cr>
+nnoremap <silent><C-k> d$
+nnoremap <silent>J n
+nnoremap <silent>K N
+nnoremap <silent>gr/ :set hlsearch<cr>
+nnoremap <silent>j gj
+nnoremap <silent>k gk
+nnoremap Q <Nop>
+nnoremap QQ :q<cr>
+nnoremap g/ /
+nnoremap gj j
+nnoremap gk k
+noremap <C-e> <END>
+noremap <silent><C-a> :call <SID>home()<cr>
+
+noremap H <C-w>h
+noremap J <C-w>j
+noremap K <C-w>k
+noremap L <C-w>l
+
+" insert mode
+inoremap jj <ESC>
+inoremap <C-c> <ESC>
+inoremap <C-a> <HOME>
+inoremap <C-e> <END>
+inoremap <C-p> <UP>
+inoremap <C-n> <DOWN>
+inoremap <C-f> <RIGHT>
+inoremap <C-b> <LEFT>
+inoremap <C-j> <RETURN>
+Gautocmdft eruby inoremap <C-t>%% <%  %><LEFT><LEFT><LEFT>
+Gautocmdft eruby inoremap <C-t>%= <%=  %><LEFT><LEFT><LEFT>
+
+" visual mode
+
+" console mode
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-D> <Delete>
+cnoremap <C-E> <End>
+cnoremap <C-F> <Right>
+cnoremap <C-N> <Down>
+cnoremap <C-P> <Up>
+
+" terminal
+tnoremap <Esc> <C-\><C-n>
+"tnoremap <UP> <C-\><C-n><C-w>ki
+"tnoremap <DOWN> <C-\><C-n><C-w>ji
+"tnoremap <LEFT> <C-\><C-n><C-w>hi
+"tnoremap <RIGHT> <C-\><C-n><C-w>li
+
+function! s:home()
+    let start_column = col('.')
+    normal! ^
+    if col('.') == start_column
+        normal! 0
+    endif
+    return ''
+endfunction
+
+function! s:newTermBottom()
+    :sp
+    :wincmd j
+    :terminal
+    :set nonu
+    :startinsert
+endfunction
+
+function! s:newTermRight()
+    :vs
+    :wincmd l
+    :terminal
+    :set nonu
+    :startinsert
+endfunction
 

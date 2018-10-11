@@ -10,33 +10,18 @@ command! -nargs=* Gautocmd   autocmd GlobalAutoCmd <args>
 command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
 
-let s:config_dir = expand($XDG_CONFIG_HOME . '/nvim')
-let s:cache_dir = expand($XDG_CACHE_HOME . '/nvim')
+let g:config_dir = expand($XDG_CONFIG_HOME . '/nvim')
+let g:cache_dir = expand($XDG_CACHE_HOME . '/nvim')
+let g:rc_dir = g:config_dir . '/rc.d'
 
-" load plugins
-execute 'source' s:config_dir . '/rc/rc_dein.vim'
+" load commom settings
+execute 'source' g:config_dir . '/rc.common.vim'
+
+if has('nvim')
+  execute 'source' g:config_dir . '/rc.nvim'
+else 
+  execute 'source' g:config_dir . '/rc.vim'
+endif
 
 syntax on
-filetype plugin indent on
-
-" set options
-execute 'source' s:config_dir . '/options.vim'
-
-" keymappings
-execute 'source' s:config_dir . '/keymaps.vim'
-
-" Open terminal on new buffer
-autocmd VimEnter * if @% == '' && s:GetBufByte() == 0 | call Term()
-"autocmd VimEnter * s:open_deol()
-function! s:GetBufByte()
-  let byte = line2byte(line('$') + 1)
-  if byte == -1
-    return 0
-  else
-    return byte - 1
-  endif
-endfunction
-function! Term()
-  call deol#start('-command=bash -cwd=' . getcwd())
-endfunction
 
