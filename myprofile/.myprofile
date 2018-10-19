@@ -28,6 +28,7 @@ alias ni="nvr --remote"
 alias gc="git checkout"
 alias gp="git push origin"
 alias gl="git clone"
+alias gs='cd $(ghq root)/$(ghq list | peco)'
 
 alias clang11="clang++ -std=c++11"
 alias clang14="clang++ -std=c++14"
