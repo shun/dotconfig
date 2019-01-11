@@ -36,6 +36,7 @@ set wildignorecase
 set wildmode=longest,full
 autocmd InsertLeave * set nopaste
 
+
 " highlight color
 highlight CursorLine    term=reverse cterm=none                 ctermbg=235
 highlight Comment                               ctermfg=35

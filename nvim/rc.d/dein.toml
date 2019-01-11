@@ -8,16 +8,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
-hook_add = '''
-'''
-
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-hook_add = '''
-'''
-
-[[plugins]]
 repo = 'Shougo/deol.nvim'
 on_source = 'denite.nvim'
 hook_add = '''
@@ -32,28 +22,10 @@ source ~/.config/nvim/rc.d/rc_ale.vim
 hook_source = '''
 '''
 
-##[[plugins]]
-##repo = 'ozelentok/denite-gtags'
-#
 [[plugins]]
 repo = 'mhinz/neovim-remote'
 hook_add = '''
 '''
-
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-on_i = 1
-on_ft = [ 'c', 'cpp']
-
-[[plugins]]
-repo = 'zchee/deoplete-go'
-on_i = 1
-on_ft = 'go'
-build = 'make'
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -62,6 +34,12 @@ on_i = 1
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_deoplete.vim
 '''
+
+#[[plugins]]
+#repo = 'Shougo/deoplete-lsp.nvim'
+#on_i = 1
+#hook_add = '''
+#'''
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
@@ -83,8 +61,6 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_lightline.vim
 '''
-[[plugins]]
-repo = 'itchyny/vim-gitbranch'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -105,34 +81,11 @@ repo = 'Yggdroot/indentLine'
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_indentLine.vim
 '''
-## golang
-#[[plugins]]
-#repo = 'fatih/vim-go'
-#on_ft = 'go'
-#hook_add = '''
-#'''
-#
+
 [[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_neoterm.vim
-'''
-
-#[[plugins]]
-#repo = 'zchee/nvim-go'
-#build = 'make'
-
-[[plugins]]
-repo = 'sebastianmarkow/deoplete-rust'
-on_ft = 'rust'
-hook_source = '''
-'''
-
-[[plugins]]
-repo = 'rust-lang/rust.vim'
-on_ft = 'rust'
-hook_add = '''
-let g:rustfmt_autosave = 1
 '''
 
 [[plugins]]
@@ -140,18 +93,6 @@ repo = 'aklt/plantuml-syntax'
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_plantuml.vim
 '''
-
-[[plugins]]
-repo = 'mhartington/nvim-typescript'
-on_ft = 'typescript'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
-
-[[plugins]]
-repo = 'artur-shaik/vim-javacomplete2'
-on_ft = 'java'
 
 [[plugins]]
 repo = 'kannokanno/previm'
@@ -171,14 +112,6 @@ let g:user_emmet_settings = {
 '''
 
 [[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-hook_add = '''
-let g:user_emmet_leader_key='<C-t>'
-source ~/.config/nvim/rc.d/rc_deoplete-ternjs.vim
-'''
-on_ft = ['vuejs', 'js', 'javascript']
-
-[[plugins]]
 repo = 'posva/vim-vue'
 
 [[plugins]]
@@ -187,7 +120,25 @@ hook_add = '''
     let g:gen_tags#gtags_auto_gen = 1
 '''
 
-
 [[plugins]]
 repo ='justinmk/vim-dirvish'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+depends = 'deoplete.nvim'
+on_ft = ['c', 'cpp', 'python', 'prust', 'vue', 'go']
+build = 'bash install.sh'
+hook_add = '''
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'python': ['pyls'],
+    \ 'vue': ['vls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'go': ['golsp']
+    \ }
+let g:LanguageClient_autoStart = 1
+'''
 

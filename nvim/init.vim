@@ -15,13 +15,15 @@ let g:cache_dir = expand($XDG_CACHE_HOME . '/nvim')
 let g:rc_dir = g:config_dir . '/rc.d'
 
 " load commom settings
-execute 'source' g:config_dir . '/rc.common.vim'
 
 if has('nvim')
-  execute 'source' g:config_dir . '/rc.nvim'
-else 
-  execute 'source' g:config_dir . '/rc.vim'
+  execute 'source' g:config_dir . '/rc.common.vim'
+  execute 'source '  . g:config_dir . '/rc.nvim'
+  syntax enable
+else
+  syntax on
+  execute 'source' g:config_dir . '/rc.common.vim'
+  execute 'source ' . g:config_dir . '/rc.vim'
 endif
 
-syntax on
 

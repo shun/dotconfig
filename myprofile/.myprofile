@@ -17,11 +17,6 @@ fi
 # CLRCYAN="\[\e[0;33m\]"
 # CLRWHITE="\[\e[00m\]"
 
-if type "nvim" > /dev/null 2>&1
-then
-  alias vi=nvim
-fi
-
 alias env="env | sort"
 alias pt="pt --nogroup -iS"
 alias ni="nvr --remote"
@@ -52,6 +47,8 @@ if [ $OS = "Mac" ]; then
     export GOROOT=/usr/local/opt/go/libexec
     alias sed="/usr/local/bin/gsed"
     export PATH="/usr/local/opt/llvm/bin:$PATH"
+    alias ll="ls -laG"
+    alias l="ls -G"
 
 elif [ $OS = "Linux" ];then
     export PATH=$HOME/.linuxbrew/bin:$PATH
@@ -67,25 +64,30 @@ else
 fi
 
 #export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
-export export PS1='\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
+export export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export EDITOR=nvim
-
 export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
 export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups
 export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
-
-#function _update_ps1() {
-#    PS1=$(powerline-shell $?)
-#}
-#
-#export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+type nvim > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  alias vi=nvim
+  export EDITOR=nvim
+else
+  alias vi=vim
+  export EDITOR=vim
+fi
 
 cd() {
-    builtin cd -P "$@" && ls -Gla
+  builtin cd -P "$@" && ls -Gla
+  if [ $? -eq 0 ]; then
+      echo `pwd` >> ~/.pecocd
+      local l=`cat ~/.pecocd | sort | uniq`
+      echo "${l}" > ~/.pecocd
+  fi
 }
 
 pushd() {
@@ -140,25 +142,28 @@ dclear() {
     docker stop $1; docker rm $1
 }
 
+peco-cd() {
+  local l=$(cat ~/.pecocd | sort -r | peco  --query "$READLINE_LINE")
+  cd ${l}
+
+}
+alias pd=peco-cd
+
 # search history
 peco-select-history() {
-ruby $HOME/workspace/gitrepo/myscript/removedups.rb
-
-#    local l=$(history | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
-local l=$(history | sort -r | peco  --query "$READLINE_LINE")
-local l=`echo ${l} | sed -e "s/^ *[0-9]\+ \+//g"`
-READLINE_LINE=`echo ${l}`
-READLINE_POINT=${#l}
+  local l=$(history | sort -r | peco  --query "$READLINE_LINE")
+  local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
+  READLINE_LINE="${l}"
+  READLINE_POINT=${#l}
 }
 bind -x '"\C-r": peco-select-history'
 
 # search git branch
 peco-select-branch() {
-#    local l=$(git branch | sort -r | peco --layout=bottom-up --query "$READLINE_LINE")
-local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
-local l=`echo ${l:2} | sed -e "s/^.. //g"`
-READLINE_LINE=`echo "git checkout ${l}"`
-READLINE_POINT=${#READLINE_LINE}
+  local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
+  local l=`echo ${l:2} | sed -e "s/^.. //g"`
+  READLINE_LINE=`echo "git checkout ${l}"`
+  READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-t": peco-select-branch'
 
@@ -171,3 +176,4 @@ peco-exec-dbash() {
   READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-x\C-d": peco-exec-dbash'
+
