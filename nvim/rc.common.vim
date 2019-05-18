@@ -14,7 +14,7 @@ set hlsearch
 set ignorecase
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set mouse=a
+"set mouse=a
 set nobackup
 "set noincsearch
 set noswapfile
@@ -130,19 +130,17 @@ inoremap <C-n> <DOWN>
 inoremap <C-f> <RIGHT>
 inoremap <C-b> <LEFT>
 inoremap <C-j> <RETURN>
-Gautocmdft eruby inoremap <C-t>%% <%  %><LEFT><LEFT><LEFT>
-Gautocmdft eruby inoremap <C-t>%= <%=  %><LEFT><LEFT><LEFT>
 
 " visual mode
 
 " console mode
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>
-cnoremap <C-D> <Delete>
-cnoremap <C-E> <End>
-cnoremap <C-F> <Right>
-cnoremap <C-N> <Down>
-cnoremap <C-P> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Delete>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -158,21 +156,5 @@ function! s:home()
         normal! 0
     endif
     return ''
-endfunction
-
-function! s:newTermBottom()
-    :sp
-    :wincmd j
-    :terminal
-    :set nonu
-    :startinsert
-endfunction
-
-function! s:newTermRight()
-    :vs
-    :wincmd l
-    :terminal
-    :set nonu
-    :startinsert
 endfunction
 
