@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "$(uname)" == 'Darwin' ]; then
     export OS='Mac'
@@ -49,7 +49,10 @@ if [ $OS = "Mac" ]; then
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     alias ll="ls -laG"
     alias l="ls -G"
-
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    source /usr/local/etc/bash_completion.d/git-completion.bash
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
 elif [ $OS = "Linux" ];then
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export GOROOT=$HOME/.linuxbrew/opt/go/libexec
@@ -64,13 +67,13 @@ else
 fi
 
 #export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
-export export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
+export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
-export PROMPT_COMMAND='history -a; history -c; history -r;'
-export HISTCONTROL=erasedups
+#export PROMPT_COMMAND='history -a; history -c; history -r;'
+export HISTCONTROL=erasedups:ignoreboth
 export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
 type nvim > /dev/null 2>&1
 if [ $? -eq 0 ]; then
@@ -152,7 +155,7 @@ alias pd=peco-cd
 # search history
 peco-select-history() {
   local l=$(history | sort -r | peco  --query "$READLINE_LINE")
-  local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
+  local l=`echo "${l}" | gsed -e "s/^ *[0-9]\+ \+//g"`
   READLINE_LINE="${l}"
   READLINE_POINT=${#l}
 }
@@ -161,7 +164,7 @@ bind -x '"\C-r": peco-select-history'
 # search git branch
 peco-select-branch() {
   local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
-  local l=`echo ${l:2} | sed -e "s/^.. //g"`
+  local l=`echo ${l:2} | gsed -e "s/^.. //g"`
   READLINE_LINE=`echo "git checkout ${l}"`
   READLINE_POINT=${#READLINE_LINE}
 }
@@ -176,4 +179,13 @@ peco-exec-dbash() {
   READLINE_POINT=${#READLINE_LINE}
 }
 bind -x '"\C-x\C-d": peco-exec-dbash'
+
+function share_history {
+    history -a
+#    history -c
+#    history -r
+}
+PROMPT_COMMAND='share_history'
+shopt -u histappend
+export HISTSIZE=9999
 
