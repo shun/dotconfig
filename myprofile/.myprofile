@@ -54,10 +54,9 @@ if [ $OS = "Mac" ]; then
     export LDFLAGS="-L/usr/local/opt/llvm/lib"
     export CPPFLAGS="-I/usr/local/opt/llvm/include"
 elif [ $OS = "Linux" ];then
-    export PATH=$HOME/.linuxbrew/bin:$PATH
-    export GOROOT=$HOME/.linuxbrew/opt/go/libexec
     alias sed="/bin/sed"
     alias pbcopy="xsel -ib"
+    source /etc/bash_completion.d/git-prompt
 fi
 
 if [ "x"$CONTAINERNAME == "x" ]; then
@@ -74,8 +73,8 @@ export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
 #export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups:ignoreboth
-export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$PATH
-type nvim > /dev/null 2>&1
+export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+type nvim > /dev/null
 if [ $? -eq 0 ]; then
   alias vi=nvim
   export EDITOR=nvim

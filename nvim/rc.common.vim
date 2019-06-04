@@ -48,7 +48,8 @@ highlight CursorLineNr                          ctermfg=0       ctermbg=216
 highlight PreProc                               ctermfg=141
 highlight Special                               ctermfg=141
 highlight cSpecial                              ctermfg=141
-highlight Pmenu                                 ctermfg=255     ctermbg=27
+highlight Pmenu                                 ctermfg=255     ctermbg=238
+highlight PmenuSel                              ctermfg=255     ctermbg=19
 highlight Type                                  ctermfg=Cyan
 highlight Constant                              ctermfg=1
 highlight Conceal                               ctermfg=242
