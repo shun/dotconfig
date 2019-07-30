@@ -73,7 +73,7 @@ export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
 #export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups:ignoreboth
-export PATH=/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+export PATH=~/.local/bin:/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 type nvim > /dev/null
 if [ $? -eq 0 ]; then
   alias vi=nvim
