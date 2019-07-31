@@ -19,6 +19,7 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_use_global_executables = 1
+let g:ale_set_balloons = 0
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_delay = 20
 let g:ale_warn_about_trailing_blank_lines = 1
