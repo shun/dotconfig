@@ -30,6 +30,9 @@ alias clang14="clang++ -std=c++14"
 alias clang17="clang++ -std=c++17"
 alias p2="python"
 alias p3="python3"
+alias d=docker
+alias dc=docker-compose
+alias sudo="sudo -E "
 
 #if [ -f $HOME/workspace/gitrepo/gitprompt/git-completion.bash ]; then
 #    source $HOME/workspace/gitrepo/gitprompt/git-completion.bash

@@ -30,7 +30,7 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 depends = 'deoplete.nvim'
-on_ft = ['c', 'cpp', 'python', 'prust', 'vue', 'go']
+on_ft = ['c', 'cpp', 'python', 'prust', 'vue', 'go', 'typescript']
 build = 'bash install.sh'
 hook_add = '''
 set hidden
@@ -40,9 +40,12 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'vue': ['vls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'go': ['golsp']
+    \ 'go': ['golsp'],
+    \ 'typescript': ['typescript-language-server --stdio']
     \ }
 let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsEnable = 1
+
 '''
 
 [[plugins]]
@@ -66,16 +69,6 @@ let g:user_emmet_settings = {
 \        'lang' : 'ja',
 \    }
 \ }
-'''
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_event = 'InsertEnter'
-hook_add = '''
-source ~/.config/nvim/rc.d/rc_ale.vim
-'''
-
-hook_source = '''
 '''
 
 [[plugins]]
