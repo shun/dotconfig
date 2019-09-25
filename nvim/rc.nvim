@@ -131,9 +131,9 @@ nnoremap * :<C-u>DeniteCursorWord -buffer-name=search -start-filter line<cr>
 "nnoremap <silent>* :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight -mode=normal -smartcase line<cr>
 "nnoremap <silent>n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<cr>
 "
-"nnoremap sd :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_def gtags_def<cr>
-"nnoremap sr :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_ref gtags_ref<cr>
-"nnoremap sg :DeniteCursorWord -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap sd :DeniteCursorWord -buffer-name=gtags_def  -matchers=matcher/substring -split=floating gtags_def<cr>
+nnoremap sr :DeniteCursorWord -buffer-name=gtags_ref  -matchers=matcher/substring -split=floating gtags_ref<cr>
+nnoremap sg :DeniteCursorWord -buffer-name=gtags_grep -matchers=matcher/substring -split=floating gtags_grep<cr>
 "nnoremap sc :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_completion gtags_completion<cr>
 "nnoremap sf :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_file gtags_file<cr>
 "nnoremap sp :Denite -highlight-mode-insert=MatchParen -matchers=matcher_substring -buffer-name=gtags_path gtags_path<cr>
@@ -152,13 +152,16 @@ nnoremap * :<C-u>DeniteCursorWord -buffer-name=search -start-filter line<cr>
 "nnoremap rsf :Denite -resume -mode=normal -refresh -buffer-name=gtags_file gtags_file<cr>
 "nnoremap rsp :Denite -resume -mode=normal -refresh -buffer-name=gtags_path gtags_path<cr>
 "
-"nnoremap Rsd :Denite -resume -mode=normal -buffer-name=gtags_def gtags_def<cr>
-"nnoremap Rsr :Denite -resume -mode=normal -buffer-name=gtags_ref gtags_ref<cr>
-"nnoremap Rsg :Denite -resume -mode=normal -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap rsd :Denite -resume -split=floating -buffer-name=gtags_def gtags_def<cr>
+nnoremap rsr :Denite -resume -split=floating -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap rsg :Denite -resume -split=floating -buffer-name=gtags_grep gtags_grep<cr>
 "nnoremap Rsc :Denite -resume -mode=normal -buffer-name=gtags_completion gtags_completion<cr>
 "nnoremap Rsf :Denite -resume -mode=normal -buffer-name=gtags_file gtags_file<cr>
 "nnoremap Rsp :Denite -resume -mode=normal -buffer-name=gtags_path gtags_path<cr>
 "
+nnoremap Rsd :Denite -resume -refresh -split=floating -buffer-name=gtags_def gtags_def<cr>
+nnoremap Rsr :Denite -resume -refresh -split=floating -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap Rsg :Denite -resume -refresh -split=floating -buffer-name=gtags_grep gtags_grep<cr>
 "
 "" #########################################################
 "" vim-easy-align

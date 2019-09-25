@@ -25,7 +25,7 @@ endif
 if s:cache_home == "$XDG_CACHE_HOME"
   let g:cache_dir = expand('~/.cache/nvim')
 else
-  let g:cache_dir = expand("$XDG_CACHE_HOME") . '/dein'
+  let g:cache_dir = expand("$XDG_CACHE_HOME") . '/nvim'
 endif
 
 let g:rc_dir = g:config_dir . '/rc.d'
