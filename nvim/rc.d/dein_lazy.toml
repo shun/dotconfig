@@ -92,3 +92,13 @@ on_ft = ['c', 'cpp', 'python']
 repo = 'ozelentok/denite-gtags'
 on_ft = ['c', 'cpp', 'python']
 
+[[plugins]]    
+repo = 'plasticboy/vim-markdown'    
+on_ft = 'markdown'    
+hook_add = '''    
+let g:vim_markdown_folding_disabled = 1    
+'''    
+
+[[plugins]]    
+repo = 'godlygeek/tabular'    
+on_ft = 'markdown' 
