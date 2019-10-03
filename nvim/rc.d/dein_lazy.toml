@@ -92,3 +92,7 @@ on_ft = ['c', 'cpp', 'python']
 repo = 'ozelentok/denite-gtags'
 on_ft = ['c', 'cpp', 'python']
 
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
+
