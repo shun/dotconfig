@@ -96,3 +96,13 @@ on_ft = ['c', 'cpp', 'python']
 repo = 'posva/vim-vue'
 on_ft = ['vue']
 
+[[plugins]]    
+repo = 'plasticboy/vim-markdown'    
+on_ft = 'markdown'    
+hook_add = '''    
+let g:vim_markdown_folding_disabled = 1    
+'''    
+
+[[plugins]]    
+repo = 'godlygeek/tabular'    
+on_ft = 'markdown' 
