@@ -1,5 +1,5 @@
 let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_virtual_text_enabled = 1
 "let g:lsp_signs_error = {'text': '✗'}
@@ -59,6 +59,25 @@ if executable('typescript-language-server')
                     \ 'whitelist': ['typescript'],
                     \ })
     augroup END
+endif
+
+" For Dockerfile language server
+if executable('docker-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'docker-langserver',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+        \ 'whitelist': ['dockerfile'],
+        \ })
+endif
+
+" For rust language server
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
 endif
 
 set omnifunc=lsp#complete
