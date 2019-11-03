@@ -1,42 +1,34 @@
-call denite#custom#source('_',          'matchers', ['matcher_substring'])
-call denite#custom#source('grep',       'matchers', ['matcher_substring'])
-call denite#custom#source('gtags_def',  'matchers', ['matcher_substring'])
-call denite#custom#source('gtags_file', 'matchers', ['matcher_substring'])
-call denite#custom#source('gtags_grep', 'matchers', ['matcher_substring'])
-call denite#custom#source('gtags_path', 'matchers', ['matcher_substring'])
-call denite#custom#source('gtags_ref',  'matchers', ['matcher_substring'])
+"---------------------------------------------------------------------------
+" denite.nvim
+"
+let s:denite_win_width_percent = 0.85
+let s:denite_win_height_percent = 0.7
 
-call denite#custom#source(
-\ 'file_rec', 'vars', {
-\   'command': [
-\      'pt', '--follow', '--nocolor', '--nogroup', '--smart-case', '-g=', ''
-\   ] })
+" Change denite default options
 
-call denite#custom#source(
-\ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+" Pt command on grep source
+call denite#custom#var('file/rec', 'command',
+	\ ['pt', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-call denite#custom#var('grep', 'command',
-\ ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
-"call denite#custom#var('grep', 'command', ['pt'])
-"call denite#custom#var('grep', 'default_opts',
-"\ ['--nogroup', '--nocolor', '--smart-case', '--hidden', '-g=', ''])
-"call denite#custom#var('grep', 'recursive_opts', [])
-"call denite#custom#var('grep', 'pattern_opt', [])
-"call denite#custom#var('grep', 'separator', ['--'])
-"call denite#custom#var('grep', 'final_opts', ['.'])
+call denite#custom#var('grep', 'command', ['pt'])
+call denite#custom#var('grep', 'default_opts',
+        \ ['-i', '--nogroup', '--nocolor', '--smart-case'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
-call denite#custom#var('outline', 'command', ['global', '-f', expand('%')])
-"call denite#custom#var('outline', 'command', ['global'])
-"call denite#custom#var('outline', 'options', ['-f', expand('%')])
-call denite#custom#var('outline', 'file_opt', [])
-call denite#custom#var('outline', 'ignore_types', [])
-call denite#custom#var('outline', 'encoding', ['utf-8'])
+" Change ignore_globs
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+      \ [ '.git/', '.ropeproject/', '__pycache__/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 
-let s:menus = {}
-let s:menus.vim = {
-    \ 'description': 'Vim',
-    \ }
-let s:menus.vim.file_candidates = [
-    \ ['    > Edit configuation file (init.vim)', '~/.config/nvim/init.vim']
-    \ ]
-
+call denite#custom#option('default', {
+      \ 'highlight_filter_background': 'CursorLine',
+      \ 'source_names': 'short',
+      \ 'split': 'floating',
+      \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+      \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+      \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+      \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+      \ })

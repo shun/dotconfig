@@ -14,7 +14,7 @@ set hlsearch
 set ignorecase
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set mouse=a
+"set mouse=a
 set nobackup
 "set noincsearch
 set noswapfile
@@ -48,7 +48,8 @@ highlight CursorLineNr                          ctermfg=0       ctermbg=216
 highlight PreProc                               ctermfg=141
 highlight Special                               ctermfg=141
 highlight cSpecial                              ctermfg=141
-highlight Pmenu                                 ctermfg=255     ctermbg=27
+highlight Pmenu                                 ctermfg=255     ctermbg=238
+highlight PmenuSel                              ctermfg=255     ctermbg=19
 highlight Type                                  ctermfg=Cyan
 highlight Constant                              ctermfg=1
 highlight Conceal                               ctermfg=242
@@ -81,6 +82,7 @@ if has("autocmd")
   autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType css         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType yaml        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
   autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType plantuml    setlocal sw=4 sts=4 ts=4 et
@@ -130,19 +132,17 @@ inoremap <C-n> <DOWN>
 inoremap <C-f> <RIGHT>
 inoremap <C-b> <LEFT>
 inoremap <C-j> <RETURN>
-Gautocmdft eruby inoremap <C-t>%% <%  %><LEFT><LEFT><LEFT>
-Gautocmdft eruby inoremap <C-t>%= <%=  %><LEFT><LEFT><LEFT>
 
 " visual mode
 
 " console mode
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>
-cnoremap <C-D> <Delete>
-cnoremap <C-E> <End>
-cnoremap <C-F> <Right>
-cnoremap <C-N> <Down>
-cnoremap <C-P> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Delete>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -158,21 +158,5 @@ function! s:home()
         normal! 0
     endif
     return ''
-endfunction
-
-function! s:newTermBottom()
-    :sp
-    :wincmd j
-    :terminal
-    :set nonu
-    :startinsert
-endfunction
-
-function! s:newTermRight()
-    :vs
-    :wincmd l
-    :terminal
-    :set nonu
-    :startinsert
 endfunction
 

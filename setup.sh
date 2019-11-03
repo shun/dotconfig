@@ -2,6 +2,12 @@
 
 paths=(".docker")
 
+if [ ! -e ~/.config ]; then
+    mkdir ~/.config
+fi
+if [ ! -e ~/.cache ]; then
+    mkdir ~/.cache
+fi
 for mypath in ${paths[@]}; do
     if [ ! -d ~/$mypath  ]; then
         ln -s $PWD/$mypath ~/$mypath
