@@ -48,7 +48,6 @@ fi
 
 if [ $OS = "Mac" ]; then
     export GOROOT=/usr/local/opt/go/libexec
-    alias sed="/usr/local/bin/gsed"
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     alias ll="ls -laG"
     alias l="ls -G"
@@ -157,7 +156,7 @@ alias pd=peco-cd
 # search history
 peco-select-history() {
   local l=$(history | sort -r | peco  --query "$READLINE_LINE")
-  local l=`echo "${l}" | gsed -e "s/^ *[0-9]\+ \+//g"`
+  local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
   READLINE_LINE="${l}"
   READLINE_POINT=${#l}
 }
@@ -166,7 +165,7 @@ bind -x '"\C-r": peco-select-history'
 # search git branch
 peco-select-branch() {
   local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
-  local l=`echo ${l:2} | gsed -e "s/^.. //g"`
+  local l=`echo ${l:2} | sed -e "s/^.. //g"`
   READLINE_LINE=`echo "git checkout ${l}"`
   READLINE_POINT=${#READLINE_LINE}
 }
