@@ -74,7 +74,8 @@ if has("autocmd")
   filetype indent on
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
   autocmd Filetype java        setlocal sw=4 sts=4 ts=4 et omnifunc=javacomplete#Complete
-  autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType c           setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType cpp         setlocal sw=2 sts=2 ts=2 et
   autocmd FileType go          setlocal sw=4 sts=4 ts=4
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType python      setlocal sw=4 sts=4 ts=4 et

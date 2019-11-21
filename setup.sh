@@ -28,7 +28,7 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("tigrc" "inputrc" "tmux.conf" "myprofile" "gitconfig" "globalrc" "xremap" "dircolors" "powerline-shell")
+paths=("tigrc" "inputrc" "tmux.conf" "myprofile" "gitconfig" "globalrc" "xremap" "dircolors" "powerline-shell" "clang-format")
 
 for mypath in ${paths[@]}; do
     files=`ls -A $mypath/`

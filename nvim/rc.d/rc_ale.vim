@@ -32,15 +32,23 @@ let g:ale_sign_style_error = 'EE'
 let g:ale_sign_warning = 'WW'
 let g:ale_sign_style_warning = 'WW'
 
+"" fixers
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'c': ['clang-format'],
+\  'cpp': ['clang-format'],
+\}
+
 "" linters
 let g:ale_linters = {
 \  'python': ['pyls'],
 \  'yaml': ['yamllint'],
 \  'vue': ['eslint'],
 \  'c': ['cpplint'],
-\  'cpp': ['clangd']
+\  'cpp': ['cpplint']
 \}
 
+let g:ale_c_clangformat_options = '-style=file'
 let g:ale_cpp_clang_executable = 'clang++'
 "let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_clangd_options = '-std=c++17 -Wall'
@@ -66,4 +74,3 @@ highlight clear ALEStyleErrorSignLineNr
 highlight clear ALEWarningSignLineNr
 highlight clear ALEStyleWarningSignLineNr
 highlight clear ALEInfoSignLineNr
-
