@@ -34,7 +34,7 @@ let g:ale_sign_style_warning = 'WW'
 
 "" fixers
 let g:ale_fixers = {
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  '*': ['trim_whitespace'],
 \  'c': ['clang-format'],
 \  'cpp': ['clang-format'],
 \}

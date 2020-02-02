@@ -9,6 +9,9 @@ let g:lsp_virtual_text_enabled = 1
 let g:lsp_highlight_references_enabled = 0
 let g:lsp_preview_float = 1
 
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/vim-lsp.log')
+
 " For python language server
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
@@ -61,6 +64,16 @@ if executable('typescript-language-server')
     augroup END
 endif
 
+" For javascript language server
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
+endif
+
 " For Dockerfile language server
 if executable('docker-langserver')
     au User lsp_setup call lsp#register_server({
@@ -80,5 +93,30 @@ if executable('rls')
         \ })
 endif
 
-set omnifunc=lsp#complete
+" For rust language server
+if executable('intelephense')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'intelephense',
+        \ 'cmd': {server_info->['intelephense', '--stdio']},
+        \ 'initialization_options': {"storagePath": "/tmp/intelephense"},
+        \ 'whitelist': ['php'],
+        \ 'workspace_config': { 'intelephense': {
+        \   'files.associations': ['*.php'],
+        \ }},
+    \ })
+endif
 
+"set omnifunc=lsp#complete
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

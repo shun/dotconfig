@@ -29,7 +29,7 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = ['async.vim', 'deoplete-vim-lsp']
-on_ft = ['c', 'cpp', 'python', 'prust', 'vue', 'go', 'typescript', 'dockerfile', 'rust']
+on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript']
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
@@ -89,14 +89,14 @@ on_ft = ['c', 'cpp', 'python']
 repo = 'posva/vim-vue'
 on_ft = ['vue']
 
-[[plugins]]    
-repo = 'plasticboy/vim-markdown'    
-on_ft = 'markdown'    
-hook_add = '''    
-let g:vim_markdown_folding_disabled = 1    
-'''    
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+hook_add = '''
+let g:vim_markdown_folding_disabled = 1
+'''
 
-[[plugins]]    
-repo = 'godlygeek/tabular'    
-on_ft = 'markdown' 
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = 'markdown'
 
