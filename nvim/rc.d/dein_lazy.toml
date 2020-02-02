@@ -29,7 +29,7 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = ['async.vim', 'deoplete-vim-lsp']
-on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript']
+on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript', 'html']
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
