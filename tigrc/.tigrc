@@ -5,6 +5,8 @@ bind branch d !?git branch -d %(branch)
 bind generic ^      ?git reset --soft HEAD^
 bind status  H      ?git reset --hard HEAD
 bind main    !      ?git revert %(commit)
+bind generic <Ctrl-f> move-page-down
+bind generic <Ctrl-b> move-page-up
 
 set blob-view-line-number = yes
 set blame-view-line-number = yes
