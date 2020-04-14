@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#!/bin/bash
+
+##############################
+# OS detection
+#
 if [ "$(uname)" == 'Darwin' ]; then
     export OS='Mac'
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
@@ -11,12 +16,9 @@ else
     exit 1
 fi
 
-# prompt color
-# CLRGREEN="\[\e[0;32m\]"
-# CLRYELLOW="\[\e[0;36m\]"
-# CLRCYAN="\[\e[0;33m\]"
-# CLRWHITE="\[\e[00m\]"
-
+##############################
+# common alias
+#
 alias env="env | sort"
 alias pt="pt --nogroup -iS"
 alias ni="nvr --remote"
@@ -33,22 +35,19 @@ alias p3="python3"
 alias d=docker
 alias dc=docker-compose
 alias sudo="sudo -E "
+alias ll="ls -lAv --group-directories-first"
+alias vi=nvim
 
-#if [ -f $HOME/workspace/gitrepo/gitprompt/git-completion.bash ]; then
-#    source $HOME/workspace/gitrepo/gitprompt/git-completion.bash
-#fi
-if [ -f $HOME/.git-prompt.sh ]; then
-    source $HOME/.git-prompt.sh
-fi
-#export GIT_PS1_SHOWDIRTYSTATE=true
-#export GIT_PS1_SHOWUNTRACKEDFILES=true
-#export GIT_PS1_SHOWSTASHSTATE=true
-#export GIT_PS1_SHOWUPSTREAM=auto
+##############################
+# common values
+#
+export EDITOR=nvim
 
-
+##############################
+# settings for each OS
+#
 if [ $OS = "Mac" ]; then
     export GOROOT=/usr/local/opt/go/libexec
-    alias sed="/usr/local/bin/gsed"
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     alias ll="ls -laG"
     alias l="ls -G"
@@ -62,132 +61,17 @@ elif [ $OS = "Linux" ];then
     source /etc/bash_completion.d/git-prompt
 fi
 
-if [ "x"$CONTAINERNAME == "x" ]; then
-    export MACHINENAME=`hostname`
-else
-    export MACHINENAME=$CONTAINERNAME
-fi
-
-#export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
+##############################
+# general settings
+#
 export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export GOPATH=$HOME/.go
-export HISTIGNORE="ll:history*:cd"
-#export PROMPT_COMMAND='history -a; history -c; history -r;'
-export HISTCONTROL=erasedups:ignoreboth
-export PATH=~/.local/bin:/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
-type nvim > /dev/null
-if [ $? -eq 0 ]; then
-  alias vi=nvim
-  export EDITOR=nvim
-else
-  alias vi=vim
-  export EDITOR=vim
-fi
 
-cd() {
-  builtin cd -P "$@" && ls -Gla
-  if [ $? -eq 0 ]; then
-      echo `pwd` >> ~/.pecocd
-      local l=`cat ~/.pecocd | sort | uniq`
-      echo "${l}" > ~/.pecocd
-  fi
+##############################
+# local functions
+#
+ghq-list-fzf() {
+  local l=`ghq list | fzf --reverse`
+  cd "`ghq root`/${l}"
 }
-
-pushd() {
-    builtin pushd "$@" && ls -Gla
-}
-
-popd() {
-    builtin popd "$@" && ls -Gla
-}
-
-mkcd() {
-    mkdir -p "$@" && cd "$@"
-}
-
-findfile() {
-    if [ $# -eq 1 ]; then
-        find . -type f -name "$1"
-    elif [ $# -eq 2 ]; then
-        find "$1" -type f -name "$2"
-    fi
-}
-
-finddir() {
-    if [ $# -eq 1 ]; then
-        find . -type d -name "$1"
-    elif [ $# -eq 2 ]; then
-        find "$1" -type d -name "$2"
-    fi
-}
-
-# util command for docker
-dbash() {
-    local lbl=$1
-    shift
-    local opt=$@
-    docker exec -it -e LINES=$(tput lines) -e COLUMNS=$(tput cols) $opt $lbl bash
-}
-
-dstart() {
-    docker start $1
-}
-
-dstop() {
-    docker stop $1
-}
-
-drestart() {
-    docker restart $1
-}
-
-dclear() {
-    docker stop $1; docker rm $1
-}
-
-peco-cd() {
-  local l=$(cat ~/.pecocd | sort -r | peco  --query "$READLINE_LINE")
-  cd ${l}
-
-}
-alias pd=peco-cd
-
-# search history
-peco-select-history() {
-  local l=$(history | sort -r | peco  --query "$READLINE_LINE")
-  local l=`echo "${l}" | gsed -e "s/^ *[0-9]\+ \+//g"`
-  READLINE_LINE="${l}"
-  READLINE_POINT=${#l}
-}
-bind -x '"\C-r": peco-select-history'
-
-# search git branch
-peco-select-branch() {
-  local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
-  local l=`echo ${l:2} | gsed -e "s/^.. //g"`
-  READLINE_LINE=`echo "git checkout ${l}"`
-  READLINE_POINT=${#READLINE_LINE}
-}
-bind -x '"\C-t": peco-select-branch'
-
-#do dbash
-peco-exec-dbash() {
-  local l=$(docker ps | peco  --query "$READLINE_LINE")
-  arr=(`echo ${l}`)
-  echo ${arr[${#arr[@]}-1]}
-  READLINE_LINE="dbash ${arr[${#arr[@]}-1]}"
-  READLINE_POINT=${#READLINE_LINE}
-}
-bind -x '"\C-x\C-d": peco-exec-dbash'
-
-function share_history {
-    history -a
-#    history -c
-#    history -r
-}
-PROMPT_COMMAND='share_history'
-shopt -u histappend
-export HISTSIZE=9999
+alias gl=ghq-list-fzf
 
