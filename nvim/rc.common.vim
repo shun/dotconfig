@@ -67,9 +67,7 @@ au BufRead,BufNewFile *.nvim set filetype=vim
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
 au WinEnter,FocusGained * checktime
-au BufNewFile,BufRead *.go set noexpandtab
-au BufNewFile,BufRead *.php set noexpandtab
-
+au BufWritePre *.go :%!gofmt
 
 if has("autocmd")
   filetype plugin on
@@ -78,8 +76,8 @@ if has("autocmd")
   autocmd Filetype java        setlocal sw=4 sts=4 ts=4 et omnifunc=javacomplete#Complete
   autocmd FileType c           setlocal sw=2 sts=2 ts=2 et
   autocmd FileType cpp         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType go          setlocal sw=4 sts=4 ts=4
-  autocmd FileType php         setlocal sw=4 sts=4 ts=4
+  autocmd FileType go          setlocal sw=4 sts=4 ts=4 noet
+  autocmd FileType php         setlocal sw=4 sts=4 ts=4 noet
   autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
   autocmd FileType python      setlocal sw=2 sts=2 ts=2 et
   autocmd FileType json        setlocal sw=2 sts=2 ts=2 et
