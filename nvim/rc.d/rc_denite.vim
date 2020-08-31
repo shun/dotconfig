@@ -8,15 +8,16 @@ let s:denite_win_height_percent = 0.7
 
 " Pt command on grep source
 call denite#custom#var('file/rec', 'command',
-	\ ['pt', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
 
-call denite#custom#var('grep', 'command', ['pt'])
-call denite#custom#var('grep', 'default_opts',
-        \ ['-i', '--nogroup', '--nocolor', '--smart-case'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', {
+    \ 'command': ['rg'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'recursive_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'separator': ['--'],
+    \ 'final_opts': [],
+    \ })
 
 " Change ignore_globs
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',

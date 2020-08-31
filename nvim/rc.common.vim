@@ -109,14 +109,10 @@ nnoremap <silent><C-l> :tabnext<cr>
 nnoremap <silent><C-k> d$
 nnoremap <silent>J n
 nnoremap <silent>K N
-nnoremap <silent>gr/ :set hlsearch<cr>
 nnoremap <silent>j gj
 nnoremap <silent>k gk
 nnoremap Q <Nop>
 nnoremap QQ :q<cr>
-nnoremap g/ /
-nnoremap gj j
-nnoremap gk k
 noremap <C-e> <END>
 noremap <silent><C-a> :call <SID>home()<cr>
 

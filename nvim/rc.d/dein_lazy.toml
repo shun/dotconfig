@@ -28,14 +28,14 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-depends = ['async.vim', 'deoplete-vim-lsp']
+depends = ['vim-lsp-settings', 'deoplete-vim-lsp']
 on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript', 'html']
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
+repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
@@ -43,7 +43,6 @@ depends = ['deoplete.nvim', 'vim-lsp']
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
 source ~/.config/nvim/rc.d/rc_deoplete.vim
@@ -72,9 +71,6 @@ hook_add = '''
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 '''
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'sakhnik/nvim-gdb'
