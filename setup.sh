@@ -17,7 +17,7 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("nvim" "pt" "ranger" "terminator" "plantuml")
+paths=("nvim" "ranger" "terminator" "plantuml")
 
 for mypath in ${paths[@]}; do
     if [ ! -d ~/.config/$mypath  ]; then
