@@ -12,7 +12,7 @@ call denite#custom#var('file/rec', 'command',
 
 call denite#custom#var('grep', {
     \ 'command': ['rg'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading', '--sort', 'path'],
     \ 'recursive_opts': [],
     \ 'pattern_opt': ['--regexp'],
     \ 'separator': ['--'],
