@@ -45,7 +45,7 @@ if has('nvim')
 else
   syntax on
   execute 'source ' . g:config_dir . '/rc.common.vim'
-  execute 'source ' . g:config_dir . '/rc.vim'
+  "execute 'source ' . g:config_dir . '/rc.vim'
 endif
 
 

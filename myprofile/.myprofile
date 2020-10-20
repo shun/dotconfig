@@ -23,7 +23,7 @@ alias ni="nvr --remote"
 alias gc="git checkout"
 alias gp="git push origin"
 alias gl="git clone"
-alias gs='cd $(ghq root)/$(ghq list | peco)'
+alias gs='cd $(ghq root)/$(ghq list | fzf)'
 
 alias clang11="clang++ -std=c++11"
 alias clang14="clang++ -std=c++14"
@@ -33,6 +33,10 @@ alias p3="python3"
 alias d=docker
 alias dc=docker-compose
 alias sudo="sudo -E "
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down -v"
+alias dcl="docker-compose logs -f"
+alias dce="docker-compose exec"
 
 #if [ -f $HOME/workspace/gitrepo/gitprompt/git-completion.bash ]; then
 #    source $HOME/workspace/gitrepo/gitprompt/git-completion.bash
@@ -67,7 +71,6 @@ else
     export MACHINENAME=$CONTAINERNAME
 fi
 
-#export PS1="${CLRGREEN}[${CLRYELLOW}\u${CLRGREEN}@${CLRCYAN}$MACHINENAME${CLRGREEN}: \w]\$(__git_ps1)\n${CLRWHITE}\$ "
 export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -76,6 +79,11 @@ export HISTIGNORE="ll:history*:cd"
 #export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups:ignoreboth
 export PATH=~/.local/bin:/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+if [ -d $HOME/.anyenv ]
+then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
 type nvim > /dev/null
 if [ $? -eq 0 ]; then
   alias vi=nvim
@@ -87,11 +95,6 @@ fi
 
 cd() {
   builtin cd -P "$@" && ls -Gla
-  if [ $? -eq 0 ]; then
-      echo `pwd` >> ~/.pecocd
-      local l=`cat ~/.pecocd | sort | uniq`
-      echo "${l}" > ~/.pecocd
-  fi
 }
 
 pushd() {
@@ -146,40 +149,23 @@ dclear() {
     docker stop $1; docker rm $1
 }
 
-peco-cd() {
-  local l=$(cat ~/.pecocd | sort -r | peco  --query "$READLINE_LINE")
-  cd ${l}
-
-}
-alias pd=peco-cd
-
 # search history
-peco-select-history() {
-  local l=$(history | sort -r | peco  --query "$READLINE_LINE")
+fzf-select-history() {
+  local l=$(history | sort -r | fzf --query "$READLINE_LINE")
   local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
   READLINE_LINE="${l}"
   READLINE_POINT=${#l}
 }
-bind -x '"\C-r": peco-select-history'
+bind -x '"\C-r": fzf-select-history'
 
 # search git branch
-peco-select-branch() {
-  local l=$(git branch | sort -r | peco --query "$READLINE_LINE")
+fzf-select-branch() {
+  local l=$(git branch | sort -r | fzf --query "$READLINE_LINE")
   local l=`echo ${l:2} | sed -e "s/^.. //g"`
   READLINE_LINE=`echo "git checkout ${l}"`
   READLINE_POINT=${#READLINE_LINE}
 }
-bind -x '"\C-t": peco-select-branch'
-
-#do dbash
-peco-exec-dbash() {
-  local l=$(docker ps | peco  --query "$READLINE_LINE")
-  arr=(`echo ${l}`)
-  echo ${arr[${#arr[@]}-1]}
-  READLINE_LINE="dbash ${arr[${#arr[@]}-1]}"
-  READLINE_POINT=${#READLINE_LINE}
-}
-bind -x '"\C-x\C-d": peco-exec-dbash'
+bind -x '"\C-t": fzf-select-branch'
 
 function share_history {
     history -a
