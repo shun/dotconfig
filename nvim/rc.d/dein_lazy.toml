@@ -100,3 +100,9 @@ on_ft = 'markdown'
 repo = 'mattn/vim-maketable'
 on_ft = 'markdown'
 
+[[plugins]]
+repo = 'mattn/vim-sonictemplate'
+on_ft = ['c', 'cpp', 'markdown', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript', 'html']
+hook_source = '''
+source ~/.config/nvim/rc.d/rc_sonictemplate.vim
+'''
