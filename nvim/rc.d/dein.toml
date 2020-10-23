@@ -4,6 +4,9 @@ rtp = ''
 
 [[plugins]]
 repo ='justinmk/vim-dirvish'
+hook_add = '''
+let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'

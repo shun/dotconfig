@@ -39,6 +39,8 @@ let g:ale_fixers = {
 \  'cpp': ['clang-format'],
 \}
 
+let g:ale_fix_on_save_ignore = {'stpl': ['trim_whitespace']}
+
 "" linters
 let g:ale_linters = {
 \  'python': ['pyls'],

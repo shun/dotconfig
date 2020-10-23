@@ -1,0 +1,21 @@
+^dc$
+	version: "3.7"
+	
+	services:
+	  {{_cursor_}}:
+	    #build:
+	    #  context: ./
+	    #  dockerfile: ./Dockerfile
+	    #  args:
+	    #    http_proxy: ${http_proxy}
+	    #    https_proxy: ${http_proxy}
+	    #environment:
+	    #volumes:
+	    #ports:
+	    #entrypoint:
+	    #command:
+	
+	#volumes:
+	#  db:
+	#    driver: "local"
+

@@ -60,6 +60,7 @@ if [ $OS = "Mac" ]; then
     export LDFLAGS="-L/usr/local/opt/llvm/lib"
     export CPPFLAGS="-I/usr/local/opt/llvm/include"
 elif [ $OS = "Linux" ];then
+    alias ll="LC_COLLATE=C ls -alF --group-directories-first"
     alias sed="/bin/sed"
     alias pbcopy="xsel -ib"
     source /etc/bash_completion.d/git-prompt
