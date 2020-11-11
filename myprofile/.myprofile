@@ -95,15 +95,15 @@ else
 fi
 
 cd() {
-  builtin cd -P "$@" && ls -Gla
+  builtin cd -P "$@" && LC_COLLATE=C ls -alF --group-directories-first
 }
 
 pushd() {
-    builtin pushd "$@" && ls -Gla
+    builtin pushd "$@" && LC_COLLATE=C ls -alF --group-directories-first
 }
 
 popd() {
-    builtin popd "$@" && ls -Gla
+    builtin popd "$@" && LC_COLLATE=C ls -alF --group-directories-first
 }
 
 mkcd() {
