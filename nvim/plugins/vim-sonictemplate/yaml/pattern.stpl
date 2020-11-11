@@ -1,6 +1,12 @@
 ^dc$
 	version: "3.7"
 	
+	#x-common:
+	#  - &DB_ROOTPASS passw0rd
+	#  - &DB_PASS db
+	#  - &DB_USER db
+	#  - &DB_NAME db
+	
 	services:
 	  {{_cursor_}}:
 	    #build:
