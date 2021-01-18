@@ -22,14 +22,14 @@ let g:indentLine_fileType = ['cpp', 'c', 'go', 'python', 'text', 'sh']
 let g:indentLine_color_term = 239
 '''
 
-[[plugins]]
-repo = 'dense-analysis/ale'
-hook_add = '''
-source ~/.config/nvim/rc.d/rc_ale.vim
-'''
-
-hook_source = '''
-'''
+#[[plugins]]
+#repo = 'dense-analysis/ale'
+#hook_add = '''
+#source ~/.config/nvim/rc.d/rc_ale.vim
+#'''
+#
+#hook_source = '''
+#'''
 
 [[plugins]]
 repo='junegunn/vim-easy-align'

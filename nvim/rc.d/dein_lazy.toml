@@ -29,13 +29,15 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = ['vim-lsp-settings', 'deoplete-vim-lsp']
-on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'dockerfile', 'rust', 'javascript', 'html']
+on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'xml', 'yaml']
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+hook_source = '''
+'''
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
@@ -54,7 +56,7 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'vue', 'javascript']
+on_ft = ['html', 'vue', 'javascript', 'typescript', 'typescriptreact']
 hook_add = '''
 let g:user_emmet_settings = {
 \    'variables' : {
@@ -112,4 +114,10 @@ repo = 'previm/previm'
 on_ft = ['markdown']
 hook_source = '''
 let g:previm_open_cmd = 'firefox'
+'''
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'xml', 'typescriptreact']
+hook_add = '''
+let g:closetag_filenames = '*.html,*.vue,*.tsx,*.xml'
 '''

@@ -94,6 +94,7 @@ if has("autocmd")
 endif
 
 filetype plugin indent on
+autocmd FileType xml,html inoremap <buffer> </ </<C-x><C-o>
 
 " ---------------------------------------------------------
 " | Keybindings
