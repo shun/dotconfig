@@ -53,12 +53,10 @@ fi
 if [ $OS = "Mac" ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export PATH="/usr/local/opt/llvm/bin:$PATH"
-    alias ll="ls -laG"
-    alias l="ls -G"
+    alias ll="LC_COLLATE=C gls -alF --group-directories-first --color=auto"
+    alias l="ls --color=auto"
     source /usr/local/etc/bash_completion.d/git-prompt.sh
     source /usr/local/etc/bash_completion.d/git-completion.bash
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
 elif [ $OS = "Linux" ];then
     alias ll="LC_COLLATE=C ls -alF --group-directories-first"
     alias sed="/bin/sed"
@@ -95,15 +93,27 @@ else
 fi
 
 cd() {
-  builtin cd -P "$@" && LC_COLLATE=C ls -alF --group-directories-first
+  if [ $OS = "Mac" ]; then
+    builtin cd -P "$@" && LC_COLLATE=C gls -alF --group-directories-first --color=auto
+  elif [ $OS = "Linux" ];then
+    builtin cd -P "$@" && LC_COLLATE=C ls -alF --group-directories-first
+  fi
 }
 
 pushd() {
+  if [ $OS = "Mac" ]; then
+    builtin pushd "$@" && LC_COLLATE=C gls -alF --group-directories-first --color=auto
+  elif [ $OS = "Linux" ];then
     builtin pushd "$@" && LC_COLLATE=C ls -alF --group-directories-first
+  fi
 }
 
 popd() {
+  if [ $OS = "Mac" ]; then
+    builtin popd "$@" && LC_COLLATE=C gls -alF --group-directories-first --color=auto
+  elif [ $OS = "Linux" ];then
     builtin popd "$@" && LC_COLLATE=C ls -alF --group-directories-first
+  fi
 }
 
 mkcd() {
