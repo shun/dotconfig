@@ -77,7 +77,7 @@ export GOPATH=$HOME/.go
 export HISTIGNORE="ll:history*:cd"
 #export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups:ignoreboth
-export PATH=~/.local/bin:/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+export PATH=~/.local/bin:/usr/local/bin:$GOPATH/bin:$GOROOT/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.yarn/bin:$PATH
 if [ -d $HOME/.anyenv ]
 then
     export PATH="$HOME/.anyenv/bin:$PATH"
