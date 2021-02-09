@@ -68,7 +68,6 @@ au BufRead,BufNewFile *.nvim set filetype=vim
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
 au WinEnter,FocusGained * checktime
-au BufWritePre *.go :%!gofmt
 
 if has("autocmd")
   filetype plugin on

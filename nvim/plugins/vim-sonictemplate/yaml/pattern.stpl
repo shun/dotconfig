@@ -9,6 +9,7 @@
 	
 	services:
 	  {{_cursor_}}:
+	    tty:true
 	    #build:
 	    #  context: ./
 	    #  dockerfile: ./Dockerfile

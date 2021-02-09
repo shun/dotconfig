@@ -17,7 +17,7 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("nvim" "ranger" "terminator" "plantuml")
+paths=("nvim" "plantuml")
 
 for mypath in ${paths[@]}; do
     if [ ! -d ~/.config/$mypath  ]; then
@@ -28,7 +28,7 @@ for mypath in ${paths[@]}; do
     fi
 done
 
-paths=("tigrc" "inputrc" "tmux.conf" "myprofile" "gitconfig" "globalrc" "xremap" "dircolors" "powerline-shell" "clang-format")
+paths=("tigrc" "inputrc" "tmux.conf" "myprofile" "gitconfig" "globalrc" "dircolors" "clang-format")
 
 for mypath in ${paths[@]}; do
     files=`ls -A $mypath/`

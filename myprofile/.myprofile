@@ -55,6 +55,7 @@ if [ $OS = "Mac" ]; then
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     alias ll="LC_COLLATE=C gls -alF --group-directories-first --color=auto"
     alias l="ls --color=auto"
+    alias sed="/usr/local/bin/gsed"
     source /usr/local/etc/bash_completion.d/git-prompt.sh
     source /usr/local/etc/bash_completion.d/git-completion.bash
 elif [ $OS = "Linux" ];then
@@ -163,7 +164,12 @@ dclear() {
 # search history
 fzf-select-history() {
   local l=$(history | sort -r | fzf --query "$READLINE_LINE")
-  local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
+  if [ $OS = "Mac" ]; then
+      local l=`echo "${l}" | gsed -e "s/^ *[0-9]\+ \+//g"`
+  elif [ $OS = "Linux" ];then
+      local l=`echo "${l}" | sed -e "s/^ *[0-9]\+ \+//g"`
+  fi
+
   READLINE_LINE="${l}"
   READLINE_POINT=${#l}
 }
@@ -172,7 +178,11 @@ bind -x '"\C-r": fzf-select-history'
 # search git branch
 fzf-select-branch() {
   local l=$(git branch | sort -r | fzf --query "$READLINE_LINE")
-  local l=`echo ${l:2} | sed -e "s/^.. //g"`
+  if [ $OS = "Mac" ]; then
+      local l=`echo ${l:2} | gsed -e "s/^.. //g"`
+  elif [ $OS = "Linux" ];then
+      local l=`echo ${l:2} | sed -e "s/^.. //g"`
+  fi
   READLINE_LINE=`echo "git checkout ${l}"`
   READLINE_POINT=${#READLINE_LINE}
 }
