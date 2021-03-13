@@ -29,7 +29,7 @@ source ~/.config/nvim/rc.d/rc_denite.vim
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = ['vim-lsp-settings', 'deoplete-vim-lsp']
-on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'xml', 'yaml']
+on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'xml', 'yaml', 'css']
 hook_add = '''
 source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
@@ -77,10 +77,6 @@ let g:vim_markdown_toc_autofit = 1
 [[plugins]]
 repo = 'sakhnik/nvim-gdb'
 build = 'bash install.sh'
-on_ft = ['c', 'cpp', 'python']
-
-[[plugins]]
-repo = 'ozelentok/denite-gtags'
 on_ft = ['c', 'cpp', 'python']
 
 [[plugins]]

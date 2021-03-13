@@ -26,6 +26,7 @@ set scrolloff=8
 set shiftwidth=4
 set showcmd
 set showmatch
+set signcolumn=yes
 set smartcase
 set softtabstop=0
 set t_Co=256
