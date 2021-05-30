@@ -69,6 +69,7 @@ au BufRead,BufNewFile *.nvim set filetype=vim
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.vue set filetype=vue
 au WinEnter,FocusGained * checktime
+au VimEnter * :call s:setMyHighlight()
 
 if has("autocmd")
   filetype plugin on
@@ -96,6 +97,9 @@ endif
 filetype plugin indent on
 autocmd FileType xml,html inoremap <buffer> </ </<C-x><C-o>
 
+function! s:setMyHighlight()
+  highlight Comment guifg=#7e57c2
+endfunction
 " ---------------------------------------------------------
 " | Keybindings
 
