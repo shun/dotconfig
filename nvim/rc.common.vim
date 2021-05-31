@@ -99,6 +99,7 @@ autocmd FileType xml,html inoremap <buffer> </ </<C-x><C-o>
 
 function! s:setMyHighlight()
   highlight Comment guifg=#7e57c2
+  highlight Grey guifg=#90a4ae
 endfunction
 " ---------------------------------------------------------
 " | Keybindings
