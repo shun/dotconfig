@@ -1,9 +1,10 @@
 " ---------------------------------------------------------
 " | setting
 
+set backspace=indent,eol,start
 set cindent
 set clipboard+=unnamedplus
-set completeopt-=preview
+set completeopt=noinsert
 set cursorline
 set encoding=utf-8
 set expandtab
@@ -20,6 +21,7 @@ set nobackup
 set noswapfile
 set nowrapscan
 set nu
+set pumheight=10
 "set relativenumber
 set ruler
 set scrolloff=8
@@ -75,23 +77,24 @@ if has("autocmd")
   filetype plugin on
   filetype indent on
   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtab
-  autocmd Filetype java        setlocal sw=4 sts=4 ts=4 et omnifunc=javacomplete#Complete
-  autocmd FileType c           setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType cpp         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType go          setlocal sw=4 sts=4 ts=4 noet
-  autocmd FileType php         setlocal sw=4 sts=4 ts=4 noet
-  autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType python      setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType json        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType css         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType typescript  setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType yaml        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType js          setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType vue         setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType plantuml    setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType stpl        setlocal sw=4 sts=4 ts=4 noet
+  autocmd Filetype java            setlocal sw=4 sts=4 ts=4 et omnifunc=javacomplete#Complete
+  autocmd FileType c               setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType cpp             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType go              setlocal sw=4 sts=4 ts=4 noet
+  autocmd FileType php             setlocal sw=4 sts=4 ts=4 noet
+  autocmd FileType ruby            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType python          setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType json            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType html            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType css             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType javascript      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType typescript      setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType typescriptreact setlocal sw=2 sts=2 ts=2 et omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType yaml            setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType js              setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType vue             setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType plantuml        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType stpl            setlocal sw=4 sts=4 ts=4 noet
 endif
 
 filetype plugin indent on
@@ -107,6 +110,7 @@ endfunction
 " nomal/visual mode
 map <silent> <F3> :<C-u>setlocal relativenumber!<cr>
 nmap <ESC><ESC> :noh<cr>
+nnoremap - :e %:h<cr>
 nnoremap ,tn :tabnew<cr>
 nnoremap <Leader>Q :bd!<cr>
 nnoremap <Leader>q :bd<cr>
@@ -139,6 +143,11 @@ inoremap <C-n> <DOWN>
 inoremap <C-f> <RIGHT>
 inoremap <C-b> <LEFT>
 inoremap <C-j> <RETURN>
+inoremap <silent><expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ "\<TAB>" : ddc#manual_complete()
 
 " visual mode
 
@@ -167,3 +176,26 @@ function! s:home()
     return ''
 endfunction
 
+" for tab
+nnoremap [TABCMD] <nop>
+nmap t [TABCMD]
+
+nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
+nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
+nnoremap <silent> [TABCMD]n :<c-u>tabnext<cr>
+nnoremap <silent> [TABCMD]N :<c-u>tabNext<cr>
+nnoremap <silent> [TABCMD]p :<c-u>tabprevious<cr>
+nnoremap <silent> [TABCMD]e :<c-u>tabedit
+nnoremap <silent> [TABCMD]c :<c-u>tabnew<cr>
+nnoremap <silent> [TABCMD]C :<c-u>tabclose<cr>
+nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
+nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+
+function! s:option_to_edit() abort
+  setlocal buftype= modifiable noreadonly
+  setlocal list tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab textwidth=78
+  setlocal colorcolumn=+1
+  setlocal conceallevel=0
+endfunction
+
+command! HelpEdit call <SID>option_to_edit()

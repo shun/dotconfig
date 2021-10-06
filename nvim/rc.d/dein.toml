@@ -3,9 +3,15 @@ repo = 'Shougo/dein.vim'
 rtp = ''
 
 [[plugins]]
-repo ='justinmk/vim-dirvish'
+repo='ghifarit53/tokyonight-vim'
 hook_add = '''
-let g:dirvish_mode = ':sort ,^\v(.*[\/])|\ze,'
+set termguicolors
+
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1
+let g:tokyonight_menu_selection_background = 'blue'
+
+colorscheme tokyonight
 '''
 
 [[plugins]]
@@ -18,31 +24,47 @@ source ~/.config/nvim/rc.d/rc_lightline.vim
 repo = 'Yggdroot/indentLine'
 hook_add = '''
 let g:indentLine_char = '|'
-let g:indentLine_fileType = ['cpp', 'c', 'go', 'python', 'text', 'sh']
+let g:indentLine_fileType = ['cpp', 'c', 'go', 'python', 'text', 'sh', 'typescript', 'typescriptreact']
 let g:indentLine_color_term = 239
 '''
 
 [[plugins]]
-repo = 'dense-analysis/ale'
-hook_add = '''
-source ~/.config/nvim/rc.d/rc_ale.vim
+repo='vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+hook_source = '''
+let g:context_filetype#ignore_patterns = {
+    \ 'toml': ['^\s*#\s*'],
+    \ }
 '''
 
 [[plugins]]
-repo='junegunn/vim-easy-align'
-hook_add = '''
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-'''
+repo = 'gamoutatsumi/dps-ghosttext.vim'
 
 [[plugins]]
-repo='ghifarit53/tokyonight-vim'
-hook_add = '''
-set termguicolors
+repo = 'cohama/lexima.vim'
 
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
-let g:tokyonight_menu_selection_background = 'blue'
+[[plugins]]
+repo = 'tyru/caw.vim'
 
-colorscheme tokyonight
-'''
+#[[plugins]]
+#repo = 'kuuote/denops-skkeleton.vim'
+#hook_source = '''
+#    call skkeleton#register_kanatable('rom', {
+#          \ 'hh': ['お', 'h'],
+#          \ 'jj': 'escape',
+#          \ 'z,': ['―', ''],
+#          \ "z\<Space>": ["\u3000", ''],
+#          \ })
+#'''
+#hook_add = '''
+#    imap <C-j> <Plug>(skkeleton-toggle)
+#    cmap <C-j> <Plug>(skkeleton-toggle)
+#'''
+#hook_source = '''
+#call skkeleton#config(#{
+#      \ globalJisyo: expand('~/.skk-jisyo'),
+#      \ eggLikeNewline: v:true,
+#      \ })
+#'''

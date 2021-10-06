@@ -9,7 +9,6 @@ augroup END
 command! -nargs=* Gautocmd   autocmd GlobalAutoCmd <args>
 command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
-
 let s:config_home = expand("$XDG_CONFIG_HOME")
 let s:cache_home = expand("$XDG_CACHE_HOME")
 
@@ -39,6 +38,7 @@ endif
 " load commom settings
 
 if has('nvim')
+
   execute 'source ' . g:config_dir . '/rc.common.vim'
   execute 'source ' . g:config_dir . '/rc.nvim'
   syntax enable
@@ -47,5 +47,4 @@ else
   execute 'source ' . g:config_dir . '/rc.common.vim'
   "execute 'source ' . g:config_dir . '/rc.vim'
 endif
-
 

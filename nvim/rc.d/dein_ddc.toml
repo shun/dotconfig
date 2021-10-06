@@ -1,0 +1,99 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+rev='v0.13.0'
+depends = ['denops.vim']
+on_event = 'InsertEnter'
+hook_source = '''
+  inoremap <silent><expr> <C-l> ddc#complete_common_string()
+  call ddc#custom#patch_global('sources', ['around', 'buffer', 'file', 'omni', 'vsnip', 'vim-lsp'])
+  call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'ignoreCase': v:true,
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank'],
+      \ },
+      \ 'around': {
+      \     'mark': 'A',
+      \  },
+      \ 'buffer': {
+      \     'mark': 'B',
+      \  },
+      \ 'file': {
+      \     'mark': 'F',
+      \     'isVolatile': v:true,
+      \     'forceCompletionPattern': '\S/\S*',
+      \     'cwdAsRoot': v:true,
+      \     'minAutoCompleteLength': 1,
+      \  },
+      \ 'omni': {
+      \     'mark': 'O',
+      \  },
+      \ 'vim-lsp': {
+      \     'mark': 'LSP',
+      \     'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+      \     'minAutoCompleteLength': 1,
+      \ },
+      \ 'vsnip': {
+      \   'mark': 'snip'
+      \ },
+      \ })
+  call ddc#custom#patch_global('sourceParams', {
+      \ 'buffer': {
+      \    'requireSameFiletype': v:false
+      \ },
+      \ })
+  call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+#repo = 'shun/ddc-vim-lsp'
+#rev='v0.2.0-v0.13.0'
+repo = 'LumaKernel/ddc-vim-lsp'
+rev='callback'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-omni'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline-history'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'
+depends = ['ddc.vim']
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+depends = ['vim-vsnip-integ']
+
