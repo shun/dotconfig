@@ -4,7 +4,7 @@
 set backspace=indent,eol,start
 set cindent
 set clipboard+=unnamedplus
-set completeopt=noinsert
+set completeopt=noinsert,menuone
 set cursorline
 set encoding=utf-8
 set expandtab

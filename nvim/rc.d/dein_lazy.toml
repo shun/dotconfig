@@ -1,19 +1,68 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = ['vim-lsp-settings', 'ddc-vim-lsp']
-on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'xml', 'yaml', 'css']
+on_ft = [
+    'c',
+    'cpp',
+    'css',
+    'dockerfile',
+    'go',
+    'html',
+    'javascript',
+    'php',
+    'python',
+    'rust',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'xml',
+    'yaml',
+]
 hook_add = '''
-"source ~/.config/nvim/rc.d/rc_vim-lsp.vim
+source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 '''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
-on_ft = ['c', 'cpp', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'xml', 'yaml', 'css']
+on_ft = [
+    'c',
+    'cpp',
+    'css',
+    'dockerfile',
+    'go',
+    'html',
+    'javascript',
+    'php',
+    'python',
+    'rust',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'xml',
+    'yaml',
+]
 hook_source = '''
 '''
+
 [[plugins]]
 repo = 'mattn/vim-sonictemplate'
-on_ft = ['c', 'cpp', 'markdown', 'python', 'php', 'vue', 'go', 'typescript', 'typescriptreact', 'dockerfile', 'rust', 'javascript', 'html', 'yaml']
+on_ft = [
+    'c',
+    'cpp',
+    'css',
+    'dockerfile',
+    'go',
+    'html',
+    'javascript',
+    'php',
+    'python',
+    'rust',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'xml',
+    'yaml',
+]
 hook_source = '''
 source ~/.config/nvim/rc.d/rc_sonictemplate.vim
 '''
@@ -24,30 +73,40 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord']
-on_func  = ['denite#']
+on_cmd = ['Denite']
 
 hook_add = '''
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
+  nnoremap <silent><Space>b <Cmd>Denite buffer<CR>
+  nnoremap <Space>g <Cmd>DeniteCursorWord grep:
+  nnoremap <Space>l <Cmd>Denite file/rec line<cr>
+  nnoremap / <Cmd>Denite -buffer-name=search -start-filter line<cr>
+  nnoremap ,/ /
+  nnoremap <Space>/ <Cmd>Denite -buffer-name=search -start-filter -auto-action=preview line<cr>
+  nnoremap n <Cmd>Denite -buffer-name=search -resume -refresh -auto-action=preview -no-start-filter<cr>
+  nnoremap * <Cmd>DeniteCursorWord -buffer-name=search -start-filter line<cr>
+  nnoremap <Space>* <Cmd>DeniteCursorWord -buffer-name=search -start-filter -auto-action=preview line<cr>
 '''
 
 hook_source = '''
 source ~/.config/nvim/rc.d/rc_denite.vim
 '''
+
+[plugins.ftplugin]
+denite = '''
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+'''
+
+#[[plugins]]
+#repo = 'matsui54/denops-popup-preview.vim'
+#on_event = 'InsertEnter'
+#hook_source = '''
+#call popup_preview#enable()
+#'''
 
 #[[plugins]]
 #repo = 'lambdalisue/gin.vim'

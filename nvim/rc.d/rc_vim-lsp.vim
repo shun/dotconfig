@@ -11,6 +11,7 @@
 "let g:lsp_insert_text_enabled = 0
 "let g:lsp_text_edit_enabled = 0
 "let g:lsp_auto_enable = 0
+"let g:lsp_completion_documentation_enabled = 0
 
 "let g:lsp_log_verbose = 1
 "let g:lsp_log_file = expand('~/vim-lsp.log')
@@ -46,6 +47,6 @@ endif
 "    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 "augroup END
 "
-nnoremap <silent>sd :<C-u>LspDefinition<cr>
-nnoremap <silent>sr :<C-u>LspReferences<cr>
-nnoremap <silent>sh :<C-u>LspHover<cr>
+nnoremap <silent>sd <Cmd>LspDefinition<cr>
+nnoremap <silent>sr <Cmd>LspReferences<cr>
+nnoremap <silent>sh <Cmd>LspHover<cr>

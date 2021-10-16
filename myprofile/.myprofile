@@ -59,6 +59,7 @@ if [ $OS = "Mac" ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
     source /usr/local/etc/bash_completion.d/git-completion.bash
 elif [ $OS = "Linux" ];then
+    export GOROOT=/usr/local/go
     alias ll="LC_COLLATE=C ls -alF --group-directories-first"
     alias sed="/bin/sed"
     alias pbcopy="xsel -ib"
@@ -74,7 +75,7 @@ fi
 export PS1='\n\[\e[0;32m\]\u@\h:\[\e[0;36m\]\w $(__git_ps1 " (%s)")\n\[\e[m\]\\$ '
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
-export GOPATH=$HOME/.go
+export GOPATH=$HOME/go
 export HISTIGNORE="ll:history*:cd"
 #export PROMPT_COMMAND='history -a; history -c; history -r;'
 export HISTCONTROL=erasedups:ignoreboth

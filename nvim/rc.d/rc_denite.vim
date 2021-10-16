@@ -34,12 +34,3 @@ call denite#custom#option('default', {
       \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
       \ })
 
-nnoremap <silent><Space>b :<C-u>Denite buffer<cr>
-nnoremap <Space>g :<C-u>DeniteCursorWord grep:
-nnoremap <Space>l :<C-u>Denite file/rec line<cr>
-nnoremap ,/ /
-nnoremap / :<C-u>Denite -buffer-name=search -start-filter line<cr>
-nnoremap <Space>/ :<C-u>Denite -buffer-name=search -start-filter -auto-action=preview line<cr>
-nnoremap n :<C-u>Denite -buffer-name=search -resume -refresh -auto-action=preview -no-start-filter<cr>
-nnoremap * :<C-u>DeniteCursorWord -buffer-name=search -start-filter line<cr>
-nnoremap <Space>* :<C-u>DeniteCursorWord -buffer-name=search -start-filter -auto-action=preview line<cr>
