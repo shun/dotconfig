@@ -19,6 +19,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nobackup
 "set noincsearch
 set noswapfile
+set nowrap
 set nowrapscan
 set nu
 set pumheight=10
