@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-rev='v0.16.0'
+rev='v1.20.0'
 depends = ['denops.vim']
 on_event = 'InsertEnter'
 hook_source = '''
@@ -55,9 +55,9 @@ depends = ['ddc.vim']
 on_source = 'ddc.vim'
 
 [[plugins]]
-#repo = 'shun/ddc-vim-lsp'
-#rev='v0.3.0-v0.16.0'
-repo = '~/ghq/github.com/shun/ddc-vim-lsp'
+repo = 'shun/ddc-vim-lsp'
+rev='v0.3.0-v1.20.0'
+#repo = '~/ghq/github.com/shun/ddc-vim-lsp'
 depends = ['ddc.vim']
 on_source = 'ddc.vim'
 
