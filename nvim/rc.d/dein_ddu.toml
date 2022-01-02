@@ -1,0 +1,3 @@
+[[plugins]]
+#repo = 'shun/ddu.vim'
+repo = '~/ghq/github.com/shun/ddu.vim/'
