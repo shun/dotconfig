@@ -71,36 +71,36 @@ source ~/.config/nvim/rc.d/rc_sonictemplate.vim
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = ['Denite']
-
-hook_add = '''
-  nnoremap <silent><Space>b <Cmd>Denite buffer<CR>
-  nnoremap <Space>g <Cmd>DeniteCursorWord grep:
-  nnoremap <Space>l <Cmd>Denite file/rec line<cr>
-  nnoremap / <Cmd>Denite -buffer-name=search -start-filter line<cr>
-  nnoremap ,/ /
-  nnoremap <Space>/ <Cmd>Denite -buffer-name=search -start-filter -auto-action=preview line<cr>
-  nnoremap n <Cmd>Denite -buffer-name=search -resume -refresh -auto-action=preview -no-start-filter<cr>
-  nnoremap * <Cmd>DeniteCursorWord -buffer-name=search -start-filter line<cr>
-  nnoremap <Space>* <Cmd>DeniteCursorWord -buffer-name=search -start-filter -auto-action=preview line<cr>
-'''
-
-hook_source = '''
-source ~/.config/nvim/rc.d/rc_denite.vim
-'''
-
-[plugins.ftplugin]
-denite = '''
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-'''
-
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#on_cmd = ['Denite']
+#
+#hook_add = '''
+#  nnoremap <silent><Space>b <Cmd>Denite buffer<CR>
+#  nnoremap <Space>g <Cmd>DeniteCursorWord grep:
+#  nnoremap <Space>l <Cmd>Denite file/rec line<cr>
+#  nnoremap / <Cmd>Denite -buffer-name=search -start-filter line<cr>
+#  nnoremap ,/ /
+#  nnoremap <Space>/ <Cmd>Denite -buffer-name=search -start-filter -auto-action=preview line<cr>
+#  nnoremap n <Cmd>Denite -buffer-name=search -resume -refresh -auto-action=preview -no-start-filter<cr>
+#  nnoremap * <Cmd>DeniteCursorWord -buffer-name=search -start-filter line<cr>
+#  nnoremap <Space>* <Cmd>DeniteCursorWord -buffer-name=search -start-filter -auto-action=preview line<cr>
+#'''
+#
+#hook_source = '''
+#source ~/.config/nvim/rc.d/rc_denite.vim
+#'''
+#
+#[plugins.ftplugin]
+#denite = '''
+#  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+#  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+#  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+#  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+#  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+#  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+#'''
+#
 #[[plugins]]
 #repo = 'matsui54/denops-popup-preview.vim'
 #on_event = 'InsertEnter'
