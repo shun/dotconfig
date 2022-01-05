@@ -15,7 +15,7 @@ let g:lsp_diagnostics_virtual_text_enabled = 0
 "let g:lsp_completion_documentation_enabled = 0
 
 "let g:lsp_log_verbose = 1
-"let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:lsp_log_file = ""
 
 " For clangd(c/cpp language server)
 if (executable('clangd'))
