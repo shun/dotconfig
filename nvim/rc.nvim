@@ -5,5 +5,5 @@ endif
 " load plugins
 execute 'source' g:config_dir . '/rc.d/rc_dein.vim'
 
-nnoremap <Space>b <Cmd>call ddu#start({'sources': ['buffer']})<cr>
+nnoremap <Space>b <Cmd>call ddu#start({'sources': [{'name': 'buffer', 'params': {}}]})<cr>
 
