@@ -99,6 +99,15 @@ highlight link SearchxMarker PmenuSel
 highlight link SearchxMarkerCurrent PmenuSel
 '''
 
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+hook_add = '''
+call signature_help#enable()
+'''
+
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+
 #[[plugins]]
 #repo = 'kuuote/denops-skkeleton.vim'
 #hook_source = '''
