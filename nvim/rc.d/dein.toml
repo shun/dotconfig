@@ -99,14 +99,22 @@ highlight link SearchxMarker PmenuSel
 highlight link SearchxMarkerCurrent PmenuSel
 '''
 
-[[plugins]]
-repo = 'matsui54/denops-signature_help'
-hook_add = '''
-call signature_help#enable()
-'''
+#[[plugins]]
+#repo = 'matsui54/denops-signature_help'
+#repo = '~/ghq/github.com/shun/denops-signature_help'
+#hook_add = '''
+#call signature_help#enable()
+#'''
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
+
+[[plugins]]
+repo = 'mhinz/vim-sayonara'
+hook_add = '''
+nnoremap <space>q <Cmd>Sayonara<CR>
+nnoremap <space>Q <Cmd>Sayonara!<CR>
+'''
 
 #[[plugins]]
 #repo = 'kuuote/denops-skkeleton.vim'

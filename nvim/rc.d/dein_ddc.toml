@@ -55,9 +55,9 @@ depends = ['ddc.vim']
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'shun/ddc-vim-lsp'
-rev='v0.3.0-v1.20.0'
-#repo = '~/ghq/github.com/shun/ddc-vim-lsp'
+#repo = 'shun/ddc-vim-lsp'
+#rev='v0.3.0-v1.20.0'
+repo = '~/ghq/github.com/shun/ddc-vim-lsp'
 depends = ['ddc.vim']
 on_source = 'ddc.vim'
 

@@ -32,3 +32,50 @@
 	#  db:
 	#    driver: "local"
 
+^oi
+	openapi: 3.0.0
+	info:
+	  version: 1.0.0
+	  title:
+	  description:
+	servers:
+	  - url: 
+	
+	paths:
+	  {{_cursord_}}:
+	    get:
+	      description:
+	       parameters:
+	         - name:
+	           in:
+	           description:
+	           schema:
+	             type: 
+	      responses:
+	        '200':
+	          description:
+	            content:
+	              application/json:
+	                schema:
+	                 type:
+	                 items:
+                       type:
+	        '400':
+	          description: Invalid request
+	          content:
+	            application/json:
+	              schema:
+	              type: object
+	              properties:
+	                message:
+	                  type: string
+	    post:
+	      description:
+	      requestBody:
+	        required: true
+	        content:
+	          application/json:
+	            schema:
+	              type:
+	              required:
+	              properties:

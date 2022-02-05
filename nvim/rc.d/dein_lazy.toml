@@ -3,6 +3,7 @@ repo = 'prabirshrestha/vim-lsp'
 depends = ['vim-lsp-settings', 'ddc-vim-lsp']
 on_ft = [
     'c',
+    'cs',
     'cpp',
     'css',
     'dockerfile',
@@ -26,6 +27,7 @@ source ~/.config/nvim/rc.d/rc_vim-lsp.vim
 repo = 'mattn/vim-lsp-settings'
 on_ft = [
     'c',
+    'cs',
     'cpp',
     'css',
     'dockerfile',
