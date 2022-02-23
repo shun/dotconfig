@@ -116,6 +116,17 @@ nnoremap <space>q <Cmd>Sayonara<CR>
 nnoremap <space>Q <Cmd>Sayonara!<CR>
 '''
 
+[[plugins]]
+repo = 'lambdalisue/gin.vim'
+#repo = 'lambdalisue/gina.vim'
+#on_cmd = ['Gin', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+hook_source = '''
+'''
+
+[[plugins]]
+repo = 'lambdalisue/guise.vim'
+#on_cmd = ['Gin', 'GinDiff', 'GinEdit', 'GinPatch', 'GinStatus']
+
 #[[plugins]]
 #repo = 'kuuote/denops-skkeleton.vim'
 #hook_source = '''

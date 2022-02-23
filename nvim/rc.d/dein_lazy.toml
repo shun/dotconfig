@@ -110,11 +110,3 @@ on_ft = 'toml'
 #call popup_preview#enable()
 #'''
 
-#[[plugins]]
-#repo = 'lambdalisue/gin.vim'
-#on_cmd = ['GinStatus']
-#
-#[[plugins]]
-#repo = 'lambdalisue/guise.vim'
-#on_cmd = ['GinStatus']
-#
