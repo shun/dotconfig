@@ -36,6 +36,13 @@ hook_source = '''
       \    'requireSameFiletype': v:false
       \ },
       \ })
+  call ddc#custom#patch_filetype(['css'], {
+      \ 'sourceParams': {
+      \   'vim-lsp': {
+      \     'ignoreCompleteProvider': v:true,
+      \   },
+      \ },
+      \ })
   call ddc#enable()
 '''
 

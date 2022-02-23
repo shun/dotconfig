@@ -1,15 +1,12 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
-#rev='v0.14'
+rev='v0.14'
 #repo = '~/ghq/github.com/shun/ddu.vim/'
 depends = 'denops.vim'
+on_source = 'denops.vim'
 hook_add = '''
-nnoremap <silent> / <Cmd>Ddu -name=search line -ui-param-startFilter=v:true<CR>
-nnoremap <silent> ;g <Cmd>Ddu -name=files rg -source-param-input=`input('Pattern: ')`<CR>
 '''
 hook_source = '''
-"    \       'args': ['--json'],
-"    \       'args': ['--column', '--no-heading', '--color', 'never'],
 call ddu#custom#patch_global({
     \   'ui': 'ff',
     \   'sourceOptions' : {
@@ -21,8 +18,8 @@ call ddu#custom#patch_global({
     \     'rg' : {
     \       'args': ['--json'],
     \       'highlights': {
-    \         'path': 'SpellLocal',
-    \         'lineNr': 'SpellCap',
+    \         'path': 'Blue',
+    \         'lineNr': 'Green',
     \         'word': 'SpellBad',
     \       }
     \     },
@@ -41,15 +38,20 @@ call ddu#custom#patch_global({
     \     'matcher_substring': {
     \       'highlightMatched': 'Search',
     \     },
-    \   }
+    \   },
+    \   'file_old': {
+    \     'matchers': [
+    \       'matcher_substring', 'matcher_relative', 'matcher_hidden',
+    \     ],
+    \   },
     \ })
-
 call ddu#custom#patch_local('default', {
     \   'uiParams': {
     \     'ff': {
     \       'split': 'floating',
     \       'winCol': &columns / 20,
     \       'winWidth': &columns / 10 * 9,
+    \       'prompt': '> ',
     \     }
     \   },
     \ })
@@ -71,14 +73,12 @@ nnoremap <buffer><silent> <CR> <Cmd>close<CR>
 [[plugins]]
 repo = '~/ghq/github.com/shun/ddu-source-buffer'
 #repo = 'shun/ddu-source-buffer'
-depends = ['ddu.vim']
 on_source = 'ddu.vim'
 
 [[plugins]]
-repo = '~/ghq/github.com/shun/ddu-rg'
-#repo = 'shun/ddu-source-rg'
-depends = ['ddu.vim']
-on_source = 'ddu.vim'
+#repo = '~/ghq/github.com/shun/ddu-rg'
+repo = 'shun/ddu-source-rg'
+rev='highlight'
 on_cmd = 'DduRg'
 
 [[plugins]]
@@ -89,21 +89,29 @@ on_cmd = 'Ddu'
 [[plugins]]
 #repo = 'yuki-yano/ddu-filter-fzf'
 repo = '~/ghq/github.com/shun/ddu-filter-fzf'
-depends = ['ddu.vim']
 on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-ui-ff'
-#repo = '~/ghq/github.com/shun/ddu-ui-std'
-depends = ['ddu.vim']
+#repo = '~/ghq/github.com/shun/ddu-ui-ff'
 on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-kind-file'
-depends = ['ddu.vim']
 on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
-depends = ['ddu.vim']
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_relative'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_hidden'
 on_source = 'ddu.vim'
