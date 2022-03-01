@@ -36,7 +36,7 @@ hook_source = '''
       \    'requireSameFiletype': v:false
       \ },
       \ })
-  call ddc#custom#patch_filetype(['css'], {
+  call ddc#custom#patch_filetype(['css', 'typescriptreact'], {
       \ 'sourceParams': {
       \   'vim-lsp': {
       \     'ignoreCompleteProvider': v:true,

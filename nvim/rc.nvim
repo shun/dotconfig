@@ -7,4 +7,4 @@ execute 'source' g:config_dir . '/rc.d/rc_dein.vim'
 
 nnoremap <Space>b <Cmd>call ddu#start({'sources': [{'name': 'buffer', 'params': {}}]})<cr>
 nnoremap <Space>f <Cmd>call ddu#start({'sources': [{'name': 'file_old'}]})<cr>
-nnoremap <Space>g <Cmd>DduRg<cr>
+"nnoremap <Space>g <Cmd>DduRg<cr>
