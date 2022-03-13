@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
-rev='v1.1.0'
+rev='v1.2.0'
 #repo = '~/ghq/github.com/shun/ddu.vim/'
 depends = 'denops.vim'
 on_source = 'denops.vim'
@@ -125,4 +125,3 @@ repo = 'matsui54/ddu-source-file_external'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-line'
-
