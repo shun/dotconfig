@@ -1,18 +1,19 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
-rev='v1.2.0'
+rev='v1.4.0'
 #repo = '~/ghq/github.com/shun/ddu.vim/'
 depends = 'denops.vim'
 on_source = 'denops.vim'
 hook_add = '''
-nnoremap / <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
-nnoremap * <Cmd>Ddu -name=search line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
+nnoremap <Space>/ <Cmd>Ddu -name=search line -ui-param-startFilter<CR>
+nnoremap <Space>* <Cmd>Ddu -name=search line -input=`expand('<cword>')` -ui-param-startFilter=v:false<CR>
 nnoremap <Space>g <Cmd>Ddu rg -ui-param-ignoreEmpty -source-param-input=`input('Input: ')`<CR>
-nnoremap n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
-nnoremap ;f <Cmd>Ddu file_external<CR>
+nnoremap <Space>n <Cmd>Ddu -name=search -resume -ui-param-startFilter=v:false<CR>
+nnoremap <Space>;f <Cmd>Ddu file_external<CR>
 
 call ddu#custom#patch_global({
     \   'ui': 'ff',
+    \   'profile': v:true,
     \   'sourceOptions' : {
     \     '_' : {
     \       'matchers': ['matcher_substring'],
@@ -125,3 +126,4 @@ repo = 'matsui54/ddu-source-file_external'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-line'
+
