@@ -32,7 +32,7 @@
 	#  db:
 	#    driver: "local"
 
-^oi
+^oa
 	openapi: 3.0.0
 	info:
 	  version: 1.0.0
@@ -42,7 +42,7 @@
 	  - url: 
 	
 	paths:
-	  {{_cursord_}}:
+	  {{_cursor_}}:
 	    get:
 	      description:
 	       parameters:
@@ -59,7 +59,7 @@
 	                schema:
 	                 type:
 	                 items:
-                       type:
+	                   type:
 	        '400':
 	          description: Invalid request
 	          content:
@@ -79,3 +79,5 @@
 	              type:
 	              required:
 	              properties:
+	components:
+	  schema:
