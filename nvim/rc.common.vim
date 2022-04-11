@@ -105,6 +105,12 @@ function! s:setMyHighlight()
   highlight Comment guifg=#7e57c2
   highlight Grey guifg=#90a4ae
 endfunction
+
+augroup vimlsp_autoformat
+  au!
+  autocmd BufWritePre *.ts,*.tsx,*.rs LspDocumentFormatSync
+augroup END
+
 " ---------------------------------------------------------
 " | Keybindings
 

@@ -73,40 +73,23 @@ source ~/.config/nvim/rc.d/rc_sonictemplate.vim
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
-#[[plugins]]
-#repo = 'Shougo/denite.nvim'
-#on_cmd = ['Denite']
-#
-#hook_add = '''
-#  nnoremap <silent><Space>b <Cmd>Denite buffer<CR>
-#  nnoremap <Space>g <Cmd>DeniteCursorWord grep:
-#  nnoremap <Space>l <Cmd>Denite file/rec line<cr>
-#  nnoremap / <Cmd>Denite -buffer-name=search -start-filter line<cr>
-#  nnoremap ,/ /
-#  nnoremap <Space>/ <Cmd>Denite -buffer-name=search -start-filter -auto-action=preview line<cr>
-#  nnoremap n <Cmd>Denite -buffer-name=search -resume -refresh -auto-action=preview -no-start-filter<cr>
-#  nnoremap * <Cmd>DeniteCursorWord -buffer-name=search -start-filter line<cr>
-#  nnoremap <Space>* <Cmd>DeniteCursorWord -buffer-name=search -start-filter -auto-action=preview line<cr>
-#'''
-#
-#hook_source = '''
-#source ~/.config/nvim/rc.d/rc_denite.vim
-#'''
-#
-#[plugins.ftplugin]
-#denite = '''
-#  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-#  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-#  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-#  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-#  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-#  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-#'''
-#
-#[[plugins]]
-#repo = 'matsui54/denops-popup-preview.vim'
-#on_event = 'InsertEnter'
-#hook_source = '''
-#call popup_preview#enable()
-#'''
+[[plugins]]
+repo = 'vim-test/vim-test'
+hook_add = '''
+let g:test#preserve_screen = 1
+let test#neovim#start_normal = 1
+let test#basic#start_normal = 1
+nnoremap <silent> <space>tn <cmd>TestNearest<cr>
+nnoremap <silent> <space>tf <cmd>TestFile<cr>
+nnoremap <silent> <space>ts <cmd>TestSuite<cr>
+nnoremap <silent> <space>tl <cmd>TestLast<cr>
+nnoremap <silent> <space>tg <cmd>TestVisit<cr>
+'''
+on_cmd = ['TestNearest', 'TestFile', 'TestSuite', 'TestLast', 'TestVisit']
 
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = ['Deol']
+hook_add = '''
+""<Cmd>Deol %s -no-start-insert -toggle -split=<CR>
+'''
