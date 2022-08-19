@@ -3,7 +3,11 @@
 
 set backspace=indent,eol,start
 set cindent
-set clipboard+=unnamedplus
+if has('win32') || has('win64') || has('mac')
+  set clipboard=unnamed
+else
+  set clipboard=unnamed,unnamedplus
+endif
 set completeopt=noinsert,menuone
 set cursorline
 set encoding=utf-8
