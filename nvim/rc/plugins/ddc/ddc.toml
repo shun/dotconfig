@@ -1,0 +1,71 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim', 'context_filetype.vim']
+on_event = ['InsertEnter', 'CmdlineEnter']
+hooks_file = '$VIMHOME/rc/plugins/ddc/ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+#[[plugins]]
+#repo = 'shun/ddc-vim-lsp'
+##rev='v0.3.0-v1.20.0'
+## repo = '~/ghq/github.com/shun/ddc-vim-lsp'
+#depends = ['ddc.vim']
+#on_source = 'ddc.vim'
+
+[[plugins]]
+repo='Shougo/ddc-source-lsp'
+on_source = 'ddc.vim'
+hook_source = '''
+'''
+
+#[[plugins]]
+#repo='hrsh7th/vim-vsnip'
+#on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-source-file'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-omni'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-cmdline-history'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo ='matsui54/denops-popup-preview.vim'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo ='matsui54/denops-signature_help'
+on_source = 'ddc.vim'
+

@@ -1,0 +1,21 @@
+"~/.config/nvim/vimrc
+
+" Vim の互換モードを無効にします。
+if &compatible
+  set nocompatible
+endif
+
+" vim-tiny や vim-small で初期化をスキップします。
+if 1
+    " ファイルのパスを取得します
+    let base_dir = expand('<sfile>:h')
+   " 各設定ファイルを読み込みます。
+  execute 'source' base_dir . '/rc/core/options.vim'
+  execute 'source' base_dir . '/rc/core/mappings.vim'
+  execute 'source' base_dir . '/rc/core/filetype.vim'
+  execute 'source' base_dir . '/rc/plugins.vim'
+  execute 'source' base_dir . '/autoload/functions.vim'
+endif
+
+syntax on
+filetype plugin indent on

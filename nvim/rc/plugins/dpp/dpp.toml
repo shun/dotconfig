@@ -1,0 +1,62 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/dpp.vim'
+rtp = ''
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-lazy'
+rtp = ''
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-toml'
+hook_add = '''
+  " Enable dpp toml syntax.
+  if !has('nvim')
+    autocmd MyAutoCmd CursorHold ~/.config/nvim/rc/**/*.toml call dpp#ext#toml#syntax()
+  endif
+'''
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-local'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-installer'
+
+[[plugins]]
+repo = 'Shougo/dpp-ext-packspec'
+
+[[plugins]]
+repo = 'Shougo/dpp-protocol-git'
+
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+hook_add = '''
+"colorscheme spring-night
+'''
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+colorscheme iceberg
+'''
+
+[[plugins]]
+repo = '~/ghq/github.com/shun/ginsetsu.vim/autoload'
+hook_add = '''
+"colorscheme ginsetsu
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hooks_file = '$VIMHOME/rc/plugins/lightline/lightline.vim'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = '''
+let g:lexima_accept_pum_with_enter = 1
+'''
+
+[[plugins]]
+repo = 'machakann/vim-sandwich'

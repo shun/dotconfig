@@ -1,51 +1,57 @@
-if &compatible
-  set nocompatible
-endif
+" ~/.config/nvim/init.vim
 
-let mapleader = "\<Space>"
-augroup GlobalAutoCmd
+" MyAutoCmd グループを定義
+augroup MyAutoCmd
   autocmd!
 augroup END
-command! -nargs=* Gautocmd   autocmd GlobalAutoCmd <args>
-command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
+setlocal updatetime=500
 
-let s:config_home = expand("$XDG_CONFIG_HOME")
-let s:cache_home = expand("$XDG_CACHE_HOME")
+function! Setup()
+  let $VIMHOME = expand('<sfile>:h')
 
-let g:config_dir = ""
-let g:cache_dir = ""
+  " dpp のキャッシュディレクトリを設定
+  let $CACHE = expand('~/.cache')
 
-if s:config_home == "$XDG_CONFIG_HOME"
-  let g:config_dir = expand('~/.config/nvim')
-else
-  let g:config_dir = expand("$XDG_CONFIG_HOME") . '/nvim'
+  if !isdirectory($CACHE)
+    call mkdir($CACHE, 'p')
+  endif
+
+  " DPP_CACHE_DIR 環境変数を設定
+  let $DPP_CACHE_DIR = expand('$HOME/.cache/dppn')
+endfunction
+
+call Setup()
+
+" Vim script の設定ファイルの読み込み
+execute 'source' $VIMHOME . '/rc/core/options.vim'
+execute 'source' $VIMHOME . '/rc/core/mappings.vim'
+execute 'source' $VIMHOME . '/rc/core/filetype.vim'
+execute 'source' $VIMHOME . '/rc/ui/terminal.vim'
+execute 'source' $VIMHOME . '/rc/plugins.vim'
+
+" dpp の設定
+if filereadable($VIMHOME . '/rc/plugins/dpp/dpp.ts')
+  execute 'source' $VIMHOME . '/rc/plugins/dpp/dpp.vim'
 endif
 
-if s:cache_home == "$XDG_CACHE_HOME"
-  let g:cache_dir = expand('~/.cache/nvim')
-else
-  let g:cache_dir = expand("$XDG_CACHE_HOME") . '/nvim'
+" vimrc
+"if filereadable($VIMHOME . '/vimrc')
+"  execute 'source' $VIMHOME . '/vimrc'
+"endif
+
+" autoload
+if filereadable($VIMHOME . '/autoload/myconfig.vim')
+  execute 'source' $VIMHOME . '/autoload/myconfig.vim'
 endif
 
-let g:rc_dir = g:config_dir . '/rc.d'
+" Biomeのフォーマッタを実行
+function! FormatWithBiome()
+  let l:file = expand('%')
+  let l:cmd = 'biome format -write ' . l:file
+  call system(l:cmd)
+  edit!
+endfunction
 
-if has('mac')
-  let g:python3_host_prog = '/usr/local/bin/python3'
-elseif has('unix')
-  let g:python3_host_prog = '/usr/bin/python3'
-endif
-
-" load commom settings
-
-if has('nvim')
-  execute 'source ' . g:config_dir . '/rc.common.vim'
-  execute 'source ' . g:config_dir . '/rc.nvim'
-  syntax enable
-else
-  syntax on
-  execute 'source ' . g:config_dir . '/rc.common.vim'
-  "execute 'source ' . g:config_dir . '/rc.vim'
-endif
-
-
+" ファイル保存時に自動フォーマットを実行
+"autocmd BufWritePre *.ts,*.tsx call FormatWithBiome()
