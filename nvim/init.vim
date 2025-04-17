@@ -36,9 +36,9 @@ if filereadable($VIMHOME . '/rc/plugins/dpp/dpp.ts')
 endif
 
 " vimrc
-"if filereadable($VIMHOME . '/vimrc')
-"  execute 'source' $VIMHOME . '/vimrc'
-"endif
+if filereadable($VIMHOME . '/vimrc')
+  execute 'source' $VIMHOME . '/vimrc'
+endif
 
 " autoload
 if filereadable($VIMHOME . '/autoload/myconfig.vim')
