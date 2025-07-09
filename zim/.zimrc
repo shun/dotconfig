@@ -1,0 +1,107 @@
+# Start configuration added by Zim install {{{
+#
+# This is not sourced during shell startup, and it's only used to configure the
+# zimfw plugin manager.
+#
+
+#
+# Modules
+#
+
+# 賢くて広範なタブ補完を有効化
+zmodule completion
+# 一般的な Zsh 組み込み環境オプションを設定
+zmodule environment
+# 入力イベントに対して正しい bindkeys を適用
+zmodule input
+# 最適なヘルプの取得方法を見つけ、それを取得
+zmodule run-help
+
+# Productivity
+# 簡単なアーカイブ操作のためのアーカイブおよび解凍機能を提供
+zmodule archive
+# asdf を設定し、direnv プラグインの自動インストールと最適化された使用を提供
+#zmodule asdf
+# direnv Zsh シェル統合を設定
+zmodule direnv
+# exa のエイリアスとより良いデフォルトを追加
+zmodule exa
+# fzf を設定してファイルやディレクトリ名の高速取得を提供
+zmodule fzf
+# 便利な git エイリアスと関数を提供
+zmodule git
+# すべての kubectl エイリアスを一つの関数にまとめる
+#zmodule k
+# コマンドがないときに ENTER キーを押すと表示
+#zmodule magic-enter
+# すべての python 仮想環境を一箇所で管理
+#zmodule pvenv
+# ruby、bundler、rbenv、および rvm のエイリアスと初期化を提供
+#zmodule ruby
+# ssh-agent を読み込むための便利な方法を提供
+zmodule ssh
+# カスタムターミナルタイトルを設定
+zmodule termtitle
+# ユーティリティエイリアスと関数を追加。ls、grep、less に色を追加
+zmodule utility
+
+# Prompt enhancement
+# 最後のコマンドの実行時間をプロンプトに表示
+zmodule duration-info
+# git リポジトリのステータス情報をプロンプトに表示
+zmodule git-info
+# プロンプトで使用する現在の作業ディレクトリをフォーマット
+zmodule prompt-pwd
+
+# Distro-specific
+# Homebrew のエイリアスを追加
+zmodule homebrew
+# pacman パッケージマネージャーのエイリアスを追加
+#zmodule pacman
+
+# Community modules
+# zsh で chezmoi を設定
+#zmodule joke/zim-chezmoi
+# zsh で github-cli を設定
+zmodule joke/zim-github-cli
+# zsh で gopass を設定
+#zmodule joke/zim-gopass
+# zsh で helm を設定
+#zmodule joke/zim-helm
+# zsh で istioctl を設定
+#zmodule joke/zim-istioctl
+# zsh で k9s を設定
+#zmodule joke/zim-k9s
+# zsh で kn を設定
+#zmodule joke/zim-kn
+# zsh で kubectl を設定
+#zmodule joke/zim-kubectl
+# zsh で minikube を設定
+#zmodule joke/zim-minikube
+# zsh で mise を設定
+zmodule joke/zim-mise
+# zsh で rtx を設定
+#zmodule joke/zim-rtx
+# zsh で skaffold を設定
+#zmodule joke/zim-skaffold
+# zsh で starship プロンプトを設定
+zmodule joke/zim-starship
+# zsh で steampipe を設定
+#zmodule joke/zim-steampipe
+# zsh で yq を設定
+zmodule joke/zim-yq
+# zsh で zoxide を設定
+#zmodule kiesman99/zim-zoxide
+# Additional completion definitions for Zsh.
+zmodule zsh-users/zsh-completions --fpath src
+
+# Fish-like syntax highlighting for Zsh.
+# zsh-users/zsh-syntax-highlighting must be sourced after completion
+zmodule zsh-users/zsh-syntax-highlighting
+# Fish-like history search (up arrow) for Zsh.
+# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+# Fish-like autosuggestions for Zsh.
+zmodule zsh-users/zsh-autosuggestions
+# }}} End configuration added by Zim install
+
