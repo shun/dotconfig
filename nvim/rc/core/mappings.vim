@@ -10,11 +10,11 @@ let g:maplocalleader = 'm' " ローカルなリーダーキー
 "
 noremap <C-a> <HOME>
 noremap <C-e> <END>
-noremap <silent><ESC><ESC> :noh<cr>
 
 " ============================================================================
 " normal mode
 "
+nnoremap <silent><ESC><ESC> :noh<cr>
 nnoremap <silent>j gj
 nnoremap <silent>k gk
 nnoremap ;  <Nop>
@@ -86,9 +86,10 @@ inoremap <C-b> <LEFT>
 inoremap <C-e> <END>
 
 " ============================================================================
-" console mode
+" command mode
 "
 
 " ============================================================================
 " terminal mode
 "
+tnoremap <C-q> <C-\><C-n>

@@ -37,7 +37,7 @@ endif
 
 " vimrc
 "if filereadable($VIMHOME . '/vimrc')
-"  execute 'source' $VIMHOME . '/vimrc'
+  execute 'source' $VIMHOME . '/vimrc'
 "endif
 
 " autoload

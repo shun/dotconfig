@@ -7,6 +7,9 @@ set nocompatible
 " 行番号を表示します。
 set number
 
+" 行番号をハイライト
+set cursorline
+
 " ヤンクしたテキストをクリップボードにコピー
 if has('win32') || has('win64') || has('mac')
   set clipboard=unnamed
@@ -119,4 +122,4 @@ set timeout timeoutlen=500 ttimeoutlen=100
 " カーソルを動かさないときの更新時間
 set updatetime=100
 
-autocmd FocusGained,BufEnter * checktime
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * checktime

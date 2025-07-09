@@ -12,7 +12,7 @@ inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
 ""inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1, "empty")<CR>
 ""inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1, "empty")<CR>
 inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-inoremap <C-o>   <Cmd>call pum#map#confirm_word()<CR>
+inoremap <C-o>   <Cmd>call pum#map#confirm_matched_pattern('^\S\+')<CR>
 
 call ddc#custom#patch_global('sources', ['lsp', 'around', 'buffer', 'file'])
 call ddc#custom#patch_global('sourceOptions', {
@@ -55,8 +55,9 @@ call ddc#custom#patch_global('sourceParams', {
     \ })
 call ddc#custom#patch_global('autoCompleteEvents', [
     \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
-    \ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
+    \ 'TextChangedT',
     \ ])
+"    \ 'CmdlineEnter', 'CmdlineChanged', 'TextChangedT',
 call ddc#custom#patch_global('ui', 'pum')
 call popup_preview#enable()
 call ddc#enable()
