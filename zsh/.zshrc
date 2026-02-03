@@ -1,140 +1,125 @@
-# Start configuration added by Zim install {{{
 #
-# User configuration sourced by interactive shells
+# 対話シェル用のユーザー設定
 #
 
 # -----------------
-# Zsh configuration
+# Zsh 設定
 # -----------------
 
-#
-# History
-#
-
-# Remove older command from the history if a duplicate is to be added.
+# 履歴に同一コマンドがある場合は古い方を削除する
 setopt HIST_IGNORE_ALL_DUPS
 
-#
-# Input/output
-#
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+# キーバインドを emacs に設定する（-e / -v で切り替え）
 bindkey -e
 
-# Prompt for spelling correction of commands.
-#setopt CORRECT
-
-# Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
-# Remove path separator from WORDCHARS.
+# WORDCHARS からパス区切り文字を除外する
 WORDCHARS=${WORDCHARS//[\/]}
 
 # -----------------
-# Zim configuration
+# エイリアスと環境変数
 # -----------------
-
-# Use degit instead of git as the default tool to install and update modules.
-#zstyle ':zim:zmodule' use 'degit'
-
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
-
-# ------------------
-# Initialize modules
-# ------------------
-
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
-
-# ------------------------------
-# Post-init module configuration
-# ------------------------------
 
 alias vi=nvim
 alias ll="eza --group-directories-first -la"
+alias l="eza --group-directories-first -a"
+
+# EZA の配色
 export EZA_COLORS="uu=0:gu=0:da=37:sn=0:sb=0:di=34:ln=36:ex=32:*.md=0:.git=37:ur=37:uw=37:ux=37:ue=37:gr=37:gw=37:gx=37:tr=37:tw=37:tx=37"
-export PATH=$HOME/.local/bin:$PATH
 
-#
-# zsh-history-substring-search
-#
+# 追加の実行パス
+export PATH="$HOME/.local/bin:$PATH"
 
-zmodload -F zsh/terminfo +p:terminfo
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-unset key
-# }}} End configuration added by Zim install
+# 既定のエディタ
+export EDITOR=nvim
 
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/skudo/.zsh/completions:"* ]]; then export FPATH="/Users/skudo/.zsh/completions:$FPATH"; fi
+# -----------------
+# プロンプト
+# -----------------
 
-. "/Users/skudo/.deno/env"
+# Starship
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+# -----------------
+# 外部ツール / SDK
+# -----------------
+
+# Deno
+if [[ ":$FPATH:" != *":/Users/skudo/.zsh/completions:"* ]]; then
+  export FPATH="/Users/skudo/.zsh/completions:$FPATH"
+fi
+[ -f "/Users/skudo/.deno/env" ] && . "/Users/skudo/.deno/env"
+
+# Google Cloud SDK
+if [ -f '/Users/skudo/.local/share/google-cloud-sdk/path.zsh.inc' ]; then
+  . '/Users/skudo/.local/share/google-cloud-sdk/path.zsh.inc'
+fi
+if [ -f '/Users/skudo/.local/share/google-cloud-sdk/completion.zsh.inc' ]; then
+  . '/Users/skudo/.local/share/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# Bun
+[ -s "/Users/skudo/.bun/_bun" ] && source "/Users/skudo/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Gemini CLI
+export GOOGLE_CLOUD_PROJECT=prd-genai-geminienterprise
+
+# Amazon Bedrock
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION="ap-northeast-1"
+export ANTHROPIC_MODEL='apac.anthropic.claude-sonnet-4-20250514-v1:0'
+export AWS_BEARER_TOKEN_BEDROCK=
+
+# Kiro
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Antigravity
+export PATH="/Users/skudo/.antigravity/antigravity/bin:$PATH"
+
+# GAM
+alias gam="/Users/skudo/bin/gam7/gam"
+
+# -----------------
+# カスタム関数
+# -----------------
+
+fzf-select-google-cloud() {
+  local conf
+  # 1. 構成を fzf で選択する（プレビュー付き）
+  conf=$(gcloud config configurations list --format="value(name)" | \
+    fzf --height 40% --reverse --header="--- Switch GCP Config & ADC ---" \
+        --preview "gcloud config configurations describe {}")
+
+  if [ -n "$conf" ]; then
+    # 2. 構成をアクティベートする
+    gcloud config configurations activate "$conf"
+
+    # 3. プロジェクト ID を取得して環境変数に設定する
+    local project_id
+    project_id=$(gcloud config get-value project 2>/dev/null)
+    export GOOGLE_CLOUD_PROJECT="$project_id"
+    export CLOUDSDK_CORE_PROJECT="$project_id"
+
+    echo "✅ Switched to config: [$conf] (Project: $project_id)"
+    echo "💡 Setting ADC (Application Default Credentials)..."
+
+    # 4. ADC（プログラム用認証）を更新する
+    # ※ブラウザが立ち上がる。不要な場合はこの行をコメントアウトする。
+    gcloud auth application-default login --quiet --no-launch-browser || gcloud auth application-default login
+  fi
+}
+alias gl=fzf-select-google-cloud
+
+fzf-select-ghq() {
+  local repo
+  repo=$(ghq list | fzf)
+  if [ -n "$repo" ]; then
+    cd "$(ghq root)/$repo"
+  fi
+}
+zle -N fzf-select-ghq
+bindkey '^g' fzf-select-ghq
 
