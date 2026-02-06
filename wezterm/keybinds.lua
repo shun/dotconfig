@@ -79,6 +79,8 @@ return {
 
     -- 画面フルスクリーン切り替え
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
+    -- Shift+Enter を別コードで送る（アプリ側で改行として扱える場合向け）
+    { key = "Enter", mods = "SHIFT", action = act.SendString("\x1b[13;2u") },
 
     -- コピーモード
     -- { key = 'X', mods = 'LEADER', action = act.ActivateKeyTable{ name = 'copy_mode', one_shot =false }, },

@@ -33,6 +33,20 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 
 # -----------------
+# 補完
+# -----------------
+
+autoload -Uz compinit
+compinit
+
+# 補完候補のハイライト
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)EZA_COLORS}"
+
+# スマートケース補完
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
+
+# -----------------
 # プロンプト
 # -----------------
 
@@ -118,8 +132,45 @@ fzf-select-ghq() {
   repo=$(ghq list | fzf)
   if [ -n "$repo" ]; then
     cd "$(ghq root)/$repo"
+    zle reset-prompt
   fi
 }
 zle -N fzf-select-ghq
 bindkey '^g' fzf-select-ghq
 
+# --- History enhancements ---
+HISTFILE=~/.zsh_history
+HISTSIZE=200000
+SAVEHIST=200000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt EXTENDED_HISTORY
+
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
+
+zshaddhistory() {
+  [[ "$1" == *"AWS_BEARER_TOKEN"* ]] && return 1
+  [[ "$1" == *"password"* ]] && return 1
+  return 0
+}
+# --- End history enhancements ---
+
+# zsh-autosuggestions
+if command -v brew >/dev/null 2>&1; then
+  _zas_path="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [ -f "$_zas_path" ] && source "$_zas_path"
+  unset _zas_path
+fi

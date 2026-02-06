@@ -1,14 +1,74 @@
-#ignore case
+# ~/.inputrc
+# Readline settings for interactive CLI tools (bash, python REPL, etc.)
+# Keep active settings minimal; keep candidates below commented out for step-by-step tuning.
+
+# -----------------------------------------------------------------------------
+# Completion behavior (active)
+# -----------------------------------------------------------------------------
+
+# Ignore case while completing names.
 set completion-ignore-case On
-#TAB: menu-complete
+
+# Show file type markers in completion list (e.g. / for dirs, * for executables).
 set visible-stats on
+
+# Disable audible/visible bell.
 set bell-style none
+
+# If completion is ambiguous, show candidates immediately.
 set show-all-if-ambiguous on
+
+# Even before extra typing, allow candidate list display.
 set show-all-if-unmodified on
+
+# Do not force shared prefix rendering in menu-complete display.
 set menu-complete-display-prefix off
+
+# Skip text already completed to avoid duplicated insertion.
 set skip-completed-text on
+
+# Use color for completion stats where supported.
 set colored-stats on
 
-"\C-n":history-search-forward
-"\C-p":history-search-backward
+# -----------------------------------------------------------------------------
+# History search keybindings (active)
+# -----------------------------------------------------------------------------
 
+# Ctrl-n: search next history entry matching current input prefix.
+"\C-n": history-search-forward
+
+# Ctrl-p: search previous history entry matching current input prefix.
+"\C-p": history-search-backward
+
+# -----------------------------------------------------------------------------
+# Optional settings (currently disabled)
+# Uncomment one by one while testing.
+# -----------------------------------------------------------------------------
+
+# Completion UI / behavior
+# set menu-complete on                  # Tab cycles through matches (menu mode)
+# set page-completions off              # Do not pause output with pager-like prompt
+# set completion-query-items 200        # Ask before listing if too many matches
+# set print-completions-horizontally on # Horizontal candidate layout
+# set mark-symlinked-directories on     # Append / to symlinked dirs in completions
+# set completion-map-case on            # Treat - and _ as equivalent in completion
+
+# Editing mode
+# set editing-mode emacs                # Default in many shells
+# set editing-mode vi                   # Use vi-style keybindings
+# set keymap vi-command                 # Select vi command keymap
+# set keymap vi-insert                  # Select vi insert keymap
+
+# History behavior
+# set history-preserve-point on         # Keep cursor position across history moves
+# set history-size 5000                 # Readline-side history list size
+
+# Prompt / redraw / display
+# set show-mode-in-prompt on            # Show mode indicator (useful with vi mode)
+# set echo-control-characters off       # Do not echo control chars as ^C form
+
+# Common extra keybindings (examples)
+# "\e[A": history-search-backward      # Up arrow: prefix history backward
+# "\e[B": history-search-forward       # Down arrow: prefix history forward
+# "\C-r": reverse-search-history       # Ctrl-r: incremental reverse history search
+# "\C-s": forward-search-history       # Ctrl-s: incremental forward history search

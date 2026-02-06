@@ -17,6 +17,7 @@ config.font_size = 20
 
 config.use_ime = true
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
+config.enable_csi_u_key_encoding = true
 
 config.hide_tab_bar_if_only_one_tab = true
 
@@ -53,4 +54,3 @@ config.key_tables = require("keybinds").key_tables
 config.disable_default_key_bindings = true
 
 return config
-
